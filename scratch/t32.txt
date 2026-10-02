@@ -1,0 +1,28 @@
+=== 编译服务器 ===
+be997b8731bdf91b4d627d3b19400007  /media/disk/backup/script/build_busybox_static.sh
+total 344
+drwxr-xr-x 1 root root   4096 Oct  2 02:48 .
+drwxr-xr-x 1 root root   4096 Sep 24 18:44 ..
+-rwxr-xr-x 1 root root  12714 Oct  2 02:48 build_busybox_static.sh
+-rwxr-xr-x 1 root root   5740 Sep 23 22:56 build_dropbear_static.sh
+-rwxr-xr-x 1 root root 121994 Oct  1 18:34 build_tun-ko.sh
+-rwxr-xr-x 1 root root    568 Sep 27 10:14 linux_init.sh
+-rwxr-xr-x 1 root root 191152 Sep 20 18:08 reinstall.sh
+
+本地脚本 md5: be997b8731bdf91b4d627d3b19400007
+
+=== 光猫 ===
+ 02:50:32 up  7:55,  load average: 2.86, 2.82, 2.88
+---
+2.87 2.82 2.89 1/255 11492
+---
+tmpfs                   220.9M     21.0M    199.9M  10% /tmp
+---
+-rwxrwxrwx    1 root     root       1276192 Oct  2 02:48 /tmp/busybox-full
+---
+9
+tmpfs 挂载数(上行)
+残留检查完成
+
+418
+

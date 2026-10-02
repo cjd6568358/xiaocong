@@ -1,0 +1,46 @@
+=== 1) allyesconfig ===
+allyesconfig applet 条目数: 963
+=== 2) 关掉需要外部库/新内核的选项 ===
+关完后 applet 条目数: 957
+=== 3) 编译（-j8） ===
+make rc=2
+--- 错误行 ---
+5:findutils/grep.c:180:9: error: unknown type name ‘RE_TRANSLATE_TYPE’
+8:findutils/grep.c:238:29: error: field ‘matched_range’ has incomplete type
+12:findutils/grep.c:381:59: error: ‘struct re_pattern_buffer’ has no member named ‘translate’
+23:findutils/grep.c:208:28: error: ‘re_syntax_options’ undeclared (first use in this function)
+35:findutils/grep.c:214:24: error: ‘RE_SYNTAX_EGREP’ undeclared (first use in this function)
+41:findutils/grep.c:214:42: error: ‘RE_INTERVALS’ undeclared (first use in this function)
+47:findutils/grep.c:214:57: error: ‘RE_NO_BK_BRACES’ undeclared (first use in this function)
+53:findutils/grep.c:793:27: error: ‘RE_SYNTAX_GREP’ undeclared (first use in this function)
+59:findutils/grep.c:804:34: error: subscripted value is neither array nor pointer nor vector
+62:findutils/grep.c:806:34: error: subscripted value is neither array nor pointer nor vector
+65:make[1]: *** [scripts/Makefile.build:197: findutils/grep.o] Error 1
+66:make: *** [Makefile:744: findutils] Error 2
+69:editors/vi.c:2394:9: error: ‘re_syntax_options’ undeclared (first use in this function)
+73:editors/vi.c:2394:29: error: ‘RE_SYNTAX_POSIX_BASIC’ undeclared (first use in this function)
+76:editors/vi.c:2394:55: error: ‘RE_DOT_NEWLINE’ undeclared (first use in this function); did you mean ‘REG_NEWLINE’?
+80:editors/vi.c:2396:38: error: ‘RE_ICASE’ undeclared (first use in this function); did you mean ‘REG_ICASE’?
+90:editors/vi.c:2400:13: error: ‘struct re_pattern_buffer’ has no member named ‘not_bol’
+93:editors/vi.c:2401:13: error: ‘struct re_pattern_buffer’ has no member named ‘not_eol’
+101:editors/vi.c:2748:56: error: ‘REG_STARTEND’ undeclared (first use in this function); did you mean ‘REG_EPAREN’?
+105:make[1]: *** [scripts/Makefile.build:197: editors/vi.o] Error 1
+107:make: *** [Makefile:744: editors] Error 2
+--- 日志尾 ---
+editors/vi.c:2401:13: error: ‘struct re_pattern_buffer’ has no member named ‘not_eol’
+ 2401 |         preg.not_eol = p != end - 1;
+      |             ^
+editors/vi.c:2436:13: warning: implicit declaration of function ‘re_search’; did you mean ‘bsearch’? [-Wimplicit-function-declaration]
+ 2436 |         i = re_search(&preg, q, size, start, range, /*struct re_registers*:*/ NULL);
+      |             ^~~~~~~~~
+      |             bsearch
+editors/vi.c: In function ‘regex_search’:
+editors/vi.c:2748:56: error: ‘REG_STARTEND’ undeclared (first use in this function); did you mean ‘REG_EPAREN’?
+ 2748 |         if (regexec(preg, q, MAX_SUBPATTERN, regmatch, REG_STARTEND) != 0)
+      |                                                        ^~~~~~~~~~~~
+      |                                                        REG_EPAREN
+make[1]: *** [scripts/Makefile.build:197: editors/vi.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:744: editors] Error 2
+
+

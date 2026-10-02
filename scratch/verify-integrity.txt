@@ -1,0 +1,42 @@
+=== A) diff 到底能不能用 ===
+   diff rc=127
+
+
+=== B) 去掉 ixc-go 段后，与插入前的备份逐字节比对 ===
+436d57a211c079336f4fb879846f85c6  -
+  ↑ 当前文件(剥掉 ixc-go 段)
+eafab9d154c0412d314ad315597cb8e5  /f4610u/user_init.sh.bak-20261002-030321
+  ↑ 插入前的备份
+
+
+=== C) 行数 ===
+/f4610u/user_init.sh.bak-20261002-030321             149 行  6813 字节
+/f4610u/user_init.sh                                 236 行  11946 字节
+
+
+=== D) 关键结构：段边界前后各几行 ===
+--- 第 145-153 行 ---
+    $IP route show table "$TBL"
+fi
+
+echo "[user_init] ===== done ====="
+
+# ==== ixc-go begin ====
+# 本段由 firmware/ont-go/deploy.py 生成，请不要手工改（改动会被下次部署覆盖）。
+# 撤销：SSH_PW=xxxx python firmware/ont-go/deploy.py --uninstall
+
+--- 第 232-236 行（结尾）---
+    echo "[user_init] WARN: $IXC_BIN 不存在，跳过小葱接管"
+fi
+# ==== ixc-go end ====
+
+exit 0
+
+
+=== E) 插入前备份的结尾（对比确认 exit 0 位置）===
+    $IP route show table "$TBL"
+fi
+
+echo "[user_init] ===== done ====="
+exit 0
+

@@ -1,0 +1,77 @@
+======================================================================
+1) 停掉旧实例（/tmp 里那个）
+   11691 root     1200m S    /f4610u/bin/ixc-go-arm64_upx -cert /f4610u/etc/server.crt -key /f4610u/etc/server.key -listen :8188 -dns
+
+2) 建目录并上传二进制 / 证书
+   ok
+    ixc-go-arm64_upx       1,522,340 bytes
+    server.crt                 1,407 bytes
+    server.key                 1,704 bytes
+   -rwxr-xr-x    1 root     root       1522340 Oct  2 03:03 /f4610u/bin/ixc-go-arm64_upx
+
+/f4610u/etc/:
+drwxrwxrwx    2 root     root           304 Oct  2 03:03 .
+drwxrwxrwx    7 root     root           960 Oct  2 03:03 ..
+-rw-rw-rw-    1 root     root          1407 Oct  2 03:03 server.crt
+-rw-------    1 root     root          1704 Oct  2 03:03 server.key
+
+3) 冒烟测试：-h
+ixc-go —— 在光猫上冒充小葱插座的原厂云端（DNS 劫持 + TLS 1.1 假云端）
+
+用法:
+  ixc-go-arm64_upx -cert <crt> -key <key> [选项]
+    退出码: 0
+
+4) 清理历史版本残留（旧写死 WAN IP 的回环规则等）
+    当前 WAN IP = 139.227.20.142
+   已删旧写死规则
+   旧文件已清
+
+5) 改 /f4610u/user_init.sh（回环规则 + 开机自启，幂等 + 备份）
+    已存在 ixc-go 段，先删旧段（1 段）
+    备份: -rwxrwxrwx    1 root     root          5259 Oct  2 00:55 /f4610u/user_init.sh.bak-20261002
+-rwxrwxrwx    1 root     root          6813 Oct  2 02:21 /f4610u/user_init.sh.bak-20261002-030321
+-rwxrwxrwx    1 root     root         11350 Oct  2 03:03 /f4610u/user_init.sh.bak-20261002-030400
+    写入完成，行数: 236
+
+6) 立即生效：把 user_init.sh 里那段摘出来单独跑一遍（不重启）
+   （这段现在自给自足，不依赖 user_init.sh 开头的 export —— 就是为了能这么跑）
+   [user_init] ixc-go 回环规则 rc=0
+[user_init] ixc-go already running
+
+7) 状态
+== 进程 ==
+11691 root     1200m S    /f4610u/bin/ixc-go-arm64_upx -cert /f4610u/etc/server.crt -key /f4610u/etc/server.key -listen :8188 -dns
+== 监听 ==
+tcp        0      0 192.168.1.1:8080        0.0.0.0:*               LISTEN      
+tcp        0      0 :::8188                 :::*                    LISTEN
+== 别名 ==
+inet addr:203.0.113.9  Bcast:203.0.113.255  Mask:255.255.255.255
+== 规则（-v 才看得到 -i）==
+Chain PREROUTING (policy ACCEPT 4 packets, 232 bytes)
+num   pkts bytes target     prot opt in     out     source               destination         
+1        0     0 REDIRECT   tcp  --  br0    *       0.0.0.0/0           !192.168.1.0/24       tcp dpt:8188 redir ports 8188
+2        0     0 REDIRECT   udp  --  br0    *       0.0.0.0/0            0.0.0.0/0            MAC B4:E6:2D:3A:6E:7C udp dpt:53 redir ports 5353
+3     213K   17M srvcntrl   all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+4     213K   17M fwports    all  --  *      *       0.0.0.0/0            0.0.0.0/0
+== user_init.sh 里的段 ==
+150:# ==== ixc-go begin ====
+154:# ------------------------------------------------------------ 8. 小葱插座接管 (ixc-go)
+198:IXC_BIN=/f4610u/bin/ixc-go-arm64_upx
+200:IXC_LOG=/tmp/ixc-go.log
+212:    echo "[user_init] ixc-go 回环规则 rc=$?"
+217:    if ps w | grep -v grep | grep -q 'ixc-go-arm64_upx'; then
+218:        echo "[user_init] ixc-go already running"
+229:        echo "[user_init] ixc-go started pid=$!"
+234:# ==== ixc-go end ====
+== 日志尾 ==
+[03:03:23]    Chain PREROUTING (policy ACCEPT)
+[03:03:23]    1    REDIRECT   tcp  --  0.0.0.0/0            139.227.20.142       tcp dpt:8188 redir ports 8188
+[03:03:23]    2    REDIRECT   udp  --  0.0.0.0/0            0.0.0.0/0            MAC B4:E6:2D:3A:6E:7C udp dpt:53 redir ports 5353
+[03:03:23]    回环规则不由本程序管理（常驻在 /f4610u/user_init.sh，加 -hairpin 可改回来）
+[03:03:23] ixc-go 就绪  TLS=:8188  证书=/f4610u/etc/server.crt
+[03:03:23]    设备ID=6587529711423210  AppClientID=f9ee07acc3412b0f538d778ab05e5e80
+[03:03:23] DNS 应答器就绪  监听=[::]:5353  劫持域=[ixiaocong.com allin.dns.army]  →203.0.113.9  上游=223.5.5.5:53
+[03:03:23] 控制 HTTP 就绪  http://192.168.1.1:8080/on  /off  /status
+
+完成。开机自启已挂在 user_init.sh 里；改回去用 --uninstall。

@@ -1,0 +1,25 @@
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sshutil
+os.environ.setdefault("SSH_PW", "e3eb773F")
+import paramiko
+cli = paramiko.SSHClient(); cli.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+cli.connect("192.168.1.1", 10022, username="root", password=os.environ["SSH_PW"],
+            timeout=15, look_for_keys=False, allow_agent=False)
+def sh(c, t=90): return sshutil.run(cli, c, timeout=t).strip()
+print("=== ① ixc-go 日志：启动后有没有任何连接 ===")
+print(sh("grep -cE '有连接进来|DNS 劫持' /tmp/ixc-go.log; echo '--- 最近 20 行 ---'; tail -20 /tmp/ixc-go.log"))
+print()
+print("=== ② 插座 192.168.1.11 通不通 ===")
+print(sh("ping -c 2 -W 2 192.168.1.11 2>&1 | tail -3"))
+print("ARP 全表:", sh("cat /proc/net/arp | head -12"))
+print()
+print("=== ③ 规则还在吗 ===")
+print(sh("LD_LIBRARY_PATH=/f4610u/lib /f4610u/bin/iptables_upx -t nat -L PREROUTING -n -v --line-numbers 2>/dev/null | sed -n '1,5p'"))
+print()
+print("=== ④ easytier / tun ===")
+print(sh("ifconfig 2>/dev/null | grep -E '^[a-z]|inet addr' | head -30"))
+print()
+print("=== ⑤ 光猫上 uptime ===")
+print(sh("cat /proc/uptime; uptime 2>/dev/null; head -1 /f4610u/user_init.log 2>/dev/null; tail -5 /f4610u/user_init.log 2>/dev/null"))
+cli.close()

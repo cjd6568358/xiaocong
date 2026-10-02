@@ -1,0 +1,1118 @@
+======== app_step0 @ 00015c38 ========
+00015c38  push {r4,r5,r6,r7,r8,r9,r10,r11,lr}     
+00015c3c  add r7,sp,#0xc                          
+00015c3e  sub.w sp,sp,#0x234                      
+00015c42  ldr r0,[0x00015f44]                        -> 00015f44
+00015c44  add r4,sp,#0x1d0                        
+00015c46  movs r1,#0x5a                           
+00015c48  add r0,pc                               
+00015c4a  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+00015c4c  ldr r0,[r0,#0x0]                           -> 0002000c
+00015c4e  str r0,[sp,#0x230]                         -> Stack[-0x28]
+00015c50  mov r0,r4                               
+00015c52  blx 0x00012900                             -> 00012900
+00015c56  add r0,sp,#0x190                        
+00015c58  movs r1,#0x40                           
+00015c5a  blx 0x00012900                             -> 00012900
+00015c5e  ldr r0,[0x00015f48]                        -> 00015f48
+00015c60  movs r1,#0x40                           
+00015c62  mov r2,r4                               
+00015c64  add r0,pc                               
+00015c66  ldr r0,[r0,#0x0]                           -> 0001edf0  *(0001f108)=0x<unmapped>   -> 0001f108
+00015c68  blx 0x00012b34                             -> 00012b34
+00015c6c  blx 0x00012b40                             -> 00012b40
+00015c70  mov r9,r0                               
+00015c72  ldr r0,[0x00015f4c]                        -> 00015f4c
+00015c74  add r0,pc                                  -> 0001c5f7 "ch_pubk"
+00015c76  blx 0x000129b4                             -> 000129b4
+00015c7a  ldr r1,[0x00015f50]                        -> 00015f50 "ni"
+00015c7c  mov r2,r0                               
+00015c7e  mov r0,r9                               
+00015c80  add r1,pc                                  -> 0001c5f2 "type"
+00015c82  blx 0x00012984                             -> 00012984
+00015c86  mov r0,r4                               
+00015c88  blx 0x000129b4                             -> 000129b4
+00015c8c  ldr r1,[0x00015f54]                        -> 00015f54 "ii"
+00015c8e  mov r2,r0                               
+00015c90  mov r0,r9                               
+00015c92  add r1,pc                                  -> 0001c5ff "pubkey"
+00015c94  blx 0x00012984                             -> 00012984
+00015c98  mov r0,r9                               
+00015c9a  blx 0x00012b4c                             -> 00012b4c
+00015c9e  ldr r1,[0x00015f58]                        -> 00015f58
+00015ca0  mov r8,r0                               
+00015ca2  ldr r2,[0x00015f5c]                        -> 00015f5c "Xi"
+00015ca4  movs r0,#0x4                            
+00015ca6  ldr r3,[0x00015f60]                        -> 00015f60 "ri"
+00015ca8  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015caa  add r2,pc                                  -> 0001c606
+00015cac  str.w r8,[sp,#0x0]                         -> Stack[-0x258]
+00015cb0  add r3,pc                                  -> 0001c626 "app_step0"
+00015cb2  blx 0x00012b10                             -> 00012b10
+00015cb6  add r0,sp,#0x90                         
+00015cb8  mov.w r1,#0x100                         
+00015cbc  blx 0x00012900                             -> 00012900
+00015cc0  add r6,sp,#0x10                         
+00015cc2  movs r1,#0x80                           
+00015cc4  mov r0,r6                               
+00015cc6  blx 0x00012900                             -> 00012900
+00015cca  ldr r0,[0x00015f64]                        -> 00015f64
+00015ccc  movs r4,#0x1                            
+00015cce  mov.w r10,#0x0                          
+00015cd2  add r0,pc                               
+00015cd4  ldr r5,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00015cd6  ldr r0,[r5,#0x0]                           -> 0001f020
+00015cd8  and r1,r0,#0x1f                         
+00015cdc  lsrs r2,r0,#0x5                         
+00015cde  adds r0,#0x1                            
+00015ce0  ldr.w r3,[r6,r2,lsl #0x2]               
+00015ce4  lsl.w r1,r4,r1                          
+00015ce8  orrs r1,r3                              
+00015cea  str.w r1,[r6,r2,lsl #0x2]               
+00015cee  add r1,sp,#0x8                          
+00015cf0  strd r10,r4,[sp,#0x8]                      -> Stack[-0x250]
+00015cf4  movs r2,#0x0                            
+00015cf6  str r1,[sp,#0x0]                           -> Stack[-0x258]
+00015cf8  mov r1,r6                               
+00015cfa  movs r3,#0x0                            
+00015cfc  blx 0x00012a68                             -> 00012a68
+00015d00  ldr r0,[r5,#0x0]                           -> 0001f020
+00015d02  and r2,r0,#0x1f                         
+00015d06  lsrs r1,r0,#0x5                         
+00015d08  ldr.w r1,[r6,r1,lsl #0x2]               
+00015d0c  lsl.w r2,r4,r2                          
+00015d10  tst r2,r1                               
+00015d12  beq 0x00015d52                             -> 00015d52
+00015d14  add r1,sp,#0x90                         
+00015d16  mov.w r2,#0x100                         
+00015d1a  movs r3,#0x0                            
+00015d1c  strd r10,r10,[sp,#0x0]                     -> Stack[-0x258]
+00015d20  blx 0x00012a74                             -> 00012a74
+00015d24  cmp.w r0,#0xffffffff                    
+00015d28  bne 0x00015d52                             -> 00015d52
+00015d2a  ldr r1,[0x00015f68]                        -> 00015f68
+00015d2c  mov.w r0,#0xffffffff                    
+00015d30  ldr r2,[0x00015f6c]                        -> 00015f6c
+00015d32  ldr r3,[0x00015f70]                        -> 00015f70
+00015d34  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015d36  add r2,pc                                  -> 0001c630
+00015d38  str r0,[sp,#0x0]                           -> Stack[-0x258]
+00015d3a  add r3,pc                                  -> 0001c626 "app_step0"
+00015d3c  movs r0,#0x4                            
+00015d3e  blx 0x00012b10                             -> 00012b10
+00015d42  ldr r0,[0x00015f74]                        -> 00015f74
+00015d44  add r0,pc                               
+00015d46  ldr r0,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00015d48  ldr r0,[r0,#0x0]                           -> 0001f020
+00015d4a  blx 0x00012aa4                             -> 00012aa4
+00015d4e  blx 0x00012b58                             -> 00012b58
+00015d52  blx 0x00012b64                             -> 00012b64
+00015d56  ldr r0,[0x00015f78]                        -> 00015f78
+00015d58  add r0,pc                               
+00015d5a  ldr r0,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00015d5c  ldr r4,[r0,#0x0]                           -> 0001f020
+00015d5e  mov r0,r8                               
+00015d60  blx 0x00012948                             -> 00012948
+00015d64  mov r2,r0                               
+00015d66  ldr r0,[0x00015f7c]                        -> 00015f7c
+00015d68  movs r1,#0x10                           
+00015d6a  movs r3,#0x0                            
+00015d6c  add r0,pc                               
+00015d6e  ldr r0,[r0,#0x0]                           -> 0001edfc  *(0001fb18)=0x<unmapped>
+00015d70  strd r0,r1,[sp,#0x0]                       -> 0001fb18   -> Stack[-0x258]
+00015d74  mov r0,r4                               
+00015d76  mov r1,r8                               
+00015d78  blx 0x00012a80                             -> 00012a80
+00015d7c  cmp.w r0,#0xffffffff                    
+00015d80  ble 0x00015e70                             -> 00015e70
+00015d82  cmp.w r9,#0x0                           
+00015d86  itt ne                                  
+00015d88  mov.ne r0,r9                            
+00015d8a  blx.ne 0x000128f4                          -> 000128f4
+00015d8e  cmp.w r8,#0x0                           
+00015d92  itt ne                                  
+00015d94  mov.ne r0,r8                            
+00015d96  blx.ne 0x000128e8                          -> 000128e8
+00015d9a  ldr r0,[0x00015f80]                        -> 00015f80
+00015d9c  mov.w r9,#0x0                           
+00015da0  mov.w r11,#0x1                          
+00015da4  movs r5,#0x0                            
+00015da6  add r0,pc                               
+00015da8  ldr.w r10,[r0,#0x0]                        -> 0001edf8  *(0001f020)=0x<unmapped>
+00015dac  mov r0,r6                               
+00015dae  movs r1,#0x80                           
+00015db0  blx 0x00012900                             -> 00012900
+00015db4  ldr.w r0,[r10,#0x0]                        -> 0001f020
+00015db8  str.w r9,[sp,#0x8]                         -> Stack[-0x250]
+00015dbc  and r1,r0,#0x1f                         
+00015dc0  lsrs r2,r0,#0x5                         
+00015dc2  adds r0,#0x1                            
+00015dc4  ldr.w r3,[r6,r2,lsl #0x2]               
+00015dc8  lsl.w r1,r11,r1                         
+00015dcc  orrs r1,r3                              
+00015dce  str.w r1,[r6,r2,lsl #0x2]               
+00015dd2  mov.w r1,#0x3e8                         
+00015dd6  str r1,[sp,#0xc]                           -> Stack[-0x24c]
+00015dd8  add r1,sp,#0x8                          
+00015dda  str r1,[sp,#0x0]                           -> Stack[-0x258]
+00015ddc  mov r1,r6                               
+00015dde  movs r2,#0x0                            
+00015de0  movs r3,#0x0                            
+00015de2  blx 0x00012a68                             -> 00012a68
+00015de6  ldr.w r0,[r10,#0x0]                        -> 0001f020
+00015dea  and r2,r0,#0x1f                         
+00015dee  lsrs r1,r0,#0x5                         
+00015df0  ldr.w r1,[r6,r1,lsl #0x2]               
+00015df4  lsl.w r2,r11,r2                         
+00015df8  tst r2,r1                               
+00015dfa  beq 0x00015e66                             -> 00015e66
+00015dfc  add r4,sp,#0x90                         
+00015dfe  mov.w r2,#0x100                         
+00015e02  movs r3,#0x0                            
+00015e04  strd r9,r9,[sp,#0x0]                       -> Stack[-0x258]
+00015e08  mov r1,r4                               
+00015e0a  blx 0x00012a74                             -> 00012a74
+00015e0e  cmp r0,#0x1                             
+00015e10  blt 0x00015e60                             -> 00015e60
+00015e12  ldr r1,[0x00015fd0]                        -> 00015fd0
+00015e14  movs r0,#0x4                            
+00015e16  ldr r2,[0x00015fd4]                        -> 00015fd4 "Nh"
+00015e18  ldr r3,[0x00015fd8]                        -> 00015fd8
+00015e1a  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015e1c  add r2,pc                                  -> 0001c66e
+00015e1e  str r4,[sp,#0x0]                           -> Stack[-0x258]
+00015e20  add r3,pc                                  -> 0001c626 "app_step0"
+00015e22  blx 0x00012b10                             -> 00012b10
+00015e26  mov r0,r4                               
+00015e28  blx 0x00012b70                             -> 00012b70
+00015e2c  mov r8,r0                               
+00015e2e  cmp.w r8,#0x0                           
+00015e32  beq 0x00015e66                             -> 00015e66
+00015e34  ldr r1,[0x00015fdc]                        -> 00015fdc
+00015e36  mov r0,r8                               
+00015e38  add r1,pc                                  -> 0001c5f2 "type"
+00015e3a  blx 0x00012b7c                             -> 00012b7c
+00015e3e  cbz r0,0x00015e58                          -> 00015e58
+00015e40  ldr r1,[0x00015fe0]                        -> 00015fe0
+00015e42  ldr r0,[r0,#0x10]                       
+00015e44  add r1,pc                                  -> 0001c5f7 "ch_pubk"
+00015e46  blx 0x00012b88                             -> 00012b88
+00015e4a  cbnz r0,0x00015e58                         -> 00015e58
+00015e4c  ldr r1,[0x00015fe4]                        -> 00015fe4
+00015e4e  mov r0,r8                               
+00015e50  add r1,pc                                  -> 0001c5ff "pubkey"
+00015e52  blx 0x00012b7c                             -> 00012b7c
+00015e56  cbnz r0,0x00015e9e                         -> 00015e9e
+00015e58  mov r0,r8                               
+00015e5a  blx 0x000128f4                             -> 000128f4
+00015e5e  b 0x00015e66                               -> 00015e66
+00015e60  cmp.w r0,#0xffffffff                    
+00015e64  beq 0x00015e82                             -> 00015e82
+00015e66  adds r5,#0x1                            
+00015e68  cmp.w r5,#0x7d0                         
+00015e6c  blt 0x00015dac                             -> 00015dac
+00015e6e  b 0x00015e82                               -> 00015e82
+00015e70  ldr r1,[0x00015fc0]                        -> 00015fc0 "Dg"
+00015e72  movs r0,#0x4                            
+00015e74  ldr r2,[0x00015fc4]                        -> 00015fc4
+00015e76  ldr r3,[0x00015fc8]                        -> 00015fc8
+00015e78  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015e7a  add r2,pc                                  -> 0001c652
+00015e7c  add r3,pc                                  -> 0001c626 "app_step0"
+00015e7e  blx 0x00012b10                             -> 00012b10
+00015e82  movs r0,#0x0                            
+00015e84  ldr r1,[0x00015fcc]                        -> 00015fcc
+00015e86  ldr r2,[sp,#0x230]                         -> Stack[-0x28]
+00015e88  add r1,pc                               
+00015e8a  ldr r1,[r1,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+00015e8c  ldr r1,[r1,#0x0]                           -> 0002000c
+00015e8e  subs r1,r1,r2                           
+00015e90  itt eq                                  
+00015e92  add.eq.w sp,sp,#0x234                   
+00015e96  pop.eq.w {r4,r5,r6,r7,r8,r9,r10,r11,pc} 
+00015e9a  blx 0x000128c4                             -> 000128c4
+00015e9e  ldr r4,[r0,#0x10]                       
+00015ea0  mov r0,r4                               
+00015ea2  blx 0x00012948                             -> 00012948
+00015ea6  add.w r8,sp,#0x190                      
+00015eaa  mov r1,r0                               
+00015eac  mov r0,r4                               
+00015eae  mov r2,r8                               
+00015eb0  blx 0x00012b94                             -> 00012b94
+00015eb4  ldr r1,[0x00015f84]                        -> 00015f84
+00015eb6  movs r0,#0x4                            
+00015eb8  ldr r2,[0x00015f88]                        -> 00015f88
+00015eba  ldr r3,[0x00015f8c]                        -> 00015f8c "bg"
+00015ebc  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015ebe  add r2,pc                                  -> 0001c690 " >>>> %s pubkey -> "
+00015ec0  add r3,pc                                  -> 0001c626 "app_step0"
+00015ec2  blx 0x00012b10                             -> 00012b10
+00015ec6  ldr r4,[0x00015f90]                        -> 00015f90
+00015ec8  movs r6,#0x0                            
+00015eca  ldr r5,[0x00015f94]                        -> 00015f94
+00015ecc  add r4,pc                               
+00015ece  add r5,pc                               
+00015ed0  ldrb.w r3,[r8,r6]                          -> Stack[-0xc8]
+00015ed4  movs r0,#0x4                            
+00015ed6  mov r1,r4                                  -> 0001c5c0 "softap_native-dev"
+00015ed8  mov r2,r5                                  -> 0001c5d2 "%02X "
+00015eda  blx 0x00012b10                             -> 00012b10
+00015ede  adds r6,#0x1                            
+00015ee0  cmp r6,#0x40                            
+00015ee2  bne 0x00015ed0                             -> 00015ed0
+00015ee4  ldr r1,[0x00015f98]                        -> 00015f98
+00015ee6  movs r0,#0x4                            
+00015ee8  ldr r2,[0x00015f9c]                        -> 00015f9c
+00015eea  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015eec  add r2,pc                                  -> 0001c5f0
+00015eee  blx 0x00012b10                             -> 00012b10
+00015ef2  ldr r0,[0x00015fa0]                        -> 00015fa0
+00015ef4  ldr r1,[0x00015fa4]                        -> 00015fa4
+00015ef6  add r0,pc                               
+00015ef8  ldr r2,[0x00015fa8]                        -> 00015fa8
+00015efa  add r1,pc                               
+00015efc  ldr r0,[r0,#0x0]                           -> 0001edec  *(0001fb28)=0x<unmapped>
+00015efe  add r2,pc                               
+00015f00  ldr r1,[r1,#0x0]                           -> 0001edf4  *(0001f0e8)=0x<unmapped>   -> 0001f0e8
+00015f02  ldr r2,[r2,#0x0]                           -> 0001ee00  *(0001f148)=0x<unmapped>   -> 0001f148
+00015f04  ldr r3,[r0,#0x0]                           -> 0001fb28
+00015f06  add r0,sp,#0x190                        
+00015f08  blx 0x00012ba0                             -> 00012ba0
+00015f0c  ldr r0,[0x00015fac]                        -> 00015fac
+00015f0e  movs r6,#0x0                            
+00015f10  ldr.w r8,[0x00015fb0]                      -> 00015fb0
+00015f14  add r0,pc                               
+00015f16  ldr r5,[0x00015fb4]                        -> 00015fb4
+00015f18  add r8,pc                               
+00015f1a  ldr r4,[r0,#0x0]                           -> 0001ee00  *(0001f148)=0x<unmapped>
+00015f1c  add r5,pc                               
+00015f1e  ldrb r3,[r4,r6]                            -> 0001f148   -> 0001f149
+00015f20  movs r0,#0x4                            
+00015f22  mov r1,r8                                  -> 0001c5c0 "softap_native-dev"
+00015f24  mov r2,r5                                  -> 0001c5d2 "%02X "
+00015f26  blx 0x00012b10                             -> 00012b10
+00015f2a  adds r6,#0x1                            
+00015f2c  cmp r6,#0x20                            
+00015f2e  bne 0x00015f1e                             -> 00015f1e
+00015f30  ldr r1,[0x00015fb8]                        -> 00015fb8
+00015f32  movs r0,#0x4                            
+00015f34  ldr r2,[0x00015fbc]                        -> 00015fbc
+00015f36  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015f38  add r2,pc                                  -> 0001c5f0
+00015f3a  blx 0x00012b10                             -> 00012b10
+00015f3e  movs r0,#0x1                            
+00015f40  b 0x00015e84                               -> 00015e84
+
+======== app_step1 @ 000160d4 ========
+000160d4  push {r4,r5,r6,r7,r8,r9,r10,r11,lr}     
+000160d8  add r7,sp,#0xc                          
+000160da  sub.w sp,sp,#0x2180                     
+000160de  sub sp,#0x24                            
+000160e0  ldr r0,[0x0001645c]                        -> 0001645c
+000160e2  add r4,sp,#0x18                         
+000160e4  add.w r5,r4,#0x1980                     
+000160e8  mov.w r1,#0x800                         
+000160ec  add r0,pc                               
+000160ee  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+000160f0  ldr r0,[r0,#0x0]                           -> 0002000c
+000160f2  str.w r0,[r7,#-0x14]                    
+000160f6  mov r0,r5                               
+000160f8  blx 0x00012900                             -> 00012900
+000160fc  addw r6,sp,#0x998                       
+00016100  mov.w r1,#0x1000                        
+00016104  mov r0,r6                               
+00016106  blx 0x00012900                             -> 00012900
+0001610a  add.w r0,sp,#0x598                      
+0001610e  mov.w r1,#0x400                         
+00016112  blx 0x00012900                             -> 00012900
+00016116  add r0,sp,#0x198                        
+00016118  mov.w r1,#0x400                         
+0001611c  blx 0x00012900                             -> 00012900
+00016120  blx 0x00012b40                             -> 00012b40
+00016124  mov r8,r0                               
+00016126  ldr r0,[0x00016460]                        -> 00016460 "xe"
+00016128  add r0,pc                                  -> 0001c6a4 "ch_data"
+0001612a  blx 0x000129b4                             -> 000129b4
+0001612e  ldr r1,[0x00016464]                        -> 00016464
+00016130  mov r2,r0                               
+00016132  mov r0,r8                               
+00016134  add r1,pc                                  -> 0001c5f2 "type"
+00016136  blx 0x00012984                             -> 00012984
+0001613a  ldr r0,[0x00016468]                        -> 00016468
+0001613c  add r0,pc                               
+0001613e  ldr r0,[r0,#0x0]                           -> 0001ee08  *(0001f1a8)=0x<unmapped>   -> 0001f1a8
+00016140  blx 0x000129b4                             -> 000129b4
+00016144  ldr r1,[0x0001646c]                        -> 0001646c "^e"
+00016146  mov r2,r0                               
+00016148  mov r0,r8                               
+0001614a  add r1,pc                                  -> 0001c6ac "ssid"
+0001614c  blx 0x00012984                             -> 00012984
+00016150  ldr r0,[0x00016470]                        -> 00016470
+00016152  add r0,pc                               
+00016154  ldr r0,[r0,#0x0]                           -> 0001ee0c  *(0001f1e8)=0x<unmapped>   -> 0001f1e8
+00016156  blx 0x000129b4                             -> 000129b4
+0001615a  ldr r1,[0x00016474]                        -> 00016474 "Me"
+0001615c  mov r2,r0                               
+0001615e  mov r0,r8                               
+00016160  add r1,pc                                  -> 0001c6b1 "password"
+00016162  blx 0x00012984                             -> 00012984
+00016166  ldr r0,[0x00016478]                        -> 00016478
+00016168  add r0,pc                               
+0001616a  ldr r0,[r0,#0x0]                           -> 0001ee10  *(0001f228)=0x<unmapped>   -> 0001f228
+0001616c  blx 0x000129b4                             -> 000129b4
+00016170  ldr r1,[0x0001647c]                        -> 0001647c "@e"
+00016172  mov r2,r0                               
+00016174  mov r0,r8                               
+00016176  add r1,pc                                  -> 0001c6ba "clientId"
+00016178  blx 0x00012984                             -> 00012984
+0001617c  ldr r0,[0x00016480]                        -> 00016480
+0001617e  add r0,pc                               
+00016180  ldr r0,[r0,#0x0]                           -> 0001ee14  *(0001f268)=0x<unmapped>   -> 0001f268
+00016182  blx 0x000129b4                             -> 000129b4
+00016186  ldr r1,[0x00016484]                        -> 00016484 "3e"
+00016188  mov r2,r0                               
+0001618a  mov r0,r8                               
+0001618c  add r1,pc                                  -> 0001c6c3 "checkCode"
+0001618e  blx 0x00012984                             -> 00012984
+00016192  ldr r0,[0x00016488]                        -> 00016488
+00016194  add r0,pc                               
+00016196  ldr r0,[r0,#0x0]                           -> 0001ee18  *(0001f270)=0x<unmapped>   -> 0001f270
+00016198  blx 0x000129b4                             -> 000129b4
+0001619c  ldr r1,[0x0001648c]                        -> 0001648c "'e"
+0001619e  mov r2,r0                               
+000161a0  mov r0,r8                               
+000161a2  add r1,pc                                  -> 0001c6cd "domain"
+000161a4  blx 0x00012984                             -> 00012984
+000161a8  ldr r0,[0x00016490]                        -> 00016490
+000161aa  add r0,pc                               
+000161ac  ldr r0,[r0,#0x0]                           -> 0001ee1c  *(0001f2f0)=0x<unmapped>   -> 0001f2f0
+000161ae  blx 0x000129b4                             -> 000129b4
+000161b2  ldr r1,[0x00016494]                        -> 00016494
+000161b4  mov r2,r0                               
+000161b6  mov r0,r8                               
+000161b8  add r1,pc                                  -> 0001c6d4 "crt"
+000161ba  blx 0x00012984                             -> 00012984
+000161be  mov r0,r8                               
+000161c0  blx 0x00012b4c                             -> 00012b4c
+000161c4  ldr r1,[0x00016498]                        -> 00016498
+000161c6  mov r9,r0                               
+000161c8  ldr r2,[0x0001649c]                        -> 0001649c
+000161ca  movs r0,#0x4                            
+000161cc  ldr r3,[0x000164a0]                        -> 000164a0
+000161ce  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+000161d0  add r2,pc                                  -> 0001c6d8
+000161d2  str.w r9,[sp,#0x0]                         -> Stack[-0x21c8]
+000161d6  add r3,pc                                  -> 0001c6f6 "app_step1"
+000161d8  blx 0x00012b10                             -> 00012b10
+000161dc  mov r0,r9                               
+000161de  blx 0x00012948                             -> 00012948
+000161e2  mov r2,r0                               
+000161e4  ldr r0,[0x000164a4]                        -> 000164a4
+000161e6  ldr r1,[0x000164a8]                        -> 000164a8
+000161e8  add r0,pc                               
+000161ea  add r1,pc                               
+000161ec  ldr r3,[r0,#0x0]                           -> 0001ee00  *(0001f148)=0x<unmapped>   -> 0001f148
+000161ee  ldr r0,[r1,#0x0]                           -> 0001ee20  *(0001f00c)="abcdefghijklmnop"
+000161f0  mov r1,r9                               
+000161f2  str r0,[sp,#0x0]                           -> 0001f00c "abcdefghijklmnop"   -> Stack[-0x21c8]
+000161f4  mov r0,r5                               
+000161f6  blx 0x00012bb8                             -> 00012bb8
+000161fa  mov r1,r0                               
+000161fc  mov r0,r5                               
+000161fe  mov r2,r6                               
+00016200  blx 0x00012b34                             -> 00012b34
+00016204  add r0,sp,#0x98                         
+00016206  mov.w r1,#0x100                         
+0001620a  blx 0x00012900                             -> 00012900
+0001620e  add r6,sp,#0x18                         
+00016210  movs r1,#0x80                           
+00016212  mov r0,r6                               
+00016214  blx 0x00012900                             -> 00012900
+00016218  ldr r0,[0x000164ac]                        -> 000164ac
+0001621a  movs r4,#0x1                            
+0001621c  mov.w r10,#0x0                          
+00016220  add r0,pc                               
+00016222  ldr r5,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00016224  ldr r0,[r5,#0x0]                           -> 0001f020
+00016226  and r1,r0,#0x1f                         
+0001622a  lsrs r2,r0,#0x5                         
+0001622c  adds r0,#0x1                            
+0001622e  ldr.w r3,[r6,r2,lsl #0x2]               
+00016232  lsl.w r1,r4,r1                          
+00016236  orrs r1,r3                              
+00016238  str.w r1,[r6,r2,lsl #0x2]               
+0001623c  add r1,sp,#0x10                         
+0001623e  strd r10,r4,[sp,#0x10]                     -> Stack[-0x21b8]
+00016242  movs r2,#0x0                            
+00016244  str r1,[sp,#0x0]                           -> Stack[-0x21c8]
+00016246  mov r1,r6                               
+00016248  movs r3,#0x0                            
+0001624a  blx 0x00012a68                             -> 00012a68
+0001624e  ldr r0,[r5,#0x0]                           -> 0001f020
+00016250  and r2,r0,#0x1f                         
+00016254  lsrs r1,r0,#0x5                         
+00016256  ldr.w r1,[r6,r1,lsl #0x2]               
+0001625a  lsl.w r2,r4,r2                          
+0001625e  tst r2,r1                               
+00016260  beq 0x000162a0                             -> 000162a0
+00016262  add r1,sp,#0x98                         
+00016264  mov.w r2,#0x100                         
+00016268  movs r3,#0x0                            
+0001626a  strd r10,r10,[sp,#0x0]                     -> Stack[-0x21c8]
+0001626e  blx 0x00012a74                             -> 00012a74
+00016272  cmp.w r0,#0xffffffff                    
+00016276  bne 0x000162a0                             -> 000162a0
+00016278  ldr r1,[0x000164b0]                        -> 000164b0 ":c"
+0001627a  mov.w r0,#0xffffffff                    
+0001627e  ldr r2,[0x000164b4]                        -> 000164b4
+00016280  ldr r3,[0x000164b8]                        -> 000164b8 "jd"
+00016282  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00016284  add r2,pc                                  -> 0001c630
+00016286  str r0,[sp,#0x0]                           -> Stack[-0x21c8]
+00016288  add r3,pc                                  -> 0001c6f6 "app_step1"
+0001628a  movs r0,#0x4                            
+0001628c  blx 0x00012b10                             -> 00012b10
+00016290  ldr r0,[0x000164bc]                        -> 000164bc
+00016292  add r0,pc                               
+00016294  ldr r0,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00016296  ldr r0,[r0,#0x0]                           -> 0001f020
+00016298  blx 0x00012aa4                             -> 00012aa4
+0001629c  blx 0x00012b58                             -> 00012b58
+000162a0  blx 0x00012b64                             -> 00012b64
+000162a4  ldr r0,[0x000164c0]                        -> 000164c0
+000162a6  addw r10,sp,#0x998                      
+000162aa  add r0,pc                               
+000162ac  ldr r0,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+000162ae  ldr r4,[r0,#0x0]                           -> 0001f020
+000162b0  mov r0,r10                              
+000162b2  blx 0x00012948                             -> 00012948
+000162b6  mov r2,r0                               
+000162b8  ldr r0,[0x000164c4]                        -> 000164c4
+000162ba  movs r1,#0x10                           
+000162bc  movs r3,#0x0                            
+000162be  add r0,pc                               
+000162c0  ldr r0,[r0,#0x0]                           -> 0001edfc  *(0001fb18)=0x<unmapped>
+000162c2  strd r0,r1,[sp,#0x0]                       -> 0001fb18   -> Stack[-0x21c8]
+000162c6  mov r0,r4                               
+000162c8  mov r1,r10                              
+000162ca  blx 0x00012a80                             -> 00012a80
+000162ce  cmp.w r0,#0xffffffff                    
+000162d2  ble.w 0x0001640c                           -> 0001640c
+000162d6  cmp.w r9,#0x0                           
+000162da  itt ne                                  
+000162dc  mov.ne r0,r9                            
+000162de  blx.ne 0x000128e8                          -> 000128e8
+000162e2  cmp.w r8,#0x0                           
+000162e6  add.w r10,sp,#0x98                      
+000162ea  itt ne                                  
+000162ec  mov.ne r0,r8                            
+000162ee  blx.ne 0x000128f4                          -> 000128f4
+000162f2  ldr r0,[0x000164c8]                        -> 000164c8
+000162f4  movs r5,#0x0                            
+000162f6  ldr r1,[0x000164d0]                        -> 000164d0
+000162f8  add r0,pc                               
+000162fa  ldr.w r11,[0x000164e4]                     -> 000164e4
+000162fe  add r1,pc                               
+00016300  ldr.w r9,[r0,#0x0]                         -> 0001edf8  *(0001f020)=0x<unmapped>
+00016304  add r11,pc                              
+00016306  ldr r0,[0x000164cc]                        -> 000164cc
+00016308  add r0,pc                               
+0001630a  ldr r0,[r0,#0x0]                           -> 0001ee00  *(0001f148)=0x<unmapped>
+0001630c  str r0,[sp,#0xc]                           -> 0001f148   -> Stack[-0x21bc]
+0001630e  ldr r0,[r1,#0x0]                           -> 0001ee20  *(0001f00c)="abcdefghijklmnop"
+00016310  str r0,[sp,#0x8]                           -> 0001f00c "abcdefghijklmnop"   -> Stack[-0x21c0]
+00016312  add r4,sp,#0x18                         
+00016314  movs r1,#0x80                           
+00016316  mov r0,r4                               
+00016318  blx 0x00012900                             -> 00012900
+0001631c  ldr.w r0,[r9,#0x0]                         -> 0001f020
+00016320  movs r6,#0x1                            
+00016322  and r1,r0,#0x1f                         
+00016326  lsrs r2,r0,#0x5                         
+00016328  adds r0,#0x1                            
+0001632a  ldr.w r3,[r4,r2,lsl #0x2]               
+0001632e  lsl.w r1,r6,r1                          
+00016332  orrs r1,r3                              
+00016334  str.w r1,[r4,r2,lsl #0x2]               
+00016338  movs r1,#0x0                            
+0001633a  str r1,[sp,#0x10]                          -> Stack[-0x21b8]
+0001633c  mov.w r1,#0x3e8                         
+00016340  str r1,[sp,#0x14]                          -> Stack[-0x21b4]
+00016342  add r1,sp,#0x10                         
+00016344  str r1,[sp,#0x0]                           -> Stack[-0x21c8]
+00016346  mov r1,r4                               
+00016348  movs r2,#0x0                            
+0001634a  movs r3,#0x0                            
+0001634c  blx 0x00012a68                             -> 00012a68
+00016350  ldr.w r0,[r9,#0x0]                         -> 0001f020
+00016354  and r2,r0,#0x1f                         
+00016358  lsrs r1,r0,#0x5                         
+0001635a  ldr.w r1,[r4,r1,lsl #0x2]               
+0001635e  lsl.w r2,r6,r2                          
+00016362  tst r2,r1                               
+00016364  beq 0x00016400                             -> 00016400
+00016366  movs r1,#0x0                            
+00016368  mov.w r2,#0x100                         
+0001636c  strd r1,r1,[sp,#0x0]                       -> Stack[-0x21c8]
+00016370  mov r1,r10                              
+00016372  movs r3,#0x0                            
+00016374  blx 0x00012a74                             -> 00012a74
+00016378  cmp r0,#0x0                             
+0001637a  blt 0x000163fa                             -> 000163fa
+0001637c  ldr.w r8,[0x000164ec]                      -> 000164ec "lc"
+00016380  movs r0,#0x4                            
+00016382  ldr r2,[0x000164e8]                        -> 000164e8
+00016384  mov r1,r11                                 -> 0001c5c0 "softap_native-dev"
+00016386  add r8,pc                               
+00016388  str.w r10,[sp,#0x0]                        -> Stack[-0x21c8]
+0001638c  add r2,pc                                  -> 0001c66e
+0001638e  mov r3,r8                                  -> 0001c6f6 "app_step1"
+00016390  blx 0x00012b10                             -> 00012b10
+00016394  mov r0,r10                              
+00016396  blx 0x00012948                             -> 00012948
+0001639a  add.w r6,sp,#0x598                      
+0001639e  mov r1,r0                               
+000163a0  mov r0,r10                              
+000163a2  mov r2,r6                               
+000163a4  blx 0x00012b94                             -> 00012b94
+000163a8  add r4,sp,#0x198                        
+000163aa  ldr r3,[sp,#0xc]                           -> 0001f148   -> Stack[-0x21bc]
+000163ac  mov r2,r0                               
+000163ae  ldr r0,[sp,#0x8]                           -> Stack[-0x21c0]
+000163b0  str r0,[sp,#0x0]                           -> 0001f00c "abcdefghijklmnop"   -> Stack[-0x21c8]
+000163b2  mov r0,r4                               
+000163b4  mov r1,r6                               
+000163b6  blx 0x00012bc4                             -> 00012bc4
+000163ba  ldr r2,[0x000164f0]                        -> 000164f0 ":c"
+000163bc  movs r0,#0x4                            
+000163be  mov r1,r11                                 -> 0001c5c0 "softap_native-dev"
+000163c0  mov r3,r8                                  -> 0001c6f6 "app_step1"
+000163c2  add r2,pc                                  -> 0001c700 " >>>> %s json -> %s <<<< "
+000163c4  str r4,[sp,#0x0]                           -> Stack[-0x21c8]
+000163c6  blx 0x00012b10                             -> 00012b10
+000163ca  mov r0,r4                               
+000163cc  add.w r10,sp,#0x98                      
+000163d0  blx 0x00012b70                             -> 00012b70
+000163d4  mov r8,r0                               
+000163d6  cmp.w r8,#0x0                           
+000163da  beq 0x00016400                             -> 00016400
+000163dc  ldr r1,[0x000164f4]                        -> 000164f4 "6c"
+000163de  mov r0,r8                               
+000163e0  add r1,pc                                  -> 0001c71a "mac"
+000163e2  blx 0x00012b7c                             -> 00012b7c
+000163e6  ldr r1,[0x000164f8]                        -> 000164f8 ".c"
+000163e8  mov r4,r0                               
+000163ea  mov r0,r8                               
+000163ec  add r1,pc                                  -> 0001c71e "product_id"
+000163ee  blx 0x00012b7c                             -> 00012b7c
+000163f2  mov r6,r0                               
+000163f4  cbz r4,0x00016400                          -> 00016400
+000163f6  cbz r6,0x00016400                          -> 00016400
+000163f8  b 0x0001643e                               -> 0001643e
+000163fa  cmp.w r0,#0xffffffff                    
+000163fe  beq 0x0001641e                             -> 0001641e
+00016400  adds r5,#0x1                            
+00016402  cmp.w r5,#0x7d0                         
+00016406  blt.w 0x00016312                           -> 00016312
+0001640a  b 0x0001641e                               -> 0001641e
+0001640c  ldr r1,[0x000164d4]                        -> 000164d4
+0001640e  movs r0,#0x4                            
+00016410  ldr r2,[0x000164d8]                        -> 000164d8 "8b"
+00016412  ldr r3,[0x000164dc]                        -> 000164dc
+00016414  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00016416  add r2,pc                                  -> 0001c652
+00016418  add r3,pc                                  -> 0001c6f6 "app_step1"
+0001641a  blx 0x00012b10                             -> 00012b10
+0001641e  movs r0,#0x0                            
+00016420  ldr r1,[0x000164e0]                        -> 000164e0
+00016422  ldr.w r2,[r7,#-0x14]                    
+00016426  add r1,pc                               
+00016428  ldr r1,[r1,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+0001642a  ldr r1,[r1,#0x0]                           -> 0002000c
+0001642c  subs r1,r1,r2                           
+0001642e  ittt eq                                 
+00016430  add.eq.w sp,sp,#0x2180                  
+00016434  add.eq sp,#0x24                         
+00016436  pop.eq.w {r4,r5,r6,r7,r8,r9,r10,r11,pc} 
+0001643a  blx 0x000128c4                             -> 000128c4
+0001643e  blx 0x00012bd0                             -> 00012bd0
+00016442  movs r0,#0x1                            
+00016444  blx 0x00012bdc                             -> 00012bdc
+00016448  ldr r1,[r6,#0x10]                       
+0001644a  ldr r0,[r4,#0x10]                       
+0001644c  blx 0x00012be8                             -> 00012be8
+00016450  mov r0,r8                               
+00016452  blx 0x000128f4                             -> 000128f4
+00016456  movs r0,#0x2                            
+00016458  b 0x00016420                               -> 00016420
+
+======== app_step2 @ 000164fc ========
+000164fc  push {r4,r5,r6,r7,r8,r9,r10,lr}         
+00016500  add r7,sp,#0xc                          
+00016502  sub.w sp,sp,#0x1980                     
+00016506  sub sp,#0x18                            
+00016508  ldr r0,[0x0001668c]                        -> 0001668c
+0001650a  add r4,sp,#0x10                         
+0001650c  add.w r6,r4,#0x1180                     
+00016510  mov.w r1,#0x800                         
+00016514  add r0,pc                               
+00016516  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+00016518  ldr r0,[r0,#0x0]                           -> 0002000c
+0001651a  str.w r0,[r7,#-0x14]                    
+0001651e  mov r0,r6                               
+00016520  blx 0x00012900                             -> 00012900
+00016524  add.w r8,sp,#0x190                      
+00016528  mov.w r1,#0x1000                        
+0001652c  mov r0,r8                               
+0001652e  blx 0x00012900                             -> 00012900
+00016532  blx 0x00012b40                             -> 00012b40
+00016536  mov r9,r0                               
+00016538  ldr r0,[0x00016690]                        -> 00016690
+0001653a  add r0,pc                                  -> 0001c729 "end"
+0001653c  blx 0x000129b4                             -> 000129b4
+00016540  ldr r1,[0x00016694]                        -> 00016694
+00016542  mov r2,r0                               
+00016544  mov r0,r9                               
+00016546  add r1,pc                                  -> 0001c5f2 "type"
+00016548  blx 0x00012984                             -> 00012984
+0001654c  mov r0,r9                               
+0001654e  blx 0x00012b4c                             -> 00012b4c
+00016552  ldr r1,[0x00016698]                        -> 00016698 "``"
+00016554  mov r10,r0                              
+00016556  ldr r2,[0x0001669c]                        -> 0001669c "va"
+00016558  movs r0,#0x4                            
+0001655a  ldr r3,[0x000166a0]                        -> 000166a0
+0001655c  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+0001655e  add r2,pc                                  -> 0001c6d8
+00016560  str.w r10,[sp,#0x0]                        -> Stack[-0x19b8]
+00016564  add r3,pc                                  -> 0001c72d "app_step2"
+00016566  blx 0x00012b10                             -> 00012b10
+0001656a  mov r0,r10                              
+0001656c  blx 0x00012948                             -> 00012948
+00016570  mov r2,r0                               
+00016572  ldr r0,[0x000166a4]                        -> 000166a4
+00016574  ldr r1,[0x000166a8]                        -> 000166a8
+00016576  add r0,pc                               
+00016578  add r1,pc                               
+0001657a  ldr r3,[r0,#0x0]                           -> 0001ee00  *(0001f148)=0x<unmapped>   -> 0001f148
+0001657c  ldr r0,[r1,#0x0]                           -> 0001ee20  *(0001f00c)="abcdefghijklmnop"
+0001657e  mov r1,r10                              
+00016580  str r0,[sp,#0x0]                           -> 0001f00c "abcdefghijklmnop"   -> Stack[-0x19b8]
+00016582  mov r0,r6                               
+00016584  blx 0x00012bb8                             -> 00012bb8
+00016588  mov r1,r0                               
+0001658a  mov r0,r6                               
+0001658c  mov r2,r8                               
+0001658e  blx 0x00012b34                             -> 00012b34
+00016592  add r0,sp,#0x90                         
+00016594  mov.w r1,#0x100                         
+00016598  blx 0x00012900                             -> 00012900
+0001659c  add r6,sp,#0x10                         
+0001659e  movs r1,#0x80                           
+000165a0  mov r0,r6                               
+000165a2  blx 0x00012900                             -> 00012900
+000165a6  ldr r0,[0x000166ac]                        -> 000166ac
+000165a8  movs r4,#0x1                            
+000165aa  mov.w r8,#0x0                           
+000165ae  add r0,pc                               
+000165b0  ldr r5,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+000165b2  ldr r0,[r5,#0x0]                           -> 0001f020
+000165b4  and r1,r0,#0x1f                         
+000165b8  lsrs r2,r0,#0x5                         
+000165ba  adds r0,#0x1                            
+000165bc  ldr.w r3,[r6,r2,lsl #0x2]               
+000165c0  lsl.w r1,r4,r1                          
+000165c4  orrs r1,r3                              
+000165c6  str.w r1,[r6,r2,lsl #0x2]               
+000165ca  add r1,sp,#0x8                          
+000165cc  strd r8,r4,[sp,#0x8]                       -> Stack[-0x19b0]
+000165d0  movs r2,#0x0                            
+000165d2  str r1,[sp,#0x0]                           -> Stack[-0x19b8]
+000165d4  mov r1,r6                               
+000165d6  movs r3,#0x0                            
+000165d8  blx 0x00012a68                             -> 00012a68
+000165dc  ldr r0,[r5,#0x0]                           -> 0001f020
+000165de  and r2,r0,#0x1f                         
+000165e2  lsrs r1,r0,#0x5                         
+000165e4  ldr.w r1,[r6,r1,lsl #0x2]               
+000165e8  lsl.w r2,r4,r2                          
+000165ec  tst r2,r1                               
+000165ee  beq 0x0001660a                             -> 0001660a
+000165f0  add r1,sp,#0x90                         
+000165f2  mov.w r2,#0x100                         
+000165f6  movs r3,#0x0                            
+000165f8  strd r8,r8,[sp,#0x0]                       -> Stack[-0x19b8]
+000165fc  blx 0x00012a74                             -> 00012a74
+00016600  cmp.w r0,#0xffffffff                    
+00016604  it eq                                   
+00016606  blx.eq 0x00012b58                          -> 00012b58
+0001660a  blx 0x00012b64                             -> 00012b64
+0001660e  ldr r0,[0x000166b0]                        -> 000166b0
+00016610  add r4,sp,#0x190                        
+00016612  add r0,pc                               
+00016614  ldr r0,[r0,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00016616  ldr r6,[r0,#0x0]                           -> 0001f020
+00016618  mov r0,r4                               
+0001661a  blx 0x00012948                             -> 00012948
+0001661e  mov r2,r0                               
+00016620  ldr r0,[0x000166b4]                        -> 000166b4
+00016622  movs r1,#0x10                           
+00016624  movs r3,#0x0                            
+00016626  add r0,pc                               
+00016628  ldr r0,[r0,#0x0]                           -> 0001edfc  *(0001fb18)=0x<unmapped>
+0001662a  strd r0,r1,[sp,#0x0]                       -> 0001fb18   -> Stack[-0x19b8]
+0001662e  mov r0,r6                               
+00016630  mov r1,r4                               
+00016632  blx 0x00012a80                             -> 00012a80
+00016636  cmp.w r0,#0xffffffff                    
+0001663a  bgt 0x00016654                             -> 00016654
+0001663c  ldr r1,[0x000166b8]                        -> 000166b8 "v_"
+0001663e  mov.w r0,#0xffffffff                    
+00016642  ldr r2,[0x000166bc]                        -> 000166bc
+00016644  ldr r3,[0x000166c0]                        -> 000166c0
+00016646  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00016648  add r2,pc                                  -> 0001c737
+0001664a  str r0,[sp,#0x0]                           -> Stack[-0x19b8]
+0001664c  add r3,pc                                  -> 0001c72d "app_step2"
+0001664e  movs r0,#0x4                            
+00016650  blx 0x00012b10                             -> 00012b10
+00016654  cmp.w r10,#0x0                          
+00016658  itt ne                                  
+0001665a  mov.ne r0,r10                           
+0001665c  blx.ne 0x000128e8                          -> 000128e8
+00016660  cmp.w r9,#0x0                           
+00016664  itt ne                                  
+00016666  mov.ne r0,r9                            
+00016668  blx.ne 0x000128f4                          -> 000128f4
+0001666c  ldr r0,[0x000166c4]                        -> 000166c4
+0001666e  ldr.w r1,[r7,#-0x14]                    
+00016672  add r0,pc                               
+00016674  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+00016676  ldr r0,[r0,#0x0]                           -> 0002000c
+00016678  subs r0,r0,r1                           
+0001667a  itttt eq                                
+0001667c  mov.eq r0,#0x0                          
+0001667e  add.eq.w sp,sp,#0x1980                  
+00016682  add.eq sp,#0x18                         
+00016684  pop.eq.w {r4,r5,r6,r7,r8,r9,r10,pc}     
+00016688  blx 0x000128c4                             -> 000128c4
+
+======== create_ecdh_key @ 00015b60 ========
+00015b60  push {r4,r5,r6,r7,r8,lr}                
+00015b64  add r7,sp,#0xc                          
+00015b66  blx 0x00012b1c                             -> 00012b1c
+00015b6a  ldr r1,[0x00015c00]                        -> 00015c00
+00015b6c  mov r2,r0                               
+00015b6e  ldr r0,[0x00015bfc]                        -> 00015bfc
+00015b70  ldr r3,[0x00015c04]                        -> 00015c04
+00015b72  add r1,pc                               
+00015b74  add r0,pc                               
+00015b76  add r3,pc                               
+00015b78  ldr r6,[r0,#0x0]                           -> 0001edec  *(0001fb28)=0x<unmapped>
+00015b7a  ldr r0,[r1,#0x0]                           -> 0001edf0  *(0001f108)=0x<unmapped>   -> 0001f108
+00015b7c  ldr r1,[r3,#0x0]                           -> 0001edf4  *(0001f0e8)=0x<unmapped>   -> 0001f0e8
+00015b7e  str r2,[r6,#0x0]                           -> 0001fb28
+00015b80  blx 0x00012b28                             -> 00012b28
+00015b84  cbnz r0,0x00015b94                         -> 00015b94
+00015b86  ldr r1,[0x00015c08]                        -> 00015c08 "0j"
+00015b88  movs r0,#0x4                            
+00015b8a  ldr r2,[0x00015c0c]                        -> 00015c0c "Fj"
+00015b8c  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015b8e  add r2,pc                                  -> 0001c5d8
+00015b90  blx 0x00012b10                             -> 00012b10
+00015b94  ldr r0,[0x00015c10]                        -> 00015c10
+00015b96  movs r6,#0x0                            
+00015b98  ldr.w r8,[0x00015c14]                      -> 00015c14
+00015b9c  add r0,pc                               
+00015b9e  ldr r5,[0x00015c18]                        -> 00015c18 "*j"
+00015ba0  add r8,pc                               
+00015ba2  ldr r4,[r0,#0x0]                           -> 0001edf4  *(0001f0e8)=0x<unmapped>
+00015ba4  add r5,pc                               
+00015ba6  ldrb r3,[r4,r6]                            -> 0001f0e8   -> 0001f0e9
+00015ba8  movs r0,#0x4                            
+00015baa  mov r1,r8                                  -> 0001c5c0 "softap_native-dev"
+00015bac  mov r2,r5                                  -> 0001c5d2 "%02X "
+00015bae  blx 0x00012b10                             -> 00012b10
+00015bb2  adds r6,#0x1                            
+00015bb4  cmp r6,#0x20                            
+00015bb6  bne 0x00015ba6                             -> 00015ba6
+00015bb8  ldr r1,[0x00015c1c]                        -> 00015c1c
+00015bba  movs r0,#0x4                            
+00015bbc  ldr r2,[0x00015c20]                        -> 00015c20 ",j"
+00015bbe  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015bc0  add r2,pc                                  -> 0001c5f0
+00015bc2  blx 0x00012b10                             -> 00012b10
+00015bc6  ldr r0,[0x00015c24]                        -> 00015c24
+00015bc8  movs r6,#0x0                            
+00015bca  ldr.w r8,[0x00015c28]                      -> 00015c28
+00015bce  add r0,pc                               
+00015bd0  ldr r5,[0x00015c2c]                        -> 00015c2c
+00015bd2  add r8,pc                               
+00015bd4  ldr r4,[r0,#0x0]                           -> 0001edf0  *(0001f108)=0x<unmapped>
+00015bd6  add r5,pc                               
+00015bd8  ldrb r3,[r4,r6]                            -> 0001f108   -> 0001f109
+00015bda  movs r0,#0x4                            
+00015bdc  mov r1,r8                                  -> 0001c5c0 "softap_native-dev"
+00015bde  mov r2,r5                                  -> 0001c5d2 "%02X "
+00015be0  blx 0x00012b10                             -> 00012b10
+00015be4  adds r6,#0x1                            
+00015be6  cmp r6,#0x40                            
+00015be8  bne 0x00015bd8                             -> 00015bd8
+00015bea  ldr r1,[0x00015c30]                        -> 00015c30
+00015bec  movs r0,#0x4                            
+00015bee  ldr r2,[0x00015c34]                        -> 00015c34
+00015bf0  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015bf2  add r2,pc                                  -> 0001c5f0
+00015bf4  blx 0x00012b10                             -> 00012b10
+00015bf8  pop.w {r4,r5,r6,r7,r8,pc}               
+
+======== start_softap_app @ 000166c8 ========
+000166c8  push {r4,r5,r6,r7,lr}                   
+000166ca  add r7,sp,#0xc                          
+000166cc  sub sp,#0x4                             
+000166ce  mov r6,r1                               
+000166d0  mov r1,r0                               
+000166d2  ldr r0,[0x000167a4]                        -> 000167a4
+000166d4  mov r4,r3                               
+000166d6  mov r5,r2                               
+000166d8  add r0,pc                               
+000166da  ldr r0,[r0,#0x0]                           -> 0001ee04  *(0001f168)=0x<unmapped>   -> 0001f168
+000166dc  blx 0x00012960                             -> 00012960
+000166e0  ldr r0,[0x000167a8]                        -> 000167a8
+000166e2  mov r1,r6                               
+000166e4  add r0,pc                               
+000166e6  ldr r0,[r0,#0x0]                           -> 0001ee08  *(0001f1a8)=0x<unmapped>   -> 0001f1a8
+000166e8  blx 0x00012960                             -> 00012960
+000166ec  ldr r0,[0x000167ac]                        -> 000167ac
+000166ee  mov r1,r5                               
+000166f0  add r0,pc                               
+000166f2  ldr r0,[r0,#0x0]                           -> 0001ee0c  *(0001f1e8)=0x<unmapped>   -> 0001f1e8
+000166f4  blx 0x00012960                             -> 00012960
+000166f8  ldr r0,[0x000167b0]                        -> 000167b0
+000166fa  mov r1,r4                               
+000166fc  add r0,pc                               
+000166fe  ldr r0,[r0,#0x0]                           -> 0001ee10  *(0001f228)=0x<unmapped>   -> 0001f228
+00016700  blx 0x00012960                             -> 00012960
+00016704  ldr r0,[0x000167b4]                        -> 000167b4
+00016706  ldr r1,[r7,#0x8]                           -> Stack[0x0]
+00016708  add r0,pc                               
+0001670a  ldr r0,[r0,#0x0]                           -> 0001ee14  *(0001f268)=0x<unmapped>   -> 0001f268
+0001670c  blx 0x00012960                             -> 00012960
+00016710  ldr r0,[0x000167b8]                        -> 000167b8
+00016712  ldr r1,[r7,#0xc]                           -> Stack[0x4]
+00016714  add r0,pc                               
+00016716  ldr r0,[r0,#0x0]                           -> 0001ee18  *(0001f270)=0x<unmapped>   -> 0001f270
+00016718  blx 0x00012960                             -> 00012960
+0001671c  ldr r0,[0x000167bc]                        -> 000167bc
+0001671e  ldr r1,[r7,#0x10]                          -> Stack[0x8]
+00016720  add r0,pc                               
+00016722  ldr r0,[r0,#0x0]                           -> 0001ee1c  *(0001f2f0)=0x<unmapped>   -> 0001f2f0
+00016724  blx 0x00012960                             -> 00012960
+00016728  blx 0x00012bf4                             -> 00012bf4
+0001672c  blx 0x00012b58                             -> 00012b58
+00016730  blx 0x00012b64                             -> 00012b64
+00016734  movw r0,#0xc350                         
+00016738  blx 0x00012bac                             -> 00012bac
+0001673c  blx 0x00012c00                             -> 00012c00
+00016740  ldr r1,[0x000167c0]                        -> 000167c0 "t^"
+00016742  mov r5,r0                               
+00016744  ldr r2,[0x000167c4]                        -> 000167c4 "Q`"
+00016746  movs r0,#0x4                            
+00016748  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+0001674a  mov r3,r5                               
+0001674c  add r2,pc                                  -> 0001c7a1
+0001674e  blx 0x00012b10                             -> 00012b10
+00016752  movw r4,#0xa120                         
+00016756  cmp r5,#0x1                             
+00016758  movt r4,#0x7                            
+0001675c  bne 0x0001677a                             -> 0001677a
+0001675e  blx 0x00012c0c                             -> 00012c0c
+00016762  ldr r1,[0x000167d0]                        -> 000167d0 "R^"
+00016764  mov r5,r0                               
+00016766  ldr r2,[0x000167d4]                        -> 000167d4 "N`"
+00016768  movs r0,#0x4                            
+0001676a  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+0001676c  mov r3,r5                               
+0001676e  add r2,pc                                  -> 0001c7c0
+00016770  blx 0x00012b10                             -> 00012b10
+00016774  cbz r5,0x0001678a                          -> 0001678a
+00016776  add sp,#0x4                             
+00016778  pop {r4,r5,r6,r7,pc}                    
+0001677a  mov r0,r4                               
+0001677c  blx 0x00012bac                             -> 00012bac
+00016780  ldr r0,[0x000167c8]                        -> 000167c8 "W`"
+00016782  ldr r1,[0x000167cc]                        -> 000167cc "b`"
+00016784  add r0,pc                               
+00016786  add r1,pc                               
+00016788  b 0x00016798                               -> 00016798
+0001678a  mov r0,r4                               
+0001678c  blx 0x00012bac                             -> 00012bac
+00016790  ldr r0,[0x000167d8]                        -> 000167d8 "G`"
+00016792  ldr r1,[0x000167dc]                        -> 000167dc "R`"
+00016794  add r0,pc                               
+00016796  add r1,pc                               
+00016798  add sp,#0x4                             
+0001679a  pop.w {r4,r5,r6,r7,lr}                     -> Stack[-0x8]
+0001679e  b.w 0x0001bbe8                             -> 0001bbe8
+0001bbe8  bx pc                                      -> 0001bbec
+
+======== generate_broadcast @ 00015a68 ========
+00015a68  push {r4,r5,r6,r7,r8,lr}                
+00015a6c  add r7,sp,#0xc                          
+00015a6e  sub sp,#0x130                           
+00015a70  mov r4,r0                               
+00015a72  ldr r0,[0x00015b18]                        -> 00015b18
+00015a74  mov r5,r3                               
+00015a76  mov r8,r2                               
+00015a78  add r0,pc                               
+00015a7a  mov r6,r1                               
+00015a7c  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+00015a7e  ldr r0,[r0,#0x0]                           -> 0002000c
+00015a80  str r0,[sp,#0x12c]                         -> Stack[-0x1c]
+00015a82  mov r0,r4                               
+00015a84  blx 0x00012ab0                             -> 00012ab0
+00015a88  mov r0,r4                               
+00015a8a  movs r1,#0x1                            
+00015a8c  blx 0x00012abc                             -> 00012abc
+00015a90  mov r0,r4                               
+00015a92  movs r1,#0x0                            
+00015a94  blx 0x00012ac8                             -> 00012ac8
+00015a98  mov r0,r4                               
+00015a9a  movs r1,#0x1                            
+00015a9c  blx 0x00012ad4                             -> 00012ad4
+00015aa0  mov r0,r4                               
+00015aa2  movs r1,#0x1                            
+00015aa4  blx 0x00012ae0                             -> 00012ae0
+00015aa8  blx 0x00012aec                             -> 00012aec
+00015aac  mov r1,r0                               
+00015aae  movs r0,#0x2                            
+00015ab0  str r0,[sp,#0x0]                           -> Stack[-0x148]
+00015ab2  asrs r3,r1,#0x1f                        
+00015ab4  mov r0,r4                               
+00015ab6  mov r2,r1                               
+00015ab8  blx 0x000129f0                             -> 000129f0
+00015abc  ldr r2,[0x00015b1c]                        -> 00015b1c
+00015abe  mov r0,r4                               
+00015ac0  movs r1,#0xb                            
+00015ac2  movs r3,#0x4                            
+00015ac4  add r2,pc                                  -> 0001c58d "Scan"
+00015ac6  blx 0x00012af8                             -> 00012af8
+00015aca  cbz r6,0x00015ade                          -> 00015ade
+00015acc  ldr r1,[0x00015b20]                        -> 00015b20
+00015ace  add r0,sp,#0x8                          
+00015ad0  mov r2,r6                               
+00015ad2  mov r3,r8                               
+00015ad4  add r1,pc                                  -> 0001c592 "{"scanType":"%d","productId":"%s","mac":"%s"}"
+00015ad6  str r5,[sp,#0x0]                           -> Stack[-0x148]
+00015ad8  blx 0x00012930                             -> 00012930
+00015adc  b 0x00015aec                               -> 00015aec
+00015ade  ldr r0,[0x00015b24]                        -> 00015b24
+00015ae0  add r1,sp,#0x8                          
+00015ae2  add r0,pc                               
+00015ae4  ldmia r0!,{r2,r3,r5,r6}                    -> 0001c978 "{"scanType":"0"}"   -> 0001c97c "anType":"0"}"   -> 0001c980 "pe":"0"}"   -> 0001c984 ""0"}"
+00015ae6  stmia r1!,{r2,r3,r5,r6}                    -> Stack[-0x140]
+00015ae8  ldrb r0,[r0,#0x0]                          -> 0001c988
+00015aea  strb r0,[r1,#0x0]                          -> Stack[-0x130]
+00015aec  add r5,sp,#0x8                          
+00015aee  mov r0,r5                               
+00015af0  blx 0x00012948                             -> 00012948
+00015af4  mov r2,r0                               
+00015af6  mov r0,r4                               
+00015af8  mov r1,r5                               
+00015afa  blx 0x00012b04                             -> 00012b04
+00015afe  ldr r0,[0x00015b28]                        -> 00015b28
+00015b00  ldr r1,[sp,#0x12c]                         -> Stack[-0x1c]
+00015b02  add r0,pc                               
+00015b04  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+00015b06  ldr r0,[r0,#0x0]                           -> 0002000c
+00015b08  subs r0,r0,r1                           
+00015b0a  ittt eq                                 
+00015b0c  mov.eq r0,#0x0                          
+00015b0e  add.eq sp,#0x130                        
+00015b10  pop.eq.w {r4,r5,r6,r7,r8,pc}            
+00015b14  blx 0x000128c4                             -> 000128c4
+
+======== setskt @ 00016048 ========
+00016048  push {r7,lr}                            
+0001604a  mov r7,sp                               
+0001604c  sub sp,#0x10                            
+0001604e  ldr r0,[0x000160c0]                        -> 000160c0
+00016050  add r3,sp,#0x8                          
+00016052  ldr r1,[0x000160c4]                        -> 000160c4
+00016054  movs r2,#0x6                            
+00016056  add r0,pc                               
+00016058  add r1,pc                               
+0001605a  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+0001605c  ldr r1,[r1,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+0001605e  ldr r0,[r0,#0x0]                           -> 0002000c
+00016060  str r0,[sp,#0xc]                           -> Stack[-0xc]
+00016062  movs r0,#0x1                            
+00016064  str r0,[sp,#0x8]                           -> Stack[-0x10]
+00016066  ldr r0,[r1,#0x0]                           -> 0001f020
+00016068  movs r1,#0x4                            
+0001606a  str r1,[sp,#0x0]                           -> Stack[-0x18]
+0001606c  movs r1,#0x1                            
+0001606e  blx 0x00012a50                             -> 00012a50
+00016072  movw r0,#0xa120                         
+00016076  movt r0,#0x7                            
+0001607a  blx 0x00012bac                             -> 00012bac
+0001607e  ldr r0,[0x000160c8]                        -> 000160c8
+00016080  movs r3,#0x0                            
+00016082  ldr r1,[0x000160cc]                        -> 000160cc
+00016084  add r0,pc                               
+00016086  add r1,pc                               
+00016088  ldr r0,[r0,#0x0]                           -> 0001edfc  *(0001fb18)=0x<unmapped>
+0001608a  ldr r1,[r1,#0x0]                           -> 0001ee04  *(0001f168)=0x<unmapped>   -> 0001f168
+0001608c  mov r2,r0                               
+0001608e  strd r3,r3,[r0,#0x8]                       -> 0001fb20   -> 0001fb24
+00016092  str r3,[r0,#0x0]                           -> 0001fb18
+00016094  str.w r3,[r2,#0x4]!                        -> 0001fb1c
+00016098  movs r3,#0x2                            
+0001609a  movt r3,#0x1a16                         
+0001609e  str r3,[r0,#0x0]                           -> 0001fb18
+000160a0  movs r0,#0x2                            
+000160a2  blx 0x00012a38                             -> 00012a38
+000160a6  ldr r0,[0x000160d0]                        -> 000160d0
+000160a8  ldr r1,[sp,#0xc]                           -> Stack[-0xc]
+000160aa  add r0,pc                               
+000160ac  ldr r0,[r0,#0x0]                           -> 0001edd8  *(0002000c)=0x<unmapped>
+000160ae  ldr r0,[r0,#0x0]                           -> 0002000c
+000160b0  subs r0,r0,r1                           
+000160b2  ittt eq                                 
+000160b4  mov.eq r0,#0x0                          
+000160b6  add.eq sp,#0x10                         
+000160b8  pop.eq {r7,pc}                          
+000160ba  blx 0x000128c4                             -> 000128c4
+
+======== create_network @ 00015fe8 ========
+00015fe8  push {r7,lr}                            
+00015fea  mov r7,sp                               
+00015fec  ldr r1,[0x0001602c]                        -> 0001602c
+00015fee  movs r0,#0x4                            
+00015ff0  ldr r2,[0x00016030]                        -> 00016030 "_g"
+00015ff2  ldr r3,[0x00016034]                        -> 00016034 "zg"
+00015ff4  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00015ff6  add r2,pc                                  -> 0001c759
+00015ff8  add r3,pc                                  -> 0001c776 "create_network"
+00015ffa  blx 0x00012b10                             -> 00012b10
+00015ffe  movs r0,#0x2                            
+00016000  movs r1,#0x2                            
+00016002  movs r2,#0x0                            
+00016004  blx 0x00012a20                             -> 00012a20
+00016008  ldr r1,[0x00016038]                        -> 00016038
+0001600a  cmp.w r0,#0xffffffff                    
+0001600e  add r1,pc                               
+00016010  ldr r1,[r1,#0x0]                           -> 0001edf8  *(0001f020)=0x<unmapped>
+00016012  str r0,[r1,#0x0]                           -> 0001f020
+00016014  it gt                                   
+00016016  pop.gt {r7,pc}                          
+00016018  ldr r1,[0x0001603c]                        -> 0001603c
+0001601a  movs r0,#0x4                            
+0001601c  ldr r2,[0x00016040]                        -> 00016040 "_g"
+0001601e  ldr r3,[0x00016044]                        -> 00016044 "Ng"
+00016020  add r1,pc                                  -> 0001c5c0 "softap_native-dev"
+00016022  add r2,pc                                  -> 0001c785
+00016024  add r3,pc                                  -> 0001c776 "create_network"
+00016026  blx 0x00012b10                             -> 00012b10
+0001602a  pop {r7,pc}                             
+

@@ -1,0 +1,63 @@
+## trylink 留下的日志
+-rwxr-xr-x 1 root root 5062480 Oct  2 02:33 /tmp/bb/busybox-1.36.1/busybox_unstripped
+-rw-r--r-- 1 root root 2291800 Oct  2 02:33 /tmp/bb/busybox-1.36.1/busybox_unstripped.map
+-rw-r--r-- 1 root root  114302 Oct  2 02:33 /tmp/bb/busybox-1.36.1/busybox_unstripped.out
+-rw-r--r-- 1 root root  114302 Oct  2 02:33 /tmp/bb/busybox-1.36.1/busybox_unstripped.out
+== /tmp/bb/busybox-1.36.1/busybox_unstripped.out ==
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)addtf3.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)divtf3.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)eqtf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)getf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)letf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)multf3.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)subtf3.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)fixtfsi.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)fixunstfsi.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)floatsitf.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)floatunsitf.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)extendsftf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)extenddftf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)trunctfsf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)trunctfdf2.o
+(/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a)sfp-exceptions.o
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc_eh.a
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/lib/libc.a
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc.a
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/libgcc_eh.a
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/lib/libc.a
+attempt to open /root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/crtendS.o succeeded
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/crtendS.o
+attempt to open /root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/lib/crtn.o succeeded
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/lib/crtn.o
+
+## 手动链接，直接抓 stderr
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):/tmp/bb/busybox-1.36.1/include/applet_tables.h:840: undefined reference to `test_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x8): undefined reference to `test_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x38): undefined reference to `ar_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x40): undefined reference to `uname_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x60): undefined reference to `awk_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x68): undefined reference to `baseNUM_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x70): undefined reference to `baseNUM_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x78): undefined reference to `basename_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xb0): undefined reference to `bootchartd_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xc0): undefined reference to `bunzip2_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xc8): undefined reference to `bunzip2_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xd0): undefined reference to `bzip2_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xe0): undefined reference to `cat_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xf0): undefined reference to `chattr_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0xf8): undefined reference to `chgrp_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x100): undefined reference to `chmod_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x108): undefined reference to `chown_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x120): undefined reference to `chroot_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x130): undefined reference to `chvt_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x138): undefined reference to `cksum_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x140): undefined reference to `clear_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x148): undefined reference to `cmp_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x150): undefined reference to `comm_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x160): undefined reference to `cp_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x168): undefined reference to `cpio_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x170): undefined reference to `cksum_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x198): undefined reference to `cut_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x1a0): undefined reference to `date_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x1b0): undefined reference to `dd_main'
+/root/.cache/musl-cross/aarch64-linux-musl-cross/bin/../lib/gcc/aarch64-linux-musl/11.2.1/../../../../aarch64-linux-musl/bin/ld: libbb/lib.a(appletlib.o):(.data.rel.ro.applet_main+0x1b8): undefined reference to `deallocvt_main'

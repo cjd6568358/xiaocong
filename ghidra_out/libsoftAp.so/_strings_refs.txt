@@ -1,0 +1,359 @@
+### app_step0 @ 00015c38
+  00015c42  ..
+  00015c5e  ..
+  00015c66  ...
+  00015c72  .i
+  00015c74  ch_pubk
+  00015c7a  ni
+  00015c80  type
+  00015c8c  ii
+  00015c92  pubkey
+  00015c9e  .i
+  00015ca2  Xi
+  00015ca6  ri
+  00015ca8  softap_native-dev
+  00015caa   >>>> %s pub_base64 -> %s <<<<.
+  00015cb0  app_step0
+  00015cca  ".
+  00015cd4   ..
+  00015cd6  .......
+  00015d00  .......
+  00015d12  .....HxD
+  00015d28  .....HxD
+  00015d2a  .h
+  00015d30  .h
+  00015d32  .h
+  00015d34  softap_native-dev
+  00015d36   >>>> %s socket check -> %d <<<<.
+  00015d3a  app_step0
+  00015d42  ..
+  00015d46   ..
+  00015d48  .......
+  00015d56  ..
+  00015d5a   ..
+  00015d5c  .......
+  00015d66  ..
+  00015d6e  ...
+  00015d80  SI. SJTKyDzD{D..H.
+  00015d9a  N.
+  00015da8   ..
+  00015db4  .......
+  00015de6  .......
+  00015dfa  .5...o....SI. SJTKyDzD{D..H.
+  00015e10  ...?...5...o....SI. SJTKyDzD{D..H.
+  00015e12  .g
+  00015e16  Nh
+  00015e18  .h
+  00015e1a  softap_native-dev
+  00015e1c   >>>> %s recvfrom buf -> %s <<<<.
+  00015e20  app_step0
+  00015e32  .5...o....SI. SJTKyDzD{D..H.
+  00015e34  .g
+  00015e38  type
+  00015e3e  @F..L......?...5...o....SI. SJTKyDzD{D..H.
+  00015e40  .g
+  00015e44  ch_pubk
+  00015e4a  @F..L......?...5...o....SI. SJTKyDzD{D..H.
+  00015e4c  .g
+  00015e50  pubkey
+  00015e56  .i F..R....x.F FBF..p.3I. 3J4KyDzD{D..&.2L
+  00015e5e  .5...o....SI. SJTKyDzD{D..H.
+  00015e6c  0F.!......
+  00015e70  Dg
+  00015e74  .g
+  00015e76  .g
+  00015e78  softap_native-dev
+  00015e7a   >>>> %s sendto error <<<<.
+  00015e7c  app_step0
+  00015e84  L.
+  00015eb8  .g
+  00015eba  bg
+  00015ebc  softap_native-dev
+  00015ebe   >>>> %s pubkey -> 
+  00015ec0  app_step0
+  00015ec6  .f
+  00015ed6  softap_native-dev
+  00015ed8  %02X 
+  00015ee2  ...0. !F*F.....6@...,I. ,JyDzD....+H+IxD+JyD
+  00015ee4  .f
+  00015eea  softap_native-dev
+  00015ef2  ..
+  00015ef4  ..
+  00015ef8  ..
+  00015efc  (..
+  00015f00  ...
+  00015f02  H..
+  00015f0c  ..
+  00015f10  .f
+  00015f16  .f
+  00015f1a  H..
+  00015f22  softap_native-dev
+  00015f24  %02X 
+  00015f2e  .]. AF*F.....6 ...!I. !JyDzD..... ..
+  00015f30  .f
+  00015f34  .f
+  00015f36  softap_native-dev
+  00015f40  QI..yD.h.h.......}.........i F..R....x.F FBF..p.3I. 3J4KyDzD{D..&.2L
+
+### app_step1 @ 000160d4
+  000160e0  ..
+  00016126  xe
+  00016128  ch_data
+  0001612e  .d
+  00016134  type
+  0001613a  ..
+  0001613e  ...
+  00016144  ^e
+  0001614a  ssid
+  00016150  ..
+  00016154  ...
+  0001615a  Me
+  00016160  password
+  00016166  ..
+  0001616a  (..
+  00016170  @e
+  00016176  clientId
+  0001617c  ..
+  00016180  h..
+  00016186  3e
+  0001618c  checkCode
+  00016192  ..
+  00016196  p..
+  0001619c  'e
+  000161a2  domain
+  000161a8  n.
+  000161ac  ...
+  000161b2  .e
+  000161b8  crt
+  000161c4  .c
+  000161c8  .e
+  000161cc  .e
+  000161ce  softap_native-dev
+  000161d0   >>>> %s sendjson -> %s <<<<.
+  000161d6  app_step1
+  000161e4  ..
+  000161e6  2.
+  000161ec  H..
+  000161ee  ...
+  000161f2  abcdefghijklmnop
+  00016218  ..
+  00016222   ..
+  00016224  .......
+  0001624e  .......
+  00016260  ..`..H....xD
+  00016276  ..`..H....xD
+  00016278  :c
+  0001627e  .c
+  00016280  jd
+  00016282  softap_native-dev
+  00016284   >>>> %s socket check -> %d <<<<.
+  00016288  app_step1
+  00016290  b.
+  00016294   ..
+  00016296  .......
+  000162a4  J.
+  000162ac   ..
+  000162ae  .......
+  000162b8  :.
+  000162c0  ...
+  000162d2  1I. 1J2KyDzD{D..z.
+  000162f2  ..
+  000162f6  ..
+  000162fa  .b
+  00016300   ..
+  00016306  ..
+  0001630a  H..
+  0001630e  ...
+  00016310  abcdefghijklmnop
+  0001631c  .......
+  00016350  .......
+  00016364  .5...o......1I. 1J2KyDzD{D..z.
+  0001637a  ...?...5...o......1I. 1J2KyDzD{D..z.
+  0001637c  lc
+  00016382  .b
+  00016384  softap_native-dev
+  0001638c   >>>> %s recvfrom buf -> %s <<<<.
+  0001638e  app_step1
+  000163b0  abcdefghijklmnop
+  000163ba  :c
+  000163be  softap_native-dev
+  000163c0  app_step1
+  000163c2   >>>> %s json -> %s <<<< 
+  000163da  .5...o......1I. 1J2KyDzD{D..z.
+  000163dc  6c
+  000163e0  mac
+  000163e6  .c
+  000163ec  product_id
+  000163f4  .5...o......1I. 1J2KyDzD{D..z.
+  000163f6  .5...o......1I. 1J2KyDzD{D..z.
+  000163f8  ..... ....1i i....@F..P.. ..
+  00016406  ...! F......
+  0001640c  .a
+  00016410  8b
+  00016412  .b
+  00016414  softap_native-dev
+  00016416   >>>> %s sendto error <<<<.
+  00016418  app_step1
+  00016420  ..
+  00016458  /IW..,yD.h.h.......]........D...... ....1i i....@F..P.. ..
+
+### app_step2 @ 000164fc
+  00016508  ..
+  00016538  .a
+  0001653a  end
+  00016540  .`
+  00016546  type
+  00016552  ``
+  00016556  va
+  0001655a  .a
+  0001655c  softap_native-dev
+  0001655e   >>>> %s sendjson -> %s <<<<.
+  00016564  app_step2
+  00016572  ..
+  00016574  ..
+  0001657a  H..
+  0001657c  ...
+  00016580  abcdefghijklmnop
+  000165a6  F.
+  000165b0   ..
+  000165b2  .......
+  000165dc  .......
+  000165ee  ....(Hd.xD
+  0001660e  ..
+  00016614   ..
+  00016616  .......
+  00016620  ..
+  00016628  ...
+  0001663a  ..
+  0001663c  v_
+  00016642  .`
+  00016644  .`
+  00016646  softap_native-dev
+  00016648   >>>> %s sendto check -> %d <<<<.
+  0001664c  app_step2
+  0001666c  b.
+
+### start_softap_app @ 000166c8
+  000166d2  (.
+  000166da  h..
+  000166e0   .
+  000166e6  ...
+  000166ec  ..
+  000166f2  ...
+  000166f8  ..
+  000166fe  (..
+  00016704  ..
+  0001670a  h..
+  00016716  p..
+  0001671c  ..
+  00016722  ...
+  00016740  t^
+  00016744  Q`
+  00016748  softap_native-dev
+  0001674c   >>>> step0 result -> %d <<<<.
+  0001675c   F.....H.IxDyD.. F.....H.IxDyD.....@..#.
+  00016762  R^
+  00016766  N`
+  0001676a  softap_native-dev
+  0001676e   >>>> step1 result -> %d <<<<.
+  00016774   F.....H.IxDyD.....@..#.
+  00016780  W`
+  00016782  b`
+  00016788  .....@..#.
+  00016790  G`
+  00016792  R`
+  0001679e  xG.F
+
+### generate_broadcast @ 00015a68
+  00015a72  \.
+  00015abc  .j
+  00015ac4  Scan
+  00015aca  .H..xDl.l.
+  00015acc  .j
+  00015ad4  {"scanType":"%d","productId":"%s","mac":"%s"}
+  00015adc  ..(F..*..F F)F.....HK.xD
+  00015ade  .n
+  00015ae4  {"scanType":"0"}
+  00015ae4  anType":"0"}
+  00015ae4  pe":"0"}
+  00015ae4  "0"}
+  00015afe  ..
+
+### create_network @ 00015fe8
+  00015fec  .e
+  00015ff0  _g
+  00015ff2  zg
+  00015ff4  softap_native-dev
+  00015ff6   >>>> %s create socket <<<<.
+  00015ff8  create_network
+  00016008  ..
+  00016010   ..
+  00016012  .......
+  00016018  .e
+  0001601c  _g
+  0001601e  Ng
+  00016020  softap_native-dev
+  00016022   >>>> %s socket error <<<<.
+  00016024  create_network
+
+### setskt @ 00016048
+  0001604e  ~.
+  00016052  ..
+  0001605c   ..
+  00016066  .......
+  0001607e  t.
+  00016082  z.
+  00016088  ...
+  0001608a  h..
+  000160a6  *.
+
+### softap_callback @ 000169e8
+  000169f0  l^
+  000169f4  .]
+  000169f8  ---productId-----
+  000169fc  native-dev
+  00016a02  ".
+  00016a04  n^
+  00016a08  com/ixiaocong/smarthome/phone/softap/sdk/SoftApSDK
+  00016a0a  4..
+  00016a1a  -H-JxD-KzD
+  00016a1c  .]
+  00016a20  .^
+  00016a22  native-dev
+  00016a24  FindClass() Error.....
+  00016a2a  ..
+  00016a2c  .^
+  00016a30  .^
+  00016a32  softApEvent
+  00016a34  4..
+  00016a36  (Ljava/lang/String;Ljava/lang/String;)V
+  00016a4a  &HxD.h(h.h..."1F.G.F(h.h..."AF.G.I.F.J. yDzD..D..I[F(hyD.h.h.h...`RF
+  00016a4c  .]
+  00016a50  .^
+  00016a52  native-dev
+  00016a54  GetMethodID() Error.....
+  00016a5a  ..
+  00016a5e  4..
+  00016a7a  h]
+  00016a7e  .^
+  00016a82  native-dev
+  00016a84  ---mac-----
+  00016a8a  ..
+  00016a92  ...
+
+### cmdforward : NOT FOUND
+
+### cmdwait : NOT FOUND
+
+### sendpacket : NOT FOUND
+
+### wait_packet : NOT FOUND
+
+### xconfig_init : NOT FOUND
+
+### xconfig_start : NOT FOUND
+
+### getGenKeyPara : NOT FOUND
+
+### generate_getlocalkey : NOT FOUND
+

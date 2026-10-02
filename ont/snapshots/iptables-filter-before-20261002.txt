@@ -1,0 +1,92 @@
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+-N GuestNetworklocal
+-N algfilter
+-N defmode
+-N devaccrt
+-N dmzmapp
+-N drop_no_nat
+-N firewall
+-N fwforward
+-N fwinput
+-N fwinput_pre
+-N fwports
+-N ipfilter
+-N iptvfilter
+-N lan_access
+-N lanwan_access
+-N macfilter
+-N portmapp
+-N srvcntrl
+-N srvdrop
+-N upnp
+-N urldoor
+-N urlfilterb
+-N urlfilterw
+-N wan_access
+-N webfilter
+-N wfmode
+-A INPUT -p udp -m udp --dport 68 -j ACCEPT
+-A INPUT -j GuestNetworklocal
+-A INPUT -j lanwan_access
+-A INPUT -j srvcntrl
+-A INPUT -j devaccrt
+-A INPUT -j lan_access
+-A INPUT -j wan_access
+-A INPUT -j fwports
+-A INPUT -j srvdrop
+-A INPUT -j fwinput_pre
+-A INPUT -j fwinput
+-A INPUT -j firewall
+-A INPUT -i br0 -p tcp -m tcp --dport 23 -j DROP
+-A FORWARD -j drop_no_nat
+-A FORWARD -j urldoor
+-A FORWARD -j webfilter
+-A FORWARD -j wfmode
+-A FORWARD -j urlfilterb
+-A FORWARD -j urlfilterw
+-A FORWARD -j defmode
+-A FORWARD -j macfilter
+-A FORWARD -j upnp
+-A FORWARD -j algfilter
+-A FORWARD -j ipfilter
+-A FORWARD -j portmapp
+-A FORWARD -j dmzmapp
+-A FORWARD -j firewall
+-A FORWARD -j fwforward
+-A firewall -p icmp -m icmp --icmp-type 8 -m devwl -j ACCEPT
+-A fwforward -d 169.254.0.0/16 -i br0 -j DROP
+-A fwinput_pre -p icmp -m icmp --icmp-type 13 -j DROP
+-A fwinput_pre -p icmp -m icmp --icmp-type 14 -j DROP
+-A fwports -i nbif2 -p udp -m udp --dport 2944 -j ACCEPT
+-A fwports -p udp -m udp --dport 520 -j ACCEPT
+-A lan_access -i br0 -p tcp -m tcp --dport 139 -j DROP
+-A lan_access -i br0 -p tcp -m tcp --dport 23 -j ACCEPT
+-A lan_access -i br0 -p tcp -m tcp --dport 445 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 10080 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p udp -m udp --dport 10080 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 22 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p udp -m udp --dport 22 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 5244 -j ACCEPT
+-A portmapp -d 192.168.1.13/32 -i ppp0 -p tcp -m tcp --dport 80 -j ACCEPT
+-A portmapp -d 192.168.1.13/32 -i ppp0 -p udp -m udp --dport 80 -j ACCEPT
+-A portmapp -d 192.168.1.4/32 -i ppp0 -p tcp -m tcp --dport 22 -j ACCEPT
+-A portmapp -d 192.168.1.4/32 -i ppp0 -p udp -m udp --dport 22 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 2053 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p udp -m udp --dport 2053 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 5140 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p udp -m udp --dport 5140 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 9001 -j ACCEPT
+-A portmapp -d 192.168.1.3/32 -i ppp0 -p tcp -m tcp --dport 8001 -j ACCEPT
+-A srvdrop -p tcp -m tcp --dport 80 -m devwl -j DROP
+-A srvdrop -p tcp -m tcp --dport 21 -m devwl -j DROP
+-A srvdrop -p tcp -m tcp --dport 23 -m devwl -j DROP
+-A srvdrop -p tcp -m tcp --dport 443 -m devwl -j DROP
+-A upnp -d 192.168.1.2/32 -p udp -m udp --dport 8567 -j ACCEPT
+-A upnp -d 192.168.1.2/32 -p udp -m udp --dport 35419 -j ACCEPT
+-A wan_access -p tcp -m devwl -m tcp --dport 139 -j DROP
+-A wan_access -p udp -m devwl -m udp --dport 137 -j DROP
+-A wan_access -p udp -m devwl -m udp --dport 138 -j DROP
+-A wan_access -p tcp -m devwl -m tcp --dport 23 -j DROP
+-A wan_access -p tcp -m devwl -m tcp --dport 445 -j DROP

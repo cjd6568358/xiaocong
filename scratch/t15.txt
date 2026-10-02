@@ -1,0 +1,189 @@
+### A) match 模块清单
+limitperip state physdev mac limit conntrack conntrack conntrack connlabel mark binddata psd devwl urlfilter icmp multiport iprange tos dscp set set set set set udplite udp tcp
+[stderr] 
+
+### B) -m mac --mac-source 测试
+rc=0
+[stderr] 
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    REDIRECT   udp  --  0.0.0.0/0            0.0.0.0/0            MAC B4:E6:2D:3A:6E:7C udp dpt:53 redir ports 5353
+[stderr] 
+已删 rc=0
+[stderr] 
+
+### C) -m addrtype --dst-type LOCAL 测试
+iptables: No chain/target/match by that name.
+rc=1
+[stderr] 
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    srvcntrl   all  --  0.0.0.0/0            0.0.0.0/0
+[stderr] 
+iptables: No chain/target/match by that name.
+已删 rc=1
+[stderr] 
+
+### D) 确认恢复原样
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source               destination         
+1    srvcntrl   all  --  0.0.0.0/0            0.0.0.0/0           
+2    fwports    all  --  0.0.0.0/0            0.0.0.0/0           
+3    portmapp   all  --  0.0.0.0/0            0.0.0.0/0           
+4    upnp       all  --  0.0.0.0/0            0.0.0.0/0           
+5    dmzmapp    all  --  0.0.0.0/0            0.0.0.0/0           
+6    scdrop     all  --  0.0.0.0/0            0.0.0.0/0
+[stderr] 
+
+### E) /f4610u/user_init.sh 内容
+#!/bin/sh
+# =========================================================================
+#  /f4610u/user_init.sh  ——  开机初始化
+#
+#  职责（按"先保命、后功能"排序）：
+#    1. 起 dropbear      —— 放最前，后面任何一步翻车都还能 SSH 进来
+#    2. 修 drop_no_nat   —— 光猫默认丢包规则（沿用原脚本）
+#    3. 加载 tun.ko + 建 /dev/net/tun（/dev 是 tmpfs，重启必丢）
+#    4. 启动 EasyTier
+#    5. 等 tun 设备就绪 -> 开 IPv4 转发（子网设备访问 10.0.0.x 的必需条件）
+#    6. 修 table 252 路由（防止指向已下线 LAN 邻居的黑洞路由）
+#
+#  注意：
+#    - 特意不加 `set -e`：任何一步失败都不能撤销 dropbear 已启动的事实
+#    - tun 设备名从 easytier.yaml 的 dev_name 读取，读不到则退化为 tun0
+# =========================================================================
+
+exec > /f4610u/user_init.log 2>&1
+
+export LD_LIBRARY_PATH=/f4610u/lib:$LD_LIBRARY_PATH
+
+IP=/f4610u/bin/ip
+KO=/f4610u/bin/tun.ko
+ET=/f4610u/armbian/bin/easytier-core_upx
+CFG=/f4610u/armbian/etc/easytier.yaml
+
+VPN_NET=10.0.0.0/24
+LAN_BR=br0
+TBL=252
+TUN_WAIT=60
+
+echo "[user_init] ===== $(date) start ====="
+
+# ------------------------------------------------------------ 0. 设备名
+# 从 yaml 里取 dev_name = "xxx"，缺省 tun0
+DEV=$(grep 'dev_name' "$CFG" 2>/dev/null | sed 's/.*"\(.*\)".*/\1/' | head -1)
+[ -z "$DEV" ] && DEV=tun0
+echo "[user_init] tun dev = $DEV"
+
+# ------------------------------------------------------------ 1. dropbear
+mkdir -p /etc/dropbear
+/f4610u/bin/dropbear-aarch64-static_upx -R -p 10022 -K 1800 -I 3600
+echo "[user_init] dropbear rc=$?"
+
+# ------------------------------------------------------------ 1.5 wospeeder 一次性击杀(纯后台)
+# 时序(PID 由低到高 = 启动先后,顺序固定):框架核心(105 hpsrv 等)
+# -> 本脚本 dropbear=148 -> 插件 wospeeder=183。插件在本脚本之后才出现,
+# 故后台轮询(3s 一次),出现即杀、杀一次即退。TR069 已断,无远端重推;
+# 杀后不复活(实测 10 分钟)。阻塞全在后台子壳,不影响本脚本任何步骤。
+( nohup /f4610u/wospeeder-kill.sh >> /tmp/wospeeder-kill.log 2>&1 ) &
+echo "[user_init] wospeeder-kill armed"
+
+# ------------------------------------------------------------ 2. drop_no_nat
+/f4610u/bin/iptables_upx -D drop_no_nat 1 2>/dev/null
+echo "[user_init] drop_no_nat fix rc=$?"
+
+# ------------------------------------------------------------ 3. tun.ko
+if grep -q "^tun " /proc/modules 2>/dev/null; then
+    echo "[user_init] tun already loaded"
+else
+    insmod "$KO"
+    echo "[user_init] insmod rc=$?"
+fi
+mkdir -p /dev/net
+[ -e /dev/net/tun ] || mknod /dev/net/tun c 10 200
+echo "[user_init] /dev/net/tun -> $(ls -l /dev/net/tun 2>&1)"
+
+# ------------------------------------------------------------ 4. easytier
+# 日志写 /tmp（tmpfs，重启即丢）：根分区是 overlay 且只剩十几 MB，
+# 往 /f4610u 这种持久目录里追加日志有撑爆根分区的风险。
+if ps w | grep -v grep | grep -q easytier-core; then
+    echo "[user_init] easytier already running"
+else
+    nohup "$ET" -c "$CFG" >> /tmp/easytier.log 2>&1 &
+    echo "[user_init] easytier started pid=$!"
+fi
+
+# ------------------------------------------------------------ 5. 等设备就绪
+i=0
+while [ $i -lt "$TUN_WAIT" ]; do
+    if $IP link show "$DEV" > /dev/null 2>&1; then break; fi
+    sleep 1
+    i=$((i + 1))
+done
+if $IP link show "$DEV" > /dev/null 2>&1; then
+    echo "[user_init] $DEV ready after ${i}s"
+    DEV_OK=1
+else
+    echo "[user_init] WARN: $DEV NOT found after ${i}s"
+    DEV_OK=0
+fi
+
+# ------------------------------------------------------------ 6. IPv4 转发
+# 子网设备(192.168.1.x) -> 光猫 -> tun -> 10.0.0.x 必须开转发
+echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/conf/all/forwarding
+for d in "$DEV" "$LAN_BR"; do
+    if [ -e "/proc/sys/net/ipv4/conf/$d/forwarding" ]; then
+        echo 1 > "/proc/sys/net/ipv4/conf/$d/forwarding"
+    fi
+done
+echo "[user_init] ip_forward=$(cat /proc/sys/net/ipv4/ip_forward)"
+echo "[user_init] conf/all/forwarding=$(cat /proc/sys/net/ipv4/conf/all/forwarding)"
+
+# ------------------------------------------------------------ 7. table 252
+# 【为什么 table 252 里必须有一条 10.0.0.0/24】
+#   ip rule:  32764: from all fwmark 0xff lookup 252
+#             32765: from all fwmark 0xff lookup 252 prohibit
+#   光猫给本机发出的包打了 mark 0xff，于是这些包【只查 table 252】
+#   （查不到就 prohibit，不会回落到 main 表）。
+#   一旦 table 252 里没有 10.0.0.0/24，包就掉进 default 走 ppp0 出公网，
+#   10.0.0.x 是私有地址 -> 公网不可达 -> ping 卡死 / HTTP 打不开。
+#
+#   实测（把这条删掉后立刻看）：
+#     ip route get 10.0.0.4            -> dev et_2_pmog    （无 mark，看着正常）
+#     ip route get 10.0.0.4 mark 0xff  -> via 139.227.20.1 dev ppp0 src 139.227.20.142
+#   无 mark 时一切正常，所以这个坑极容易误判成"选路没问题"。
+#
+#   原先这里靠的是手写静态路由（见原脚本里注释掉的那行）：
+#     ip r add t 252 10.0.0.0/24 via 192.168.1.3
+#   那时 192.168.1.3 在线，指向它是正确的；现在它已下线且被注释，
+#   必须改成指向本机的 tun 设备，否则 table 252 里就空了。
+#
+#   用 replace 而非 add：路由已存在时 add 会返回 File exists 并静默失败。
+#   （注意：这条不是 EasyTier 写的，EasyTier 并不写这条路由。）
+if [ "$DEV_OK" = "1" ]; then
+    sleep 3
+    $IP route replace "$VPN_NET" dev "$DEV" table "$TBL"
+    echo "[user_init] route replace rc=$?"
+    $IP route flush cache
+    echo "[user_init] table $TBL:"
+    $IP route show table "$TBL"
+fi
+
+echo "[user_init] ===== done ====="
+exit 0
+[stderr] 
+
+### F) /f4610u 完整结构
+drwxrwxrwx    6 root     root           800 Oct  2 01:09 .
+drwxr-xr-x    1 root     root           736 Sep 23 22:35 ..
+drwxr-xr-x    3 root     root           376 Oct  2 01:25 app
+drwxr-xr-x    6 root     root           416 Sep 25 21:06 armbian
+drwxrwxrwx    2 root     root           672 Oct  2 01:45 bin
+-rwxr-xr-x    1 root     root          7221 Oct  1 21:50 hostexec.sh
+drwxrwxrwx    2 root     root           376 Sep  9 23:32 lib
+-rwxrwxrwx    1 root     root          8638 Oct  1 18:50 tun-layers.sh
+-rwxrwxrwx    1 root     root          5835 Oct  2 01:09 user_init.sh
+-rwxrwxrwx    1 root     root          5259 Oct  2 00:55 user_init.sh.bak-20261002
+-rwxrwxrwx    1 root     root          2148 Oct  2 01:09 wospeeder-kill.sh
+[stderr] 

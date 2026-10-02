@@ -1,0 +1,31 @@
+=== 目录 ===
+ls: /f4610u/etc: No such file or directory
+drwxr-xr-x    3 root     root           456 Oct  2 02:38 /f4610u/app
+drwxrwxrwx    2 root     root           600 Oct  2 02:29 /f4610u/bin
+
+=== 加规则（! -d 形式）===
+rc=0
+
+=== 看规则（-v 才显示 -i）===
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination         
+1        0     0 REDIRECT   tcp  --  br0    *       0.0.0.0/0           !192.168.1.0/24       tcp dpt:8188 redir ports 8188
+2        0     0 REDIRECT   tcp  --  br0    *       0.0.0.0/0            139.227.20.142       tcp dpt:8188 redir ports 8188
+3        0     0 REDIRECT   udp  --  br0    *       0.0.0.0/0            0.0.0.0/0            MAC B4:E6:2D:3A:6E:7C udp dpt:53 redir ports 5353
+4     213K   17M srvcntrl   all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+
+=== 幂等性：再执行一次 -C 检查 ===
+已存在(-C 命中)
+
+=== 实测：从光猫本机连自己的 WAN IP:8188 会不会被 REDIRECT ===
+WAN=139.227.20.142
+nc rc=0
+
+=== 撤销刚才的测试规则 ===
+rc=0
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+num   pkts bytes target     prot opt in     out     source               destination         
+1        0     0 REDIRECT   tcp  --  br0    *       0.0.0.0/0            139.227.20.142       tcp dpt:8188 redir ports 8188
+2        0     0 REDIRECT   udp  --  br0    *       0.0.0.0/0            0.0.0.0/0            MAC B4:E6:2D:3A:6E:7C udp dpt:53 redir ports 5353
+3     213K   17M srvcntrl   all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+

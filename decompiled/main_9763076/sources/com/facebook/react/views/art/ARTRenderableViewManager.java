@@ -1,0 +1,73 @@
+package com.facebook.react.views.art;
+
+import android.view.View;
+import com.facebook.react.uimanager.ReactShadowNode;
+import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.ViewManager;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public class ARTRenderableViewManager extends ViewManager<View, ReactShadowNode> {
+    static final String CLASS_GROUP = "ARTGroup";
+    static final String CLASS_SHAPE = "ARTShape";
+    static final String CLASS_TEXT = "ARTText";
+    private final String mClassName;
+
+    public static ARTRenderableViewManager createARTGroupViewManager() {
+        return new ARTGroupViewManager();
+    }
+
+    public static ARTRenderableViewManager createARTShapeViewManager() {
+        return new ARTShapeViewManager();
+    }
+
+    public static ARTRenderableViewManager createARTTextViewManager() {
+        return new ARTTextViewManager();
+    }
+
+    ARTRenderableViewManager(String className) {
+        this.mClassName = className;
+    }
+
+    @Override // com.facebook.react.uimanager.ViewManager, com.facebook.react.bridge.NativeModule
+    public String getName() {
+        return this.mClassName;
+    }
+
+    @Override // com.facebook.react.uimanager.ViewManager
+    public ReactShadowNode createShadowNodeInstance() {
+        if (CLASS_GROUP.equals(this.mClassName)) {
+            return new ARTGroupShadowNode();
+        }
+        if (CLASS_SHAPE.equals(this.mClassName)) {
+            return new ARTShapeShadowNode();
+        }
+        if (CLASS_TEXT.equals(this.mClassName)) {
+            return new ARTTextShadowNode();
+        }
+        throw new IllegalStateException("Unexpected type " + this.mClassName);
+    }
+
+    @Override // com.facebook.react.uimanager.ViewManager
+    public Class<? extends ReactShadowNode> getShadowNodeClass() {
+        if (CLASS_GROUP.equals(this.mClassName)) {
+            return ARTGroupShadowNode.class;
+        }
+        if (CLASS_SHAPE.equals(this.mClassName)) {
+            return ARTShapeShadowNode.class;
+        }
+        if (CLASS_TEXT.equals(this.mClassName)) {
+            return ARTTextShadowNode.class;
+        }
+        throw new IllegalStateException("Unexpected type " + this.mClassName);
+    }
+
+    @Override // com.facebook.react.uimanager.ViewManager
+    protected View createViewInstance(ThemedReactContext reactContext) {
+        throw new IllegalStateException("ARTShape does not map into a native view");
+    }
+
+    @Override // com.facebook.react.uimanager.ViewManager
+    public void updateExtraData(View root, Object extraData) {
+        throw new IllegalStateException("ARTShape does not map into a native view");
+    }
+}

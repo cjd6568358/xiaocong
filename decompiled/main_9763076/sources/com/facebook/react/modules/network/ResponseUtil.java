@@ -1,0 +1,69 @@
+package com.facebook.react.modules.network;
+
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public class ResponseUtil {
+    public static void onDataSend(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId, long progress, long total) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushInt((int) progress);
+        args.pushInt((int) total);
+        eventEmitter.emit("didSendNetworkData", args);
+    }
+
+    public static void onIncrementalDataReceived(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId, String data, long progress, long total) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushString(data);
+        args.pushInt((int) progress);
+        args.pushInt((int) total);
+        eventEmitter.emit("didReceiveNetworkIncrementalData", args);
+    }
+
+    public static void onDataReceivedProgress(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId, long progress, long total) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushInt((int) progress);
+        args.pushInt((int) total);
+        eventEmitter.emit("didReceiveNetworkDataProgress", args);
+    }
+
+    public static void onDataReceived(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId, String data) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushString(data);
+        eventEmitter.emit("didReceiveNetworkData", args);
+    }
+
+    public static void onRequestError(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId, String error, IOException e) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushString(error);
+        if (e != null && e.getClass() == SocketTimeoutException.class) {
+            args.pushBoolean(true);
+        }
+        eventEmitter.emit("didCompleteNetworkResponse", args);
+    }
+
+    public static void onRequestSuccess(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushNull();
+        eventEmitter.emit("didCompleteNetworkResponse", args);
+    }
+
+    public static void onResponseReceived(DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter, int requestId, int statusCode, WritableMap headers, String url) {
+        WritableArray args = Arguments.createArray();
+        args.pushInt(requestId);
+        args.pushInt(statusCode);
+        args.pushMap(headers);
+        args.pushString(url);
+        eventEmitter.emit("didReceiveNetworkResponse", args);
+    }
+}

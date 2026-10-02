@@ -1,0 +1,28 @@
+
+===== 守望开始 2026-10-02 03:26:20  总时长 1500s / 每 12s 一轮 =====
+家庭网=PDCN_IOT  探针 domain=139.227.20.142
+（现在请长按插座按钮 5 秒进入配网模式）
+[03:26:27] 还没出现，当前 16 个 SSID
+[03:27:04] ★★★ 命中插座热点: smart-381785-3a6e7c-b7（共 23 个 SSID）
+[03:27:05] 已发起连接 smart-381785-3a6e7c-b7，等 192.168.4.x ...
+    本机地址 192.168.4.2 ✅  —— 这一步必须拿到 4.x，否则后面全是假结果
+
+########## 下发 ch_data : ssid=PDCN_IOT  domain=139.227.20.142  crt=(空) ##########
+[provision] 宸插氨缁細鐩爣 192.168.4.255, 192.168.4.1:5658
+[provision]   鏈満 IPv4锛?92.168.4.2(Wi-Fi)
+[provision]   checkCode = 457787
+[provision]   鏈湴鍏挜(64B b64) = 5nr2B/CiBA3UP2llDDnE6jrAWmq3Yh3fUTII6PUw7ViUGC+gb66lqbKOn9H3WZ4Yq6F6mLUVwDfNpH8JJGAumA==
+[provision] 鈫?骞挎挱 ch_pubk
+[provision] 鈫?鏀跺埌璁惧 ch_pubk锛堟潵鑷?192.168.4.1:5658锛? devPub=y0ZWB8lY83jKjf443gFfWSlU...
+[provision]   ECDH 瀹屾垚锛孉ES key = c1f6c269a390c340dc2f4d87b2268287
+[provision] 鈫?鍙戦€?ch_data锛歴sid="PDCN_IOT" domain="139.227.20.142" crt=0 瀛楄妭 checkCode=457787
+[provision] 鈿狅笍 璁惧閲嶅彂 ch_pubk锛堝悓涓€鎶婂瘑閽?鈫?鏈噸鍚紝鍙槸鎷掔粷浜?ch_data锛? [NACK #1]
+[provision]   600ms 鍚庨噸鍙?ch_data锛堢 1/2 娆￠噸璇曪紝鎺掗櫎 UDP 涓㈠寘锛?[provision] 鈫?璁惧鍥炲寘锛?{"type":"ch_data","mac":"B4E62D3A6E7C","product_id":"381785"}
+[provision] 鈽?閰嶇綉鎴愬姛锛歮ac=B4E62D3A6E7C  product_id=381785
+[provision] 鈫?鍙戦€?{"type":"end"}锛堟敹鍒拌澶囧洖鍖咃級
+
+provision.js 退出码 = 0  (0=设备接受并回了 mac/product_id  2=超时  3=设备NACK)
+[03:27:15] 回连 PDCN_IOT ...
+    已回到 192.168.1.20 ✅
+===== 结束 03:27:18 =====
+下一步：去光猫看  grep 8188 /proc/net/nf_conntrack  和  tail -40 /tmp/ixc-go.log

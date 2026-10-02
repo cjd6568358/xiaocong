@@ -1,0 +1,113 @@
+# ============================================================================
+# 小葱智能插座 · ESPHome 配置
+# ============================================================================
+# 硬件：ESP8266（原厂方案），五孔插座
+# 引脚来自社区固件 wukongcong.ino 的线索，**务必先用万用表核对再刷**
+#
+# 用法：
+#   1. 安装 ESPHome:  pip install esphome
+#   2. 建 secrets.yaml，填 wifi_ssid / wifi_password / api_key / ota_password
+#   3. esphome run xiaocong-plug.yaml
+#
+# 优点：不依赖任何厂商云，本地控制 + Home Assistant 集成 + 断电记忆
+# ============================================================================
+
+esphome:
+  name: xiaocong-plug
+  friendly_name: 小葱插座
+  # 上电即恢复继电器状态（避免断电再来电时"啪"一下）
+  on_boot:
+    priority: 600
+    then:
+      - switch.turn_off: relay
+
+esp8266:
+  board: esp01_1m          # 若 flash 是 2MB 改成 esp01_1m→esp_wroom_02；不确定见 README
+  restore_from_flash: true
+
+# ---- 网络 ----
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  # 断网时开一个热点，便于救砖
+  ap:
+    ssid: "xiaocong-plug-fallback"
+    password: !secret ap_password
+
+captive_portal:
+
+logger:
+  baud_rate: 115200
+  # level: DEBUG
+
+api:
+  encryption:
+    key: !secret api_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+# ---- 状态指示灯（GPIO4）----
+# 原厂逻辑：开=灯灭，关=灯亮（低电平点亮）
+status_led:
+  pin:
+    number: GPIO4
+    inverted: true
+
+# ---- 继电器（GPIO14）----
+switch:
+  - platform: gpio
+    id: relay
+    name: "插座开关"
+    pin: GPIO14
+    # 如果你的板子是高电平触发，改成 inverted: false / true 试
+    inverted: false
+    restore_mode: RESTORE_DEFAULT_OFF
+    on_turn_on:
+      - light.turn_on: led
+    on_turn_off:
+      - light.turn_off: led
+
+# ---- 指示灯做成实体，方便做"开关状态"指示 ----
+light:
+  - platform: status_led       # 不改硬件，仅用于 HA 里显示
+    id: led
+    name: "指示灯"
+    internal: true
+
+# ---- 物理按键（GPIO13）----
+# 短按切换继电器；长按 5 秒恢复出厂（清 WiFi）
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO13
+      mode: INPUT_PULLUP
+      inverted: true
+    filters:
+      - delayed_on: 20ms
+    on_press:
+      - switch.toggle: relay
+    on_multi_click:
+      # 长按 5 秒 → 清空 WiFi 配置，重新配网
+      - timing:
+          - ON for at least 5s
+        then:
+          - logger.log: "长按 5 秒，清除 WiFi 配置并重启"
+          - button.press: factory_reset
+
+button:
+  - platform: factory_reset
+    id: factory_reset
+    name: "恢复出厂设置"
+
+# ---- 可选：MQTT（若你不想用 HA API，可直接接 MQTT）----
+# mqtt:
+#   broker: !secret mqtt_broker
+#   username: !secret mqtt_user
+#   password: !secret mqtt_password
+#   topic_prefix: xiaocong/plug
+
+# ---- 可选：曾用电量统计需要硬件计量芯片（HLW8012/CSE7766），
+#      这个插座是基础款，通常没有。若有再加 sensor: 段。

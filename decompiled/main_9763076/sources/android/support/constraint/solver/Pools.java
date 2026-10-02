@@ -1,0 +1,61 @@
+package android.support.constraint.solver;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+final class Pools {
+
+    interface Pool<T> {
+        T acquire();
+
+        boolean release(T t);
+
+        void releaseAll(T[] tArr, int i);
+    }
+
+    static class SimplePool<T> implements Pool<T> {
+        private final Object[] mPool;
+        private int mPoolSize;
+
+        SimplePool(int maxPoolSize) {
+            if (maxPoolSize <= 0) {
+                throw new IllegalArgumentException("The max pool size must be > 0");
+            }
+            this.mPool = new Object[maxPoolSize];
+        }
+
+        @Override // android.support.constraint.solver.Pools.Pool
+        public T acquire() {
+            if (this.mPoolSize <= 0) {
+                return null;
+            }
+            int i = this.mPoolSize - 1;
+            T t = (T) this.mPool[i];
+            this.mPool[i] = null;
+            this.mPoolSize--;
+            return t;
+        }
+
+        @Override // android.support.constraint.solver.Pools.Pool
+        public boolean release(T instance) {
+            if (this.mPoolSize >= this.mPool.length) {
+                return false;
+            }
+            this.mPool[this.mPoolSize] = instance;
+            this.mPoolSize++;
+            return true;
+        }
+
+        @Override // android.support.constraint.solver.Pools.Pool
+        public void releaseAll(T[] variables, int count) {
+            if (count > variables.length) {
+                count = variables.length;
+            }
+            for (int i = 0; i < count; i++) {
+                T instance = variables[i];
+                if (this.mPoolSize < this.mPool.length) {
+                    this.mPool[this.mPoolSize] = instance;
+                    this.mPoolSize++;
+                }
+            }
+        }
+    }
+}

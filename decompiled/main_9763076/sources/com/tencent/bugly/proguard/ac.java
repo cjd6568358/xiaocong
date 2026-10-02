@@ -1,0 +1,44 @@
+package com.tencent.bugly.proguard;
+
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+
+/* JADX INFO: compiled from: BUGLY */
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public final class ac implements ab {
+    @Override // com.tencent.bugly.proguard.ab
+    public final byte[] a(byte[] bArr) throws Exception {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        GZIPOutputStream gZIPOutputStream = new GZIPOutputStream(byteArrayOutputStream);
+        gZIPOutputStream.write(bArr);
+        gZIPOutputStream.finish();
+        gZIPOutputStream.close();
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        byteArrayOutputStream.close();
+        return byteArray;
+    }
+
+    @Override // com.tencent.bugly.proguard.ab
+    public final byte[] b(byte[] bArr) throws Exception {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bArr);
+        GZIPInputStream gZIPInputStream = new GZIPInputStream(byteArrayInputStream);
+        byte[] bArr2 = new byte[WXMediaMessage.DESCRIPTION_LENGTH_LIMIT];
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        while (true) {
+            int i = gZIPInputStream.read(bArr2, 0, bArr2.length);
+            if (i != -1) {
+                byteArrayOutputStream.write(bArr2, 0, i);
+            } else {
+                byte[] byteArray = byteArrayOutputStream.toByteArray();
+                byteArrayOutputStream.flush();
+                byteArrayOutputStream.close();
+                gZIPInputStream.close();
+                byteArrayInputStream.close();
+                return byteArray;
+            }
+        }
+    }
+}

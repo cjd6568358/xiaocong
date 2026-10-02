@@ -1,0 +1,68 @@
+package com.journeyapps.barcodescanner.camera;
+
+import android.os.Handler;
+import android.os.HandlerThread;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+class CameraThread {
+    private static final String TAG = CameraThread.class.getSimpleName();
+    private static CameraThread instance;
+    private Handler handler;
+    private HandlerThread thread;
+    private int openCount = 0;
+    private final Object LOCK = new Object();
+
+    public static CameraThread getInstance() {
+        if (instance == null) {
+            instance = new CameraThread();
+        }
+        return instance;
+    }
+
+    private CameraThread() {
+    }
+
+    protected void enqueue(Runnable runnable) {
+        synchronized (this.LOCK) {
+            checkRunning();
+            this.handler.post(runnable);
+        }
+    }
+
+    private void checkRunning() {
+        synchronized (this.LOCK) {
+            if (this.handler == null) {
+                if (this.openCount <= 0) {
+                    throw new IllegalStateException("CameraThread is not open");
+                }
+                this.thread = new HandlerThread("CameraThread");
+                this.thread.start();
+                this.handler = new Handler(this.thread.getLooper());
+            }
+        }
+    }
+
+    private void quit() {
+        synchronized (this.LOCK) {
+            this.thread.quit();
+            this.thread = null;
+            this.handler = null;
+        }
+    }
+
+    protected void decrementInstances() {
+        synchronized (this.LOCK) {
+            this.openCount--;
+            if (this.openCount == 0) {
+                quit();
+            }
+        }
+    }
+
+    protected void incrementAndEnqueue(Runnable runner) {
+        synchronized (this.LOCK) {
+            this.openCount++;
+            enqueue(runner);
+        }
+    }
+}

@@ -1,0 +1,17 @@
+-P PREROUTING ACCEPT
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+-P POSTROUTING ACCEPT
+-N PolicyRoute
+-N lanbindwan
+-N pppoeproxy
+-N wanipbind
+-A PREROUTING -j pppoeproxy
+-A PREROUTING -j lanbindwan
+-A PREROUTING -j PolicyRoute
+-A PREROUTING -j wanipbind
+-A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+-A wanipbind -i br0 -m binddata -j MARK --set-xmark 0xd/0xffffffff
+-A wanipbind -i br0 -m binddata -j MARK --set-xmark 0xe/0xffffffff
+-A wanipbind -i br0 -m binddata -j MARK --set-xmark 0xc/0xffffffff

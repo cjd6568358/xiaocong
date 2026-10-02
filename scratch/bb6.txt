@@ -1,0 +1,15 @@
+## build3.log 里的 error
+11:make: *** [Makefile:719: busybox_unstripped] Error 1
+
+## 日志尾 30 行
+scripts/kconfig/conf -s Config.in
+#
+# using defaults found in .config
+#
+Trying libraries: crypt m resolv rt
+ Library crypt is not needed, excluding it
+ Library m is not needed, excluding it
+ Library resolv is not needed, excluding it
+ Library rt is not needed, excluding it
+Final link with: <none>
+make: *** [Makefile:719: busybox_unstripped] Error 1

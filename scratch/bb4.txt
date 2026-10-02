@@ -1,0 +1,20 @@
+## inetd 的报错
+37:networking/inetd.c:255:11: fatal error: rpc/rpc.h: No such file or directory
+38-  255 | # include <rpc/rpc.h>
+39-      |           ^~~~~~~~~~~
+40-compilation terminated.
+41-make[1]: *** [scripts/Makefile.build:197: networking/inetd.o] Error 1
+42-make: *** [Makefile:744: networking] Error 2
+43-make: *** Waiting for unfinished jobs....
+
+## 相关配置项
+920:CONFIG_INETD=y
+921:CONFIG_FEATURE_INETD_SUPPORT_BUILTIN_ECHO=y
+922:CONFIG_FEATURE_INETD_SUPPORT_BUILTIN_DISCARD=y
+923:CONFIG_FEATURE_INETD_SUPPORT_BUILTIN_TIME=y
+924:CONFIG_FEATURE_INETD_SUPPORT_BUILTIN_DAYTIME=y
+925:CONFIG_FEATURE_INETD_SUPPORT_BUILTIN_CHARGEN=y
+926:CONFIG_FEATURE_INETD_RPC=y
+973:CONFIG_TCPSVD=y
+974:CONFIG_UDPSVD=y
+982:CONFIG_FEATURE_TELNETD_INETD_WAIT=y

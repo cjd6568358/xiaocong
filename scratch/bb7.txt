@@ -1,0 +1,56 @@
+## 整个 build3.log（$(wc -l) 行）
+11 /tmp/bb/build3.log
+---全文---
+scripts/kconfig/conf -s Config.in
+#
+# using defaults found in .config
+#
+Trying libraries: crypt m resolv rt
+ Library crypt is not needed, excluding it
+ Library m is not needed, excluding it
+ Library resolv is not needed, excluding it
+ Library rt is not needed, excluding it
+Final link with: <none>
+make: *** [Makefile:719: busybox_unstripped] Error 1
+
+## 手动重跑链接看真实报错
+make -f scripts/Makefile.build obj=scripts/basic
+mkdir -p .tmp_versions
+rm -f .tmp_versions/*
+make -f scripts/Makefile.build obj=applets
+make -f scripts/Makefile.build obj=.
+make -f scripts/Makefile.build obj=scripts
+make -f scripts/Makefile.build obj=applets
+make -f scripts/Makefile.build obj=archival
+make -f scripts/Makefile.build obj=archival/libarchive
+make -f scripts/Makefile.build obj=console-tools
+make -f scripts/Makefile.build obj=coreutils
+make -f scripts/Makefile.build obj=coreutils/libcoreutils
+make -f scripts/Makefile.build obj=debianutils
+make -f scripts/Makefile.build obj=klibc-utils
+make -f scripts/Makefile.build obj=e2fsprogs
+make -f scripts/Makefile.build obj=editors
+make -f scripts/Makefile.build obj=findutils
+make -f scripts/Makefile.build obj=init
+make -f scripts/Makefile.build obj=libbb
+make -f scripts/Makefile.build obj=libpwdgrp
+make -f scripts/Makefile.build obj=loginutils
+make -f scripts/Makefile.build obj=mailutils
+make -f scripts/Makefile.build obj=miscutils
+miscutils/devfsd.c: In function ‘action_execute’:
+miscutils/devfsd.c:855:64: error: ‘%s’ directive output may be truncated writing up to 1023 bytes into a region of size 254 [-Werror=format-truncation=]
+  855 |         snprintf(gv_info.devpath, sizeof(gv_info.devpath), "%s/%s", mount_point, info->devname);
+      |                                                                ^~
+miscutils/devfsd.c:855:9: note: ‘snprintf’ output 2 or more bytes (assuming 1025) into a destination of size 255
+  855 |         snprintf(gv_info.devpath, sizeof(gv_info.devpath), "%s/%s", mount_point, info->devname);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+miscutils/devfsd.c: In function ‘action_copy’:
+miscutils/devfsd.c:893:64: error: ‘%s’ directive output may be truncated writing up to 1023 bytes into a region of size 254 [-Werror=format-truncation=]
+  893 |         snprintf(gv_info.devpath, sizeof(gv_info.devpath), "%s/%s", mount_point, info->devname);
+      |                                                                ^~
+miscutils/devfsd.c:893:9: note: ‘snprintf’ output 2 or more bytes (assuming 1025) into a destination of size 255
+  893 |         snprintf(gv_info.devpath, sizeof(gv_info.devpath), "%s/%s", mount_point, info->devname);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+make[1]: *** [scripts/Makefile.build:198: miscutils/devfsd.o] Error 1
+make: *** [Makefile:744: miscutils] Error 2

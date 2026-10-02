@@ -1,0 +1,101 @@
+取回 1522340 字节  md5=97a23f2dc76771a75564717cc20ed287
+-rwxrwxrwx    1 root     root       1522340 Oct  2 03:02 /tmp/ixc-go-arm64_upx
+97a23f2dc76771a75564717cc20ed287  /tmp/ixc-go-arm64_upx
+
+
+========== 冒烟测试 1：UPX 壳能不能在 4.1.25 上启动 ==========
+退出码: 0
+
+
+========== 冒烟测试 2：-h 帮助文本 ==========
+ixc-go —— 在光猫上冒充小葱插座的原厂云端（DNS 劫持 + TLS 1.1 假云端）
+
+用法:
+  ixc-go-arm64_upx -cert <crt> -key <key> [选项]
+
+必填:
+  -cert <文件>    RSA 证书（必须是 RSA；插座只支持静态 RSA，不支持 ECDHE）
+  -key  <文件>    对应的私钥
+
+光猫上的标准姿势（可直接复制）:
+  /f4610u/bin/ixc-go-arm64_upx \
+      -cert /f4610u/etc/server.crt -key /f4610u/etc/server.key \
+      -listen :8188 \
+      -dns :5353 -hijack-ip 203.0.113.9 \
+      -dns-domains ixiaocong.com,allin.dns.army \
+      -plug-mac B4:E6:2D:3A:6E:7C \
+      -manage-rules -lan-if br0 -alias-if br0:0 \
+      -http 192.168.1.1:8080 -jsonl /tmp/ixc.jsonl
+
+控制插座:
+  curl http://192.168.1.1:8080/on           开
+  curl http://192.168.1.1:8080/off          关
+  curl http://192.168.1.1:8080/status       看插座在不在线
+  curl 'http://192.168.1.1:8080/raw?c=<JSON>'   原样下发
+  echo '{"command":{"switch":1}}' >> /tmp/xc.cmd   # 追加一行即下发（需 -cmdfile）
+
+两个容易踩的点:
+  * LAN 设备访问【光猫自己的 WAN IP】在光猫上不回环（no hairpin NAT），
+    必须在 nat PREROUTING 里 REDIRECT 回本机，否则插座永远连不上。
+    这条规则默认【不由本程序管理】，它常驻在 /f4610u/user_init.sh 里；
+    想让本程序自己铺/撤就加 -hairpin。
+  * DNS 劫持规则按 -plug-mac 只匹配插座那一台设备，其他设备零影响。
+
+选项:
+  -alias-if string
+    	挂劫持 IP 的别名接口 (default "br0:0")
+  -cert string
+    	RSA 证书（必须是 RSA，插座不支持 ECDHE）
+  -cmdfile string
+    	命令文件：追加一行 JSON 即下发
+  -dns string
+    	DNS 应答器监听地址（如 :5353，留空关闭）
+  -dns-domains string
+    	要劫持的域名（逗号分隔，含子域） (default "ixiaocong.com,allin.dns.army")
+  -dns-upstream string
+    	其余查询转发的上游 (default "223.5.5.5:53")
+  -hairpin
+    	由本程序铺/撤「WAN IP 回环规则」。默认关：该规则常驻在 /f4610u/user_init.sh 里，因为它用「目标不是内网段」的写法，PPPoE 重播换 IP 也不会失效
+  -hijack-ip string
+    	劫持应答用的公网 IP（固件拒绝私有网段） (default "203.0.113.9")
+  -http string
+    	控制用 HTTP 监听地址（如 192.168.1.1:8080，留空关闭）
+  -iptables string
+    	iptables 可执行文件 (default "/f4610u/bin/iptables_upx")
+  -jsonl string
+    	结构化样本落盘路径（可选）
+  -key string
+    	私钥
+  -lan-if string
+    	局域网桥接口 (default "br0")
+  -ldpath string
+    	iptables 依赖库路径（libcommfun.so） (default "/f4610u/lib")
+  -listen string
+    	TLS 假云端监听地址 (default ":8188")
+  -manage-rules
+    	自动铺/撤 iptables 规则与接口别名
+  -on-connect string
+    	每次连接建立后自动下发的 JSON（可选）
+  -plug-mac string
+    	插座 MAC（只劫持它，不影响其他设备） (default "B4:E6:2D:3A:6E:7C")
+  -topic string
+    	下发用的 MQTT 主题 (default "control")
+  -v	打印详细日志 (default true)
+  -wan-if string
+    	WAN 接口（只有 -hairpin 时才用到） (default "ppp0")
+
+
+========== 冒烟测试 3：不给 -cert 时应打帮助并以 2 退出 ==========
+rc=2
+
+
+========== 冒烟测试 4：--help 长选项 ==========
+ixc-go —— 在光猫上冒充小葱插座的原厂云端（DNS 劫持 + TLS 1.1 假云端）
+
+用法:
+
+
+========== 冒烟测试 5：光猫还活着 ==========
+ 03:02:02 up  8:07,  load average: 2.98, 2.92, 2.88
+2.99 2.92 2.89 1/252 11613
+

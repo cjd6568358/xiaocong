@@ -1,0 +1,8 @@
+make rc=0
+=== 未 strip: 1260416 字节 ===
+=== strip 后: 1260416 字节 (1.3M) ===
+  Class:                             ELF64
+  Type:                              DYN (Position-Independent Executable file)
+  Machine:                           AArch64
+applet 总数: 0
+

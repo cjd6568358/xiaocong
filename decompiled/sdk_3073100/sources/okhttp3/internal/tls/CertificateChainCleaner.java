@@ -1,0 +1,21 @@
+package okhttp3.internal.tls;
+
+import java.security.cert.Certificate;
+import java.security.cert.X509Certificate;
+import java.util.List;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.X509TrustManager;
+import okhttp3.internal.platform.Platform;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone3073100.dex */
+public abstract class CertificateChainCleaner {
+    public abstract List<Certificate> clean(List<Certificate> list, String str) throws SSLPeerUnverifiedException;
+
+    public static CertificateChainCleaner get(X509TrustManager trustManager) {
+        return Platform.get().buildCertificateChainCleaner(trustManager);
+    }
+
+    public static CertificateChainCleaner get(X509Certificate... caCerts) {
+        return new BasicCertificateChainCleaner(TrustRootIndex.get(caCerts));
+    }
+}

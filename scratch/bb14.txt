@@ -1,0 +1,42 @@
+## Makefile 705-725
+# Generate some data for debugging strange kallsyms problems
+debug_kallsyms: .tmp_map$(last_kallsyms)
+
+.tmp_map%: .tmp_busybox% FORCE
+	($(OBJDUMP) -h $< | $(AWK) '/^ +[0-9]/{print $$4 " 0 " $$2}'; $(NM) $<) | sort > $@
+
+.tmp_map3: .tmp_map2
+
+.tmp_map2: .tmp_map1
+
+endif # ifdef CONFIG_KALLSYMS
+
+# busybox image - including updated kernel symbols
+busybox_unstripped: $(busybox-all) FORCE
+	$(call if_changed_rule,busybox__)
+	$(Q)rm -f .old_version
+
+busybox: busybox_unstripped
+ifeq ($(SKIP_STRIP),y)
+	$(Q)cp $< $@
+else
+
+## busybox_unstripped 是否是有效 ELF
+ls: cannot access 'busybox': No such file or directory
+-rwxr-xr-x 1 root root 5062480 Oct  2 02:33 busybox_unstripped
+
+## 单独跑 generate_BUFSIZ.sh --post
+rc=1
+
+## 再 make 一次看是否只差最后一步
+LINK    busybox_unstripped
+Trying libraries: crypt m resolv rt
+ Library crypt is not needed, excluding it
+ Library m is not needed, excluding it
+ Library resolv is not needed, excluding it
+ Library rt is not needed, excluding it
+Final link with: <none>
+make: *** [Makefile:719: busybox_unstripped] Error 1
+---
+ls: cannot access 'busybox': No such file or directory
+-rwxr-xr-x 1 root root 5062480 Oct  2 02:34 busybox_unstripped

@@ -1,0 +1,32 @@
+===== AP 守望开始 2026-10-02 03:08:11  总时长 2400s / 间隔 15s =====
+[03:08:16] 共 1 个 SSID: PDCN_IOT
+[03:09:38] 共 1 个 SSID: PDCN_IOT
+[03:11:03] 共 1 个 SSID: PDCN_IOT
+[03:12:29] 共 1 个 SSID: PDCN_IOT
+[03:13:54] ★★★ 发现目标热点: smart-381785-3a6e7c-b7
+[03:13:55] 当前全部 SSID:
+    CMCC-102-5G
+    MERCURY_3888
+    CMCC-YduH-5G
+    67-102-5G
+    
+    jonhsonzhang
+    HONOR-1040VB
+    TP-LINK_B105
+    jonhsonzhang_Wi-Fi5
+    CMCC-102
+    102_Wi-Fi5
+    102
+    smart-381785-3a6e7c-b7
+    CMCC-eLzb
+    CMCC-yfZe
+    Tenda_1002
+    Xiaomi_01E0
+    CMCC-dE6w
+    Xiaomi_01E0_5G
+    ChinaNet-N2LX
+    CMCC-YduH
+    ChinaNet-iXvd
+    ChinaNet-iXvd-5G
+    PDCN_IOT
+===== 命中，守望结束 03:13:56 =====

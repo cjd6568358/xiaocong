@@ -1,0 +1,59 @@
+C:\workspace\xiaocong\.scratch\verify-deploy.py:77: DeprecationWarning: ssl.TLSVersion.TLSv1 is deprecated
+  ctx.minimum_version = ssl.TLSVersion.TLSv1
+C:\workspace\xiaocong\.scratch\verify-deploy.py:78: DeprecationWarning: ssl.TLSVersion.TLSv1_1 is deprecated
+  ctx.maximum_version = ssl.TLSVersion.TLSv1_1
+========================================================================
+1) user_init.sh 语法 + 完整性
+  sh -n : 语法 OK
+
+  与上一版备份的差异（应只有 ixc-go 段）:
+...(略)
+0
+
+  旧内容是否原样保留（dropbear/tun/easytier/table252 关键字计数）:
+    dropbear     7
+    wospeeder    4
+    tun.ko       3
+    easytier     9
+    table 252    6
+    ip_forward   2
+
+
+2) 假 DNS 应答（直接问光猫 192.168.1.1:5353）
+    iot.ixiaocong.com        rcode=0 answers=['203.0.113.9']
+    allin.dns.army           rcode=0 answers=['203.0.113.9']
+    www.baidu.com            rcode=0 answers=['153.3.238.28', '153.3.238.127']
+
+3) ★ 从 PC(LAN 侧) 连光猫自己的 WAN IP 139.227.20.142:8188 —— 回环规则的关键验证
+    TCP 连上了（0.03s）
+    ✅ TLS 握手成功  版本=TLSv1.1  套件=AES128-SHA
+    ✅ ⇒ allin.dns.army 可直接用（回环规则生效）
+
+   对照：连内网地址 192.168.1.1:8188（不走 br0，回环规则不匹配，但本机监听在）
+    TCP 通（预期）
+
+4) HTTP 控制接口
+    GET /status    → 在线会话 0 个:
+    GET /off       → switch=0 已下发
+
+5) 光猫状态
+    03:04:22 up  8:09,  load average: 3.37, 3.04, 2.93
+---
+                         83.2M     70.6M      8.3M  89% /
+---
+-rwxr-xr-x    1 root     root       1522340 Oct  2 03:03 /f4610u/bin/ixc-go-arm64_upx
+
+/f4610u/etc/:
+drwxrwxrwx    2 root     root           304 Oct  2 03:03 .
+drwxrwxrwx    7 root     root          1056 Oct  2 03:04 ..
+-rw-rw-rw-    1 root     root          1407 Oct  2 03:03 server.crt
+-rw-------    1 root     root          1704 Oct  2 03:03 server.key
+
+  日志尾:
+[03:04:22] ★ 有连接进来 192.168.1.20:63032
+[03:04:22]   ✅ TLS 握手成功  version=0x0302  cipher=TLS_RSA_WITH_AES_128_CBC_SHA
+[03:04:22]    连接结束 (EOF)
+[03:04:22] ★ 有连接进来 192.168.1.20:63033
+[03:04:22]   ❌ TLS 握手失败: EOF
+[03:04:22] ◆ HTTP 下发 {"command":{"switch":0}}（0 个会话）
+

@@ -1,0 +1,44 @@
+package com.facebook.imagepipeline.producers;
+
+import com.facebook.common.internal.Preconditions;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public class ThreadHandoffProducer<T> implements Producer<T> {
+    private final Producer<T> mInputProducer;
+    private final ThreadHandoffProducerQueue mThreadHandoffProducerQueue;
+
+    public ThreadHandoffProducer(Producer<T> inputProducer, ThreadHandoffProducerQueue inputThreadHandoffProducerQueue) {
+        this.mInputProducer = (Producer) Preconditions.checkNotNull(inputProducer);
+        this.mThreadHandoffProducerQueue = inputThreadHandoffProducerQueue;
+    }
+
+    @Override // com.facebook.imagepipeline.producers.Producer
+    public void produceResults(final Consumer<T> consumer, final ProducerContext context) {
+        final ProducerListener producerListener = context.getListener();
+        final String requestId = context.getId();
+        final StatefulProducerRunnable<T> statefulRunnable = new StatefulProducerRunnable<T>(consumer, producerListener, "BackgroundThreadHandoffProducer", requestId) { // from class: com.facebook.imagepipeline.producers.ThreadHandoffProducer.1
+            @Override // com.facebook.imagepipeline.producers.StatefulProducerRunnable, com.facebook.common.executors.StatefulRunnable
+            protected void onSuccess(T ignored) {
+                producerListener.onProducerFinishWithSuccess(requestId, "BackgroundThreadHandoffProducer", null);
+                ThreadHandoffProducer.this.mInputProducer.produceResults(consumer, context);
+            }
+
+            @Override // com.facebook.imagepipeline.producers.StatefulProducerRunnable, com.facebook.common.executors.StatefulRunnable
+            protected void disposeResult(T ignored) {
+            }
+
+            @Override // com.facebook.common.executors.StatefulRunnable
+            protected T getResult() throws Exception {
+                return null;
+            }
+        };
+        context.addCallbacks(new BaseProducerContextCallbacks() { // from class: com.facebook.imagepipeline.producers.ThreadHandoffProducer.2
+            @Override // com.facebook.imagepipeline.producers.BaseProducerContextCallbacks, com.facebook.imagepipeline.producers.ProducerContextCallbacks
+            public void onCancellationRequested() {
+                statefulRunnable.cancel();
+                ThreadHandoffProducer.this.mThreadHandoffProducerQueue.remove(statefulRunnable);
+            }
+        });
+        this.mThreadHandoffProducerQueue.addToQueueOrExecute(statefulRunnable);
+    }
+}

@@ -1,0 +1,9 @@
+## 可疑配置
+53:CONFIG_EXTRA_LDFLAGS=""
+76:CONFIG_DEBUG_SANITIZE=y
+1017:CONFIG_FEATURE_UDHCPC_SANITIZEOPT=y
+make rc=2
+--- 错误 ---
+38:aarch64-linux-musl-gcc: fatal error: cannot read spec file ‘libsanitizer.spec’: No such file or directory
+42:make: *** [Makefile:719: busybox_unstripped] Error 1
+

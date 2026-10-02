@@ -1,0 +1,8 @@
+VersionTLS10=0x0301  VersionTLS11=0x0302  VersionTLS12=0x0303
+--- 静态 RSA 密钥交换套件是否仍可用 ---
+  insecure 0x000a TLS_RSA_WITH_3DES_EDE_CBC_SHA
+  insecure 0x002f TLS_RSA_WITH_AES_128_CBC_SHA
+  insecure 0x0035 TLS_RSA_WITH_AES_256_CBC_SHA
+--- 启动测试服务端 127.0.0.1:18999 (Min=TLS1.0 Max=TLS1.1) ---
+握手成功  version=0x0302  cipher=0x0035 TLS_RSA_WITH_AES_256_CBC_SHA
+收到明文 24 字节: "hello-from-python-client"

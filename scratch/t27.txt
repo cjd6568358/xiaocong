@@ -1,0 +1,13 @@
+新版 applet: 402   系统: 120
+t18 记录的新增: 300   推算旧版总数: 418
+
+旧版有、新版没有 (18):
+   ar                bbconfig          devfsd            flash_eraseall    flash_lock        flash_unlock      flashcp           inotifyd        
+   lzopcat           minips            mkfs.reiser       netcat            nuke              rfkill            tune2fs           uncompress      
+   unit              unlzop          
+
+新版有、旧版没有 (2):
+   tc                unshare         
+
+新版新增（相对系统）: 284
+新版丢失（相对系统）: ['lock', 'netmsg']

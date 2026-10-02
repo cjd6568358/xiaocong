@@ -1,0 +1,8 @@
+条目数: 938
+make rc=2
+--- 错误 ---
+292:networking/udhcp/d6_dhcpc.c:1578:33: error: ‘bb_not_simple_error_msg’ is deprecated: use bb_simple_error_msg instead [-Werror=deprecated-declarations]
+293: 1578 |                                 bb_error_msg("read error: "STRERROR_FMT", reopening socket" STRERROR_ERRNO);
+326:make[1]: *** [scripts/Makefile.build:197: networking/udhcp/d6_dhcpc.o] Error 1
+327:make: *** [Makefile:744: networking/udhcp] Error 2
+

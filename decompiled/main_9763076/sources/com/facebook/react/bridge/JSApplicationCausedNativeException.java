@@ -1,0 +1,12 @@
+package com.facebook.react.bridge;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public class JSApplicationCausedNativeException extends RuntimeException {
+    public JSApplicationCausedNativeException(String detailMessage) {
+        super(detailMessage);
+    }
+
+    public JSApplicationCausedNativeException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
+}

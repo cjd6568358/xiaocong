@@ -1,0 +1,63 @@
+total 188
+drwxr-xr-x 35 root root  1040 May 19  2023 .
+drwxr-xr-x  3 root root    80 Oct  2 02:38 ..
+drwxr-xr-x  2 root root   260 May 19  2023 applets
+drwxr-xr-x  2 root root    80 Jan  1  2021 applets_sh
+drwxr-xr-x  6 root root   120 Jan  1  2021 arch
+drwxr-xr-x  3 root root   440 Mar 28  2023 archival
+-rw-r--r--  1 root root  5386 Jan  3  2023 AUTHORS
+-rw-r--r--  1 root root  2100 Jan  3  2023 busybox_ldscript.README.txt
+-rw-r--r--  1 root root 23360 Jan  1  2021 Config.in
+drwxr-xr-x  2 root root   220 Sep 30  2021 configs
+drwxr-xr-x  2 root root   380 Jan  3  2023 console-tools
+drwxr-xr-x  3 root root  1780 Apr 25  2023 coreutils
+drwxr-xr-x  2 root root   160 Jan  3  2023 debianutils
+drwxr-xr-x  3 root root   560 May 19  2023 docs
+drwxr-xr-x  2 root root   220 Jan  3  2023 e2fsprogs
+drwxr-xr-x  2 root root   300 Jan  5  2023 editors
+drwxr-xr-x  6 root root   440 Jan  1  2021 examples
+drwxr-xr-x  2 root root   140 Jan  3  2023 findutils
+drwxr-xr-x  2 root root   480 May 19  2023 include
+-rw-r--r--  1 root root   871 Jan  1  2021 .indent.pro
+drwxr-xr-x  2 root root   160 Jan  3  2023 init
+-rw-r--r--  1 root root  6116 Jan  1  2021 INSTALL
+drwxr-xr-x  2 root root   180 Sep 30  2021 klibc-utils
+drwxr-xr-x  2 root root  3140 Apr 25  2023 libbb
+drwxr-xr-x  2 root root   100 Jan  3  2023 libpwdgrp
+-rw-r--r--  1 root root 18348 Jan  1  2021 LICENSE
+drwxr-xr-x  2 root root   340 Jan  3  2023 loginutils
+drwxr-xr-x  2 root root   200 Jan  3  2023 mailutils
+-rw-r--r--  1 root root 42980 May 19  2023 Makefile
+-rw-r--r--  1 root root  6381 Jan  1  2021 Makefile.custom
+-rw-r--r--  1 root root  8056 Jan  3  2023 Makefile.flags
+-rw-r--r--  1 root root  1896 Jan  1  2021 Makefile.help
+-rwxr-xr-x  1 root root  3389 Jan  1  2021 make_single_applets.sh
+drwxr-xr-x  2 root root  1020 Jan  3  2023 miscutils
+drwxr-xr-x  2 root root   300 Jan  3  2023 modutils
+drwxr-xr-x  6 root root  1520 Jan  3  2023 networking
+-rw-r--r--  1 root root 14022 Jan  1  2021 NOFORK_NOEXEC.lst
+-rwxr-xr-x  1 root root   718 Jan  1  2021 NOFORK_NOEXEC.sh
+drwxr-xr-x  2 root root   120 Jan  3  2023 printutils
+drwxr-xr-x  2 root root   480 Apr 25  2023 procps
+drwxr-xr-x  3 root root   160 Jan  1  2021 qemu_multiarch_testing
+-rw-r--r--  1 root root  8755 Jan  1  2021 README
+drwxr-xr-x  2 root root   200 Jan  3  2023 runit
+drwxr-xr-x  4 root root   780 Jan  3  2023 scripts
+drwxr-xr-x  2 root root   300 Jan  3  2023 selinux
+drwxr-xr-x  4 root root   500 Apr 25  2023 shell
+-rwxr-xr-x  1 root root  2256 Jan  1  2021 size_single_applets.sh
+drwxr-xr-x  2 root root   180 Jan  3  2023 sysklogd
+drwxr-xr-x 43 root root  4100 Jan  3  2023 testsuite
+-rw-r--r--  1 root root 11472 Jan  1  2021 TODO
+-rw-r--r--  1 root root   731 Jan  1  2021 TODO_unicode
+drwxr-xr-x  3 root root  1500 Jan  3  2023 util-linux
+
+-rw-r--r-- 1 root root 2525473 Oct  2 02:38 /tmp/bbsrc/bb.tar.bz2
+0fc591bc9f4e365dfd9ade0014f32561  /tmp/bbsrc/bb.tar.bz2
+
+=== 重新下载并解压 ===
+-rw-r--r-- 1 root root 2525473 Oct  2 02:44 bb.tar.bz2
+bzip2 完整性 OK
+解压 OK
+1
+

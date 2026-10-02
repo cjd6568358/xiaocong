@@ -1,0 +1,68 @@
+## build7.log 最后 40 行
+CC      libbb/single_argv.o
+  CC      libbb/skip_whitespace.o
+  CC      libbb/speed_table.o
+  CC      libbb/str_tolower.o
+  CC      libbb/strrstr.o
+  CC      libbb/sysconf.o
+  CC      libbb/time.o
+  CC      libbb/trim.o
+  CC      libbb/u_signal_names.o
+  CC      libbb/ubi.o
+  CC      libbb/udp_io.o
+  CC      libbb/unicode.o
+  CC      libbb/update_passwd.o
+  CC      libbb/utmp.o
+  CC      libbb/uuencode.o
+  CC      libbb/verror_msg.o
+  CC      libbb/vfork_daemon_rexec.o
+  CC      libbb/warn_ignoring_args.o
+  CC      libbb/wfopen.o
+  CC      libbb/wfopen_input.o
+  CC      libbb/write.o
+  CC      libbb/xatonum.o
+  CC      libbb/xconnect.o
+  CC      libbb/xfunc_die.o
+  CC      libbb/xfuncs.o
+  CC      libbb/xfuncs_printf.o
+  CC      libbb/xgetcwd.o
+  CC      libbb/xgethostbyname.o
+  CC      libbb/xreadlink.o
+  CC      libbb/xrealloc_vector.o
+  CC      libbb/xregcomp.o
+  AR      libbb/lib.a
+  LINK    busybox_unstripped
+Trying libraries: crypt m resolv rt
+ Library crypt is not needed, excluding it
+ Library m is not needed, excluding it
+ Library resolv is not needed, excluding it
+ Library rt is not needed, excluding it
+Final link with: <none>
+make: *** [Makefile:719: busybox_unstripped] Error 1
+
+## 手动跑链接（V=1）看完整命令与报错
+make -f scripts/Makefile.build obj=libbb
+make -f scripts/Makefile.build obj=libpwdgrp
+make -f scripts/Makefile.build obj=loginutils
+make -f scripts/Makefile.build obj=mailutils
+make -f scripts/Makefile.build obj=miscutils
+make -f scripts/Makefile.build obj=modutils
+make -f scripts/Makefile.build obj=networking
+make -f scripts/Makefile.build obj=networking/libiproute
+make -f scripts/Makefile.build obj=networking/udhcp
+make -f scripts/Makefile.build obj=printutils
+make -f scripts/Makefile.build obj=procps
+make -f scripts/Makefile.build obj=runit
+make -f scripts/Makefile.build obj=selinux
+make -f scripts/Makefile.build obj=shell
+make -f scripts/Makefile.build obj=sysklogd
+make -f scripts/Makefile.build obj=util-linux
+make -f scripts/Makefile.build obj=util-linux/volume_id
+  /tmp/bb/busybox-1.36.1/scripts/trylink "busybox_unstripped" "aarch64-linux-musl-gcc" "-Wall -Wshadow -Wwrite-strings -Wundef -Wstrict-prototypes -Wunused -Wunused-parameter -Wunused-function -Wunused-value -Wmissing-prototypes -Wmissing-declarations -Wno-format-security -Wdeclaration-after-statement -Werror -Wold-style-definition -finline-limit=0 -fno-builtin-strlen -fomit-frame-pointer -ffunction-sections -fdata-sections -fno-guess-branch-probability -funsigned-char -static-libgcc -falign-functions=1 -falign-jumps=1 -falign-labels=1 -falign-loops=1 -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-builtin-printf -g -O0 -Wno-error -static" " " " applets/built-in.o" " archival/lib.a  archival/libarchive/lib.a  console-tools/lib.a  coreutils/lib.a  coreutils/libcoreutils/lib.a  debianutils/lib.a  klibc-utils/lib.a  e2fsprogs/lib.a  editors/lib.a  findutils/lib.a  init/lib.a  libbb/lib.a  libpwdgrp/lib.a  loginutils/lib.a  mailutils/lib.a  miscutils/lib.a  modutils/lib.a  networking/lib.a  networking/libiproute/lib.a  networking/udhcp/lib.a  printutils/lib.a  procps/lib.a  runit/lib.a  selinux/lib.a  shell/lib.a  sysklogd/lib.a  util-linux/lib.a  util-linux/volume_id/lib.a  archival/built-in.o  archival/libarchive/built-in.o  console-tools/built-in.o  coreutils/built-in.o  coreutils/libcoreutils/built-in.o  debianutils/built-in.o  klibc-utils/built-in.o  e2fsprogs/built-in.o  editors/built-in.o  findutils/built-in.o  init/built-in.o  libbb/built-in.o  libpwdgrp/built-in.o  loginutils/built-in.o  mailutils/built-in.o  miscutils/built-in.o  modutils/built-in.o  networking/built-in.o  networking/libiproute/built-in.o  networking/udhcp/built-in.o  printutils/built-in.o  procps/built-in.o  runit/built-in.o  selinux/built-in.o  shell/built-in.o  sysklogd/built-in.o  util-linux/built-in.o  util-linux/volume_id/built-in.o" "m crypt rt resolv" """" && /tmp/bb/busybox-1.36.1/scripts/generate_BUFSIZ.sh --post include/common_bufsiz.h
+Trying libraries: crypt m resolv rt
+ Library crypt is not needed, excluding it
+ Library m is not needed, excluding it
+ Library resolv is not needed, excluding it
+ Library rt is not needed, excluding it
+Final link with: <none>
+make: *** [Makefile:719: busybox_unstripped] Error 1

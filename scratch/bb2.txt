@@ -1,0 +1,74 @@
+## 找 guard
+./findutils/grep.c:180:	RE_TRANSLATE_TYPE case_fold; /* RE_TRANSLATE_TYPE is [[un]signed] char* */
+./findutils/grep.c:208:# define reflags           re_syntax_options
+./editors/vi.c:2394:	re_syntax_options = RE_SYNTAX_POSIX_BASIC & (~RE_DOT_NEWLINE);
+./editors/vi.c:2396:		re_syntax_options |= RE_ICASE;
+
+## grep.c 相关 #if
+OPT_H = 1 << OPTBIT_H,
+	OPT_h = 1 << OPTBIT_h,
+	OPT_e = 1 << OPTBIT_e,
+	OPT_f = 1 << OPTBIT_f,
+	OPT_L = 1 << OPTBIT_L,
+	OPT_o = 1 << OPTBIT_o,
+	OPT_r = 1 << OPTBIT_r,
+	OPT_R = 1 << OPTBIT_R,
+	OPT_m = 1 << OPTBIT_m,
+	OPT_w = 1 << OPTBIT_w,
+	OPT_x = 1 << OPTBIT_x,
+	OPT_A = IF_FEATURE_GREP_CONTEXT(    (1 << OPTBIT_A)) + 0,
+	OPT_B = IF_FEATURE_GREP_CONTEXT(    (1 << OPTBIT_B)) + 0,
+	OPT_C = IF_FEATURE_GREP_CONTEXT(    (1 << OPTBIT_C)) + 0,
+	OPT_E = 1 << OPTBIT_E,
+	OPT_z = IF_EXTRA_COMPAT(            (1 << OPTBIT_z)) + 0,
+};
+
+#define PRINT_LINE_NUM              (option_mask32 & OPT_n)
+#define BE_QUIET                    (option_mask32 & OPT_q)
+#define SUPPRESS_ERR_MSGS           (option_mask32 & OPT_s)
+#define PRINT_MATCH_COUNTS          (option_mask32 & OPT_c)
+#define FGREP_FLAG                  (option_mask32 & OPT_F)
+#define NUL_DELIMITED               (option_mask32 & OPT_z)
+
+struct globals {
+	int max_matches;
+#if !ENABLE_EXTRA_COMPAT
+	int reflags;
+#else
+	RE_TRANSLATE_TYPE case_fold; /* RE_TRANSLATE_TYPE is [[un]signed] char* */
+#endif
+	smalluint invert_search;
+	smalluint print_filename;
+	smalluint open_errors;
+#if ENABLE_FEATURE_GREP_CONTEXT
+	smalluint did_print_line;
+	int lines_before;
+	int lines_after;
+	char **before_buf;
+	IF_EXTRA_COMPAT(size_t *before_buf_size;)
+	int last_line_printed;
+#endif
+	/* globals used internally */
+	llist_t *pattern_head;   /* growable list of patterns to match */
+	const char *cur_file;    /* the current file we are reading */
+} FIX_ALIASING;
+#define G (*(struct globals*)bb_common_bufsiz1)
+#define INIT_G() do { \
+	setup_common_bufsiz(); \
+	BUILD_BUG_ON(sizeof(G) > COMMON_BUFSIZE); \
+
+## 相关 CONFIG 名字
+./findutils/grep.c:793:		reflags = RE_SYNTAX_GREP;
+./editors/vi.c:2748:	if (regexec(preg, q, MAX_SUBPATTERN, regmatch, REG_STARTEND) != 0)
+
+## xregex.h 存在吗
+ls: cannot access 'libbb/*regex*': No such file or directory
+-rw-r--r-- 1 root root 678 Jan  1  2021 include/xregex.h
+
+## .config 里 regex/EXTRA_COMPAT 相关
+12:CONFIG_EXTRA_COMPAT=y
+235:CONFIG_FEATURE_CUT_REGEX=y
+437:CONFIG_FEATURE_VI_REGEX_SEARCH=y
+483:CONFIG_FEATURE_FIND_REGEX=y
+656:CONFIG_FEATURE_MDEV_RENAME_REGEXP=y
+818:CONFIG_FEATURE_LESS_REGEXP=y

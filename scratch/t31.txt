@@ -1,0 +1,60 @@
+=== 安装前，脚本目录内容 ===
+total 328
+drwxr-xr-x 1 root root   4096 Oct  2 01:59 .
+drwxr-xr-x 1 root root   4096 Sep 24 18:44 ..
+-rwxr-xr-x 1 root root   5740 Sep 23 22:56 build_dropbear_static.sh
+-rwxr-xr-x 1 root root 121994 Oct  1 18:34 build_tun-ko.sh
+-rwxr-xr-x 1 root root    568 Sep 27 10:14 linux_init.sh
+-rwxr-xr-x 1 root root 191152 Sep 20 18:08 reinstall.sh
+
+本地 md5: be997b8731bdf91b4d627d3b19400007 12714 字节
+
+=== 安装（若已存在先备份）===
+备份检查完成
+
+total 344
+drwxr-xr-x 1 root root   4096 Oct  2 02:48 .
+drwxr-xr-x 1 root root   4096 Sep 24 18:44 ..
+-rwxr-xr-x 1 root root  12714 Oct  2 02:48 build_busybox_static.sh
+-rwxr-xr-x 1 root root   5740 Sep 23 22:56 build_dropbear_static.sh
+-rwxr-xr-x 1 root root 121994 Oct  1 18:34 build_tun-ko.sh
+-rwxr-xr-x 1 root root    568 Sep 27 10:14 linux_init.sh
+-rwxr-xr-x 1 root root 191152 Sep 20 18:08 reinstall.sh
+be997b8731bdf91b4d627d3b19400007  /media/disk/backup/script/build_busybox_static.sh
+
+语法检查 OK
+
+
+=== 清理我在 /tmp 里留下的临时目录（保留脚本与产物）===
+total 67964
+drwxrwxrwt 14 root root      500 Oct  2 02:48 .
+drwxr-xr-x 18 root root     4096 Sep 21 16:26 ..
+-rw-r--r--  1 root root      319 Oct  1 22:32 auth.body
+-rw-r--r--  1 root root      178 Oct  1 22:32 auth.hdr
+-rw-r--r--  1 root root      153 Oct  1 22:33 b1
+drwxr-xr-x  3 root root      280 Oct  2 02:34 bb
+drwxr-xr-x  3 root root       80 Oct  2 02:46 bbbuild
+drwxr-xr-x  3 root root      320 Oct  2 02:13 blinker-go
+-rw-r--r--  1 root root    11530 Oct  2 02:46 build_busybox_static.sh
+-rw-------  1 root root        0 Oct  2 02:33 cclhODGE.cdtor.c
+-rw-------  1 root root        0 Oct  2 02:33 ccNCajNh.cdtor.o
+drwxr-xr-x  4 root root      460 Oct  1 23:15 commonserver-go
+-rw-r--r--  1 root root    30128 Oct  1 23:16 commonserver-go-src.tar.gz
+drwxrwxrwt  2 root root       40 Sep 27 11:23 .font-unix
+-rw-r--r--  1 root root 68995422 Oct  2 02:35 go1.22.12.linux-amd64.tar.gz
+-rw-r--r--  1 root root      155 Oct  1 22:33 h1
+drwxr-xr-x  2 root root      120 Oct  2 01:48 hostkill
+drwxrwxrwt  2 root root       40 Sep 27 11:23 .ICE-unix
+drwxr-xr-x  4 root root      500 Oct  2 02:45 server-go
+
+
+=== 保留的产物 ===
+-rw-r--r-- 1 root root 11530 Oct  2 02:46 /tmp/build_busybox_static.sh
+
+/tmp/bbbuild/:
+total 1248
+drwxr-xr-x  3 root root      80 Oct  2 02:46 .
+drwxrwxrwt 14 root root     500 Oct  2 02:48 ..
+drwxr-xr-x  2 root root      60 Oct  2 02:46 busybox-build-logs
+-rwxr-xr-x  1 root root 1276192 Oct  2 02:46 busybox-full-aarch64
+

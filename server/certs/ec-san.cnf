@@ -1,0 +1,6 @@
+[v3_req]
+subjectAltName = @alt
+[alt]
+IP.1 = 192.168.1.20
+IP.2 = 127.0.0.1
+DNS.1 = xc

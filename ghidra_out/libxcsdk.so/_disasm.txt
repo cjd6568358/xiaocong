@@ -1,0 +1,1560 @@
+======== generate_broadcast @ 00014c30 ========
+00014c30  stmdb sp!,{r4,r5,r6,r7,r8,lr}           
+00014c34  sub sp,sp,#0x38                         
+00014c38  ldr r5,[0x14d3c]                           -> 00014d3c
+00014c3c  cpy r4,r0                               
+00014c40  cpy r8,r2                               
+00014c44  cpy r7,r1                               
+00014c48  ldr r5,[pc,r5]                             -> 00021ee8  *(00023010)=0x<unmapped>
+00014c4c  ldr r3,[r5,#0x0]                           -> 00023010
+00014c50  str r3,[sp,#0x34]                          -> Stack[-0x1c]
+00014c54  bl 0x00013f58                              -> 00013f58
+00014c58  mov r1,#0x1                             
+00014c5c  cpy r0,r4                               
+00014c60  bl 0x00013d68                              -> 00013d68
+00014c64  mov r1,#0x0                             
+00014c68  cpy r0,r4                               
+00014c6c  bl 0x00013db4                              -> 00013db4
+00014c70  mov r1,#0x1                             
+00014c74  cpy r0,r4                               
+00014c78  bl 0x00013e00                              -> 00013e00
+00014c7c  mov r1,#0x1                             
+00014c80  cpy r0,r4                               
+00014c84  bl 0x00013e44                              -> 00013e44
+00014c88  bl 0x000132ec                              -> 000132ec
+00014c8c  mov r3,#0x2                             
+00014c90  str r3,[sp,#0x0]                           -> Stack[-0x50]
+00014c94  cpy r2,r0                               
+00014c98  mov r3,r0, asr #0x1f                    
+00014c9c  cpy r0,r4                               
+00014ca0  bl 0x00013e94                              -> 00013e94
+00014ca4  ldr r2,[0x14d40]                           -> 00014d40
+00014ca8  cpy r0,r4                               
+00014cac  mov r1,#0xb                             
+00014cb0  add r2,pc,r2                               -> 0001d9e0 "Scan"
+00014cb4  mov r3,#0x4                             
+00014cb8  bl 0x000143c0                              -> 000143c0
+00014cbc  cmp r7,#0x0                             
+00014cc0  beq 0x00014d14                             -> 00014d14
+00014cc4  add r6,sp,#0x8                          
+00014cc8  ldr r1,[0x14d44]                           -> 00014d44
+00014ccc  cpy r2,r7                               
+00014cd0  cpy r3,r8                               
+00014cd4  add r1,pc,r1                               -> 0001d9fc "{"scanType":"%d","productId":"%s"}"
+00014cd8  cpy r0,r6                               
+00014cdc  bl 0x000132f8                              -> 000132f8
+00014ce0  cpy r0,r6                               
+00014ce4  bl 0x000131e4                              -> 000131e4
+00014ce8  cpy r1,r6                               
+00014cec  cpy r2,r0                               
+00014cf0  cpy r0,r4                               
+00014cf4  bl 0x00013fe8                              -> 00013fe8
+00014cf8  ldr r2,[sp,#0x34]                          -> Stack[-0x1c]
+00014cfc  ldr r3,[r5,#0x0]                           -> 00023010
+00014d00  mov r0,#0x0                             
+00014d04  cmp r2,r3                               
+00014d08  bne 0x00014d38                             -> 00014d38
+00014d0c  add sp,sp,#0x38                         
+00014d10  ldmia sp!,{r4,r5,r6,r7,r8,pc}           
+00014d14  ldr lr,[0x14d48]                           -> 00014d48
+00014d18  add r6,sp,#0x8                          
+00014d1c  add lr,pc,lr                            
+00014d20  cpy r12,r6                              
+00014d24  ldmia lr!,{r0,r1,r2,r3}                    -> 0001d9e8 "{"scanType":"0"}"   -> 0001d9ec "anType":"0"}"   -> 0001d9f0 "pe":"0"}"   -> 0001d9f4 ""0"}"
+00014d28  ldr lr,[lr,#0x0]                           -> 0001d9f8
+00014d2c  stmia r12!,{r0,r1,r2,r3}                   -> Stack[-0x48]
+00014d30  strb lr,[r12,#0x0]                         -> Stack[-0x38]
+00014d34  b 0x00014ce0                               -> 00014ce0
+00014d38  bl 0x000131f0                              -> 000131f0
+
+======== xconfig_start @ 0001a0c8 ========
+0001a0c8  ldr r12,[0x1a79c]                          -> 0001a79c
+0001a0cc  stmdb sp!,{r4,r5,r6,r7,r8,r9,r10,r11,lr}
+0001a0d0  cpy r9,r3                               
+0001a0d4  ldr r3,[pc,r12]                            -> 00021ee8  *(00023010)=0x<unmapped>
+0001a0d8  sub sp,sp,#0x2ac                        
+0001a0dc  cpy r8,r2                               
+0001a0e0  subs r6,r0,#0x0                         
+0001a0e4  ldr r2,[sp,#0x2dc]                         -> Stack[0xc]
+0001a0e8  str r3,[sp,#0x14]                          -> 00023010   -> Stack[-0x2bc]
+0001a0ec  ldr r3,[r3,#0x0]                           -> 00023010
+0001a0f0  ldr r4,[sp,#0x2d0]                         -> Stack[0x0]
+0001a0f4  ldr r10,[sp,#0x2d4]                        -> Stack[0x4]
+0001a0f8  str r2,[sp,#0x10]                          -> Stack[-0x2c0]
+0001a0fc  str r3,[sp,#0x2a4]                         -> Stack[-0x2c]
+0001a100  beq 0x0001a710                             -> 0001a710
+0001a104  ldr lr,[sp,#0x10]                          -> Stack[-0x2c0]
+0001a108  cpy r11,r1                              
+0001a10c  cmp lr,#0x0                             
+0001a110  beq 0x0001a6ac                             -> 0001a6ac
+0001a114  ldr r0,[lr,#0x0]                        
+0001a118  ldr r1,[lr,#0x4]                        
+0001a11c  ldr r2,[lr,#0x8]                        
+0001a120  ldr r12,[lr,#0xc]                       
+0001a124  str r0,[r6,#0x8]                        
+0001a128  str r1,[r6,#0xc]                        
+0001a12c  str r2,[r6,#0x10]                       
+0001a130  str r12,[r6,#0x14]                      
+0001a134  ldr r2,[lr,#0x18]                       
+0001a138  ldr r0,[lr,#0x10]                       
+0001a13c  ldr r1,[lr,#0x14]                       
+0001a140  ldr r3,[r6,#0x4]                        
+0001a144  str r0,[r6,#0x18]                       
+0001a148  str r1,[r6,#0x1c]                       
+0001a14c  cmp r3,#0x0                             
+0001a150  str r2,[r6,#0x20]                       
+0001a154  ldrh r2,[lr,#0x1c]                      
+0001a158  strh r2,[r6,#0x24]                      
+0001a15c  ble 0x0001a6f0                             -> 0001a6f0
+0001a160  add r7,sp,#0x44                         
+0001a164  mov r1,#0x0                             
+0001a168  mov r2,#0x60                            
+0001a16c  cpy r0,r7                               
+0001a170  bl 0x000133d0                              -> 000133d0
+0001a174  clz r3,r9                               
+0001a178  mov r3,r3, lsr #0x5                     
+0001a17c  orrs r3,r3,r4, lsr #0x1f                
+0001a180  bne 0x0001a710                             -> 0001a710
+0001a184  mov r5,r8, lsr #0x1f                    
+0001a188  cmp r11,#0x0                            
+0001a18c  orreq r5,r5,#0x1                        
+0001a190  cmp r5,#0x0                             
+0001a194  bne 0x0001a710                             -> 0001a710
+0001a198  cpy r1,r9                               
+0001a19c  uxtb r3,r4                              
+0001a1a0  add r12,r8,#0x7                         
+0001a1a4  cpy r2,r4                               
+0001a1a8  add r0,r7,#0x3                          
+0001a1ac  strb r3,[sp,#0x46]                         -> Stack[-0x28a]
+0001a1b0  add r3,r3,r12                           
+0001a1b4  strb r3,[sp,#0x45]                         -> Stack[-0x28b]
+0001a1b8  bl 0x000131fc                              -> 000131fc
+0001a1bc  ldrh r12,[r6,#0x24]                     
+0001a1c0  ldr r0,[r6,#0x20]                       
+0001a1c4  add r3,r4,#0x7                          
+0001a1c8  add r2,r4,#0x3                          
+0001a1cc  add r9,sp,#0xa4                         
+0001a1d0  add r4,r4,#0x9                          
+0001a1d4  cpy r1,r11                              
+0001a1d8  str r0,[r7,r2]                          
+0001a1dc  add r0,r7,r4                            
+0001a1e0  strh r12,[r7,r3]                        
+0001a1e4  cpy r2,r8                               
+0001a1e8  bl 0x000131fc                              -> 000131fc
+0001a1ec  cpy r1,r5                               
+0001a1f0  mov r2,#0x200                           
+0001a1f4  cpy r0,r9                               
+0001a1f8  bl 0x000133d0                              -> 000133d0
+0001a1fc  ldr r0,[0x1a7a0]                           -> 0001a7a0
+0001a200  cpy r3,r5                               
+0001a204  add r4,r4,r8                            
+0001a208  cpy r1,r9                               
+0001a20c  str r4,[sp,#0x0]                           -> Stack[-0x2d0]
+0001a210  add r0,pc,r0                               -> 0001dea0 "Payload"
+0001a214  cpy r2,r7                               
+0001a218  bl 0x0001a004                              -> 0001a004
+0001a21c  ldr r3,[r6,#0x8]                        
+0001a220  mov r3,r3, asr #0x4                     
+0001a224  cmp r3,#0x2                             
+0001a228  beq 0x0001a718                             -> 0001a718
+0001a22c  cmp r3,#0x1                             
+0001a230  ldrbne r3,[sp,#0x45]                       -> Stack[-0x28b]
+0001a234  beq 0x0001a790                             -> 0001a790
+0001a238  add r1,r3,#0x1                          
+0001a23c  cpy r5,r7                               
+0001a240  add r1,r7,r1                            
+0001a244  cpy r2,r7                               
+0001a248  mov r12,#0x0                            
+0001a24c  b 0x0001a2f8                               -> 0001a2f8
+0001a250  ldrb r3,[r2,#0x1]!                         -> Stack[-0x28b]
+0001a254  eor r12,r12,r3                          
+0001a258  tst r12,#0x1                            
+0001a25c  mov r12,r12, lsr #0x1                   
+0001a260  eor r0,r12,#0x8c                        
+0001a264  cpyeq r0,r12                            
+0001a268  uxtb r0,r0                              
+0001a26c  tst r0,#0x1                             
+0001a270  mov r0,r0, lsr #0x1                     
+0001a274  eor r3,r0,#0x8c                         
+0001a278  cpyeq r3,r0                             
+0001a27c  uxtb r3,r3                              
+0001a280  tst r3,#0x1                             
+0001a284  mov r3,r3, lsr #0x1                     
+0001a288  eor r0,r3,#0x8c                         
+0001a28c  cpyne r3,r0                             
+0001a290  uxtb r3,r3                              
+0001a294  tst r3,#0x1                             
+0001a298  mov r3,r3, lsr #0x1                     
+0001a29c  eor r0,r3,#0x8c                         
+0001a2a0  cpyne r3,r0                             
+0001a2a4  uxtb r3,r3                              
+0001a2a8  tst r3,#0x1                             
+0001a2ac  mov r3,r3, lsr #0x1                     
+0001a2b0  eor r0,r3,#0x8c                         
+0001a2b4  cpyne r3,r0                             
+0001a2b8  uxtb r3,r3                              
+0001a2bc  tst r3,#0x1                             
+0001a2c0  mov r3,r3, lsr #0x1                     
+0001a2c4  eor r0,r3,#0x8c                         
+0001a2c8  cpyne r3,r0                             
+0001a2cc  uxtb r3,r3                              
+0001a2d0  tst r3,#0x1                             
+0001a2d4  mov r3,r3, lsr #0x1                     
+0001a2d8  eor r0,r3,#0x8c                         
+0001a2dc  cpyne r3,r0                             
+0001a2e0  uxtb r3,r3                              
+0001a2e4  tst r3,#0x1                             
+0001a2e8  mov r3,r3, lsr #0x1                     
+0001a2ec  eor r0,r3,#0x8c                         
+0001a2f0  cpyne r3,r0                             
+0001a2f4  uxtb r12,r3                             
+0001a2f8  cmp r2,r1                               
+0001a2fc  bne 0x0001a250                             -> 0001a250
+0001a300  ldr r0,[0x1a7a4]                           -> 0001a7a4
+0001a304  cpy r1,r9                               
+0001a308  cpy r2,r7                               
+0001a30c  mov r3,#0x0                             
+0001a310  add r0,pc,r0                               -> 0001dea0 "Payload"
+0001a314  str r4,[sp,#0x0]                           -> Stack[-0x2d0]
+0001a318  strb r12,[sp,#0x44]                        -> Stack[-0x28c]
+0001a31c  bl 0x0001a004                              -> 0001a004
+0001a320  mov r11,#0x1                            
+0001a324  cmp r11,#0x0                            
+0001a328  mov r3,#0x2                             
+0001a32c  strh r3,[r6,#0xd6]                      
+0001a330  movne r1,#0x23                          
+0001a334  moveq r1,#0x0                           
+0001a338  mov r3,#0x4                             
+0001a33c  strh r3,[r6,#0xda]                      
+0001a340  add r0,r4,#0x3                          
+0001a344  mov r2,#0x3                             
+0001a348  strh r11,[r6,#0xd4]                     
+0001a34c  strh r2,[r6,#0xd8]                      
+0001a350  add r2,r6,#0xd4                         
+0001a354  strh r11,[r6,#0xde]                     
+0001a358  tst r1,#0x1                             
+0001a35c  mov r1,r1, lsr r11                      
+0001a360  orr r12,r1,#0x8c                        
+0001a364  cpyne r1,r12                            
+0001a368  uxtb r1,r1                              
+0001a36c  tst r1,#0x1                             
+0001a370  mov r1,r1, lsr r11                      
+0001a374  eor r3,r1,#0x8c                         
+0001a378  cpyeq r3,r1                             
+0001a37c  uxtb r3,r3                              
+0001a380  tst r3,#0x1                             
+0001a384  mov r3,r3, lsr r11                      
+0001a388  eor r1,r3,#0x8c                         
+0001a38c  cpyeq r1,r3                             
+0001a390  uxtb r1,r1                              
+0001a394  tst r1,#0x1                             
+0001a398  mov r1,r1, lsr r11                      
+0001a39c  eor r3,r1,#0x8c                         
+0001a3a0  cpyeq r3,r1                             
+0001a3a4  uxtb r3,r3                              
+0001a3a8  tst r3,#0x1                             
+0001a3ac  mov r3,r3, lsr r11                      
+0001a3b0  eor r1,r3,#0x8c                         
+0001a3b4  cpyne r3,r1                             
+0001a3b8  cmp r4,#0x0                             
+0001a3bc  and r1,r3,#0x7                          
+0001a3c0  cpyge r0,r4                             
+0001a3c4  ands r12,r4,#0x3                        
+0001a3c8  orr r3,r1,#0x100                        
+0001a3cc  strh r3,[r6,#0xdc]                      
+0001a3d0  cpyne r12,r11                           
+0001a3d4  add r3,r12,r0, asr #0x2                 
+0001a3d8  cmp r3,#0x0                             
+0001a3dc  str r3,[sp,#0x18]                          -> Stack[-0x2b8]
+0001a3e0  ble 0x0001a780                             -> 0001a780
+0001a3e4  mov r3,r3, lsl #0x2                     
+0001a3e8  mov r7,#0x0                             
+0001a3ec  add r10,r3,r11                          
+0001a3f0  add r9,sp,#0x34                         
+0001a3f4  add lr,sp,#0x38                         
+0001a3f8  cpy r0,r2                               
+0001a3fc  cpy r12,r11                             
+0001a400  cpy r8,r7                               
+0001a404  str r3,[sp,#0x1c]                          -> Stack[-0x2b4]
+0001a408  cmp r4,r12                              
+0001a40c  ldrb r3,[r5,#0x0]                          -> Stack[-0x28c]
+0001a410  str r8,[sp,#0x34]                          -> Stack[-0x29c]
+0001a414  add r7,r7,#0x1                          
+0001a418  ldrbge r1,[r5,#0x1]                        -> Stack[-0x28b]
+0001a41c  movlt r2,#0x0                           
+0001a420  strh r3,[r0,#0xe]                       
+0001a424  cpylt r1,r2                             
+0001a428  strb r3,[sp,#0x34]                         -> Stack[-0x29c]
+0001a42c  add r3,r12,#0x1                         
+0001a430  uxthge r2,r1                            
+0001a434  cmp r4,r3                               
+0001a438  strb r1,[sp,#0x35]                         -> Stack[-0x29b]   -> Stack[-0x29b]
+0001a43c  add r3,r12,#0x2                         
+0001a440  ldrbge r1,[r5,#0x2]                        -> Stack[-0x28a]
+0001a444  strh r2,[r0,#0x10]                      
+0001a448  movlt r2,#0x0                           
+0001a44c  cpylt r1,r2                             
+0001a450  uxthge r2,r1                            
+0001a454  cmp r4,r3                               
+0001a458  strb r1,[sp,#0x36]                         -> Stack[-0x29a]
+0001a45c  and r1,r7,#0x1f                         
+0001a460  strh r2,[r0,#0x12]                      
+0001a464  orr r1,r1,#0x20                         
+0001a468  ldrbge r2,[r5,#0x3]                        -> Stack[-0x289]
+0001a46c  movlt r11,#0x0                          
+0001a470  mov r1,r1, lsl #0x3                     
+0001a474  cpylt r2,r11                            
+0001a478  mov r3,#0x0                             
+0001a47c  uxthge r11,r2                           
+0001a480  strb r2,[sp,#0x37]                         -> Stack[-0x299]
+0001a484  cpy r2,r9                               
+0001a488  strh r11,[r0,#0x14]                     
+0001a48c  ldrb r11,[r2],#0x1                      
+0001a490  eor r11,r11,r3                          
+0001a494  tst r11,#0x1                            
+0001a498  mov r11,r11, lsr #0x1                   
+0001a49c  eor r3,r11,#0x8c                        
+0001a4a0  cpyeq r3,r11                            
+0001a4a4  uxtb r3,r3                              
+0001a4a8  tst r3,#0x1                             
+0001a4ac  mov r3,r3, lsr #0x1                     
+0001a4b0  eor r11,r3,#0x8c                        
+0001a4b4  cpyeq r11,r3                            
+0001a4b8  uxtb r11,r11                            
+0001a4bc  tst r11,#0x1                            
+0001a4c0  mov r11,r11, lsr #0x1                   
+0001a4c4  eor r3,r11,#0x8c                        
+0001a4c8  cpyeq r3,r11                            
+0001a4cc  uxtb r3,r3                              
+0001a4d0  tst r3,#0x1                             
+0001a4d4  mov r3,r3, lsr #0x1                     
+0001a4d8  eor r11,r3,#0x8c                        
+0001a4dc  cpyeq r11,r3                            
+0001a4e0  uxtb r11,r11                            
+0001a4e4  tst r11,#0x1                            
+0001a4e8  mov r11,r11, lsr #0x1                   
+0001a4ec  eor r3,r11,#0x8c                        
+0001a4f0  cpyeq r3,r11                            
+0001a4f4  uxtb r3,r3                              
+0001a4f8  tst r3,#0x1                             
+0001a4fc  mov r3,r3, lsr #0x1                     
+0001a500  eor r11,r3,#0x8c                        
+0001a504  cpyeq r11,r3                            
+0001a508  uxtb r11,r11                            
+0001a50c  tst r11,#0x1                            
+0001a510  mov r11,r11, lsr #0x1                   
+0001a514  eor r3,r11,#0x8c                        
+0001a518  cpyeq r3,r11                            
+0001a51c  uxtb r3,r3                              
+0001a520  tst r3,#0x1                             
+0001a524  mov r3,r3, lsr #0x1                     
+0001a528  eor r11,r3,#0x8c                        
+0001a52c  cpyne r3,r11                            
+0001a530  cmp r2,lr                               
+0001a534  uxtb r3,r3                              
+0001a538  bne 0x0001a48c                             -> 0001a48c
+0001a53c  add r12,r12,#0x4                        
+0001a540  and r3,r3,#0x7                          
+0001a544  cmp r12,r10                             
+0001a548  orr r3,r3,r1                            
+0001a54c  add r5,r5,#0x4                          
+0001a550  strh r3,[r0,#0xc]                       
+0001a554  add r0,r0,#0xa                          
+0001a558  bne 0x0001a408                             -> 0001a408
+0001a55c  ldr r3,[sp,#0x1c]                          -> Stack[-0x2b4]
+0001a560  ldr r2,[sp,#0x18]                          -> Stack[-0x2b8]
+0001a564  add r3,r3,r2                            
+0001a568  add r3,r3,#0x6                          
+0001a56c  add r5,r4,r4, lsr #0x1f                 
+0001a570  mov r1,r4, lsr #0x1f                    
+0001a574  and r2,r5,#0x1                          
+0001a578  str r3,[r6,#0xcc]                       
+0001a57c  rsb r3,r1,r2                            
+0001a580  mov r12,#0x0                            
+0001a584  add r5,r3,r5, asr #0x1                  
+0001a588  mov lr,#0x2                             
+0001a58c  cmp r5,r12                              
+0001a590  mov r3,#0x1                             
+0001a594  mov r0,#0x3                             
+0001a598  mov r2,#0x4                             
+0001a59c  strb r12,[r6,#0x3c]                     
+0001a5a0  add r1,r6,#0x3c                         
+0001a5a4  strb r12,[r6,#0x3f]                     
+0001a5a8  strb r12,[r6,#0x42]                     
+0001a5ac  strb r12,[r6,#0x45]                     
+0001a5b0  strb r3,[r6,#0x3d]                      
+0001a5b4  strb r3,[r6,#0x3e]                      
+0001a5b8  strb r3,[r6,#0x40]                      
+0001a5bc  strb r3,[r6,#0x43]                      
+0001a5c0  strb r3,[r6,#0x46]                      
+0001a5c4  strb lr,[r6,#0x41]                      
+0001a5c8  strb r0,[r6,#0x44]                      
+0001a5cc  strb r2,[r6,#0x47]                      
+0001a5d0  ble 0x0001a788                             -> 0001a788
+0001a5d4  add lr,r5,r3                            
+0001a5d8  cpy r0,r3                               
+0001a5dc  add r2,sp,#0x2a8                        
+0001a5e0  add r3,r12,#0x1                         
+0001a5e4  add r2,r2,r12                           
+0001a5e8  cmp r4,r3                               
+0001a5ec  addne r12,r12,#0x2                      
+0001a5f0  add r1,r1,#0x3                          
+0001a5f4  ldrb r8,[r2,#-0x264]                       -> Stack[-0x28c]
+0001a5f8  addne r2,sp,#0x2a8                      
+0001a5fc  addne r3,r2,r3                          
+0001a600  moveq r7,#0x0                           
+0001a604  and r2,r0,#0x3f                         
+0001a608  add r0,r0,#0x1                          
+0001a60c  ldrbne r7,[r3,#-0x264]                     -> Stack[-0x28b]
+0001a610  cpyeq r12,r4                            
+0001a614  cmp r0,lr                               
+0001a618  strb r8,[r1,#0xa]                       
+0001a61c  eor r3,r7,r8                            
+0001a620  and r3,r3,#0x1                          
+0001a624  strb r7,[r1,#0xb]                       
+0001a628  orr r3,r2,r3, lsl #0x6                  
+0001a62c  strb r3,[r1,#0x9]                       
+0001a630  bne 0x0001a5dc                             -> 0001a5dc
+0001a634  add r5,r5,#0x4                          
+0001a638  cpy r0,r6                               
+0001a63c  mov r3,#0x1                             
+0001a640  str r5,[r6,#0x34]                       
+0001a644  str r3,[r0,#0x28]!                      
+0001a648  bl 0x00019b10                              -> 00019b10
+0001a64c  ldr r1,[sp,#0x10]                          -> Stack[-0x2c0]
+0001a650  ldr r2,[r6,#0x34]                       
+0001a654  ldr r4,[r6,#0x1c]                       
+0001a658  ldr r0,[r1,#0x10]                       
+0001a65c  sub r2,r2,#0x4                          
+0001a660  ldr r3,[r1,#0xc]                        
+0001a664  ldr r1,[r1,#0x8]                        
+0001a668  mul r3,r3,r0                            
+0001a66c  cpy r0,r4                               
+0001a670  mla r1,r2,r3,r1                         
+0001a674  str r1,[r6,#0x2c]                       
+0001a678  bl 0x0001bd54                              -> 0001bd54
+0001a67c  mov r0,#0x0                             
+0001a680  mov r3,#0x2                             
+0001a684  str r3,[r6,#0x0]                        
+0001a688  rsb r1,r1,r4                            
+0001a68c  str r1,[r6,#0x1c]                       
+0001a690  ldr r3,[sp,#0x14]                          -> Stack[-0x2bc]
+0001a694  ldr r2,[sp,#0x2a4]                         -> Stack[-0x2c]
+0001a698  ldr r3,[r3,#0x0]                           -> 00023010
+0001a69c  cmp r2,r3                               
+0001a6a0  bne 0x0001a798                             -> 0001a798
+0001a6a4  add sp,sp,#0x2ac                        
+0001a6a8  ldmia sp!,{r4,r5,r6,r7,r8,r9,r10,r11,pc}
+0001a6ac  add r3,r6,#0x8                          
+0001a6b0  str r3,[sp,#0x10]                          -> Stack[-0x2c0]
+0001a6b4  mov r3,#0x5                             
+0001a6b8  str r3,[r6,#0xc]                        
+0001a6bc  mov r3,#0xa                             
+0001a6c0  str r3,[r6,#0x14]                       
+0001a6c4  movw r3,#0x9c40                         
+0001a6c8  str r3,[r6,#0x1c]                       
+0001a6cc  ldr r3,[r6,#0x4]                        
+0001a6d0  mov r2,#0x23                            
+0001a6d4  str r2,[r6,#0x8]                        
+0001a6d8  mov r2,#0x7d0                           
+0001a6dc  cmp r3,#0x0                             
+0001a6e0  str r2,[r6,#0x10]                       
+0001a6e4  mov r2,#0x14                            
+0001a6e8  str r2,[r6,#0x18]                       
+0001a6ec  bgt 0x0001a160                             -> 0001a160
+0001a6f0  mov r0,#0x0                             
+0001a6f4  mov r2,#0x1                             
+0001a6f8  cpy r1,r0                               
+0001a6fc  cpy r3,r2                               
+0001a700  bl 0x00014584                              -> 00014584
+0001a704  cmn r0,#0x1                             
+0001a708  str r0,[r6,#0x4]                        
+0001a70c  bne 0x0001a160                             -> 0001a160
+0001a710  mvn r0,#0x0                             
+0001a714  b 0x0001a690                               -> 0001a690
+0001a718  add r12,sp,#0x24                        
+0001a71c  cpy r1,r10                              
+0001a720  ldr r2,[sp,#0x2d8]                         -> Stack[0x8]
+0001a724  cpy r0,r12                              
+0001a728  str r5,[sp,#0x24]                          -> Stack[-0x2ac]
+0001a72c  str r5,[sp,#0x28]                          -> Stack[-0x2a8]
+0001a730  str r5,[sp,#0x2c]                          -> Stack[-0x2a4]
+0001a734  str r5,[sp,#0x30]                          -> Stack[-0x2a0]
+0001a738  str r5,[sp,#0x34]                          -> Stack[-0x29c]
+0001a73c  str r5,[sp,#0x38]                          -> Stack[-0x298]
+0001a740  str r5,[sp,#0x3c]                          -> Stack[-0x294]
+0001a744  str r5,[sp,#0x40]                          -> Stack[-0x290]
+0001a748  bl 0x000131fc                              -> 000131fc
+0001a74c  ldrb r2,[sp,#0x45]                         -> Stack[-0x28b]
+0001a750  add r3,r7,#0x2                          
+0001a754  mov r1,#0x10                            
+0001a758  str r3,[sp,#0x4]                           -> Stack[-0x2cc]
+0001a75c  add r12,r2,#0x10                        
+0001a760  str r12,[sp,#0x8]                          -> Stack[-0x2c8]
+0001a764  str r2,[sp,#0x0]                           -> Stack[-0x2d0]
+0001a768  add r2,sp,#0x34                         
+0001a76c  bl 0x0001afd0                              -> 0001afd0
+0001a770  uxtb r3,r0                              
+0001a774  add r4,r0,#0x2                          
+0001a778  strb r3,[sp,#0x45]                         -> Stack[-0x28b]
+0001a77c  b 0x0001a238                               -> 0001a238
+0001a780  mov r3,#0x6                             
+0001a784  b 0x0001a56c                               -> 0001a56c
+0001a788  cpy r5,r2                               
+0001a78c  b 0x0001a638                               -> 0001a638
+0001a790  str r5,[r6,#0x0]                        
+0001a794  b 0x0001a710                               -> 0001a710
+0001a798  bl 0x000131f0                              -> 000131f0
+
+======== xconfig_init @ 00019c44 ========
+00019c44  stmdb sp!,{r4,lr}                       
+00019c48  mov r0,#0x194                           
+00019c4c  bl 0x00013250                              -> 00013250
+00019c50  subs r4,r0,#0x0                         
+00019c54  beq 0x00019c64                             -> 00019c64
+00019c58  mov r1,#0x0                             
+00019c5c  mov r2,#0x194                           
+00019c60  bl 0x000133d0                              -> 000133d0
+00019c64  cpy r0,r4                               
+00019c68  ldmia sp!,{r4,pc}                       
+
+======== cmdExec @ 00018ccc ========
+00018ccc  stmdb sp!,{r4,r5,r6,r7,r8,r9,r10,lr}    
+00018cd0  cpy r6,r0                               
+00018cd4  ldr r4,[0x18f08]                           -> 00018f08
+00018cd8  sub sp,sp,#0x38                         
+00018cdc  ldr r3,[0x18f0c]                           -> 00018f0c
+00018ce0  add r4,pc,r4                            
+00018ce4  ldr r0,[r0,#0x3c]                       
+00018ce8  ldr r5,[r4,r3]                             -> 00021ee8  *(00023010)=0x<unmapped>
+00018cec  cmp r0,#0x0                             
+00018cf0  ldr r3,[r5,#0x0]                           -> 00023010
+00018cf4  str r3,[sp,#0x34]                          -> Stack[-0x24]
+00018cf8  bne 0x00018d5c                             -> 00018d5c
+00018cfc  sub r1,r1,#0x2                          
+00018d00  cpy r7,r2                               
+00018d04  str r0,[sp,#0xc]                           -> Stack[-0x4c]
+00018d08  cmp r1,#0x3                             
+00018d0c  addls pc,pc,r1, lsl #0x2                   -> 00018d14   -> 00018d18   -> 00018d1c   -> 00018d20
+00018d10  b 0x00018d5c                               -> 00018d5c
+00018d14  b 0x00018de8                               -> 00018de8
+00018d18  b 0x00018ebc                               -> 00018ebc
+00018d1c  b 0x00018d78                               -> 00018d78
+00018d20  b 0x00018d24                               -> 00018d24
+00018d24  cpy r0,r2                               
+00018d28  add r1,sp,#0x10                         
+00018d2c  bl 0x000198e0                              -> 000198e0
+00018d30  cmp r0,#0x0                             
+00018d34  bne 0x00018d5c                             -> 00018d5c
+00018d38  mov r1,#0x5                             
+00018d3c  add r3,sp,#0xc                          
+00018d40  cpy r2,r7                               
+00018d44  str r1,[r6,#0x3c]                       
+00018d48  cpy r0,r6                               
+00018d4c  str r3,[r6,#0x40]                       
+00018d50  bl 0x00018c2c                              -> 00018c2c
+00018d54  cmp r0,#0x0                             
+00018d58  beq 0x00018dc4                             -> 00018dc4
+00018d5c  mov r0,#0x0                             
+00018d60  ldr r2,[sp,#0x34]                          -> Stack[-0x24]
+00018d64  ldr r3,[r5,#0x0]                           -> 00023010
+00018d68  cmp r2,r3                               
+00018d6c  bne 0x00018f04                             -> 00018f04
+00018d70  add sp,sp,#0x38                         
+00018d74  ldmia sp!,{r4,r5,r6,r7,r8,r9,r10,pc}    
+00018d78  add r8,sp,#0x10                         
+00018d7c  cpy r0,r2                               
+00018d80  mov r3,#0x0                             
+00018d84  str r3,[sp,#0x10]                          -> Stack[-0x48]
+00018d88  cpy r1,r8                               
+00018d8c  str r3,[sp,#0x14]                          -> Stack[-0x44]
+00018d90  str r3,[sp,#0x18]                          -> Stack[-0x40]
+00018d94  str r3,[sp,#0x1c]                          -> Stack[-0x3c]
+00018d98  bl 0x000198e0                              -> 000198e0
+00018d9c  cmp r0,#0x0                             
+00018da0  bne 0x00018d5c                             -> 00018d5c
+00018da4  mov r1,#0x4                             
+00018da8  str r8,[r6,#0x40]                       
+00018dac  cpy r2,r7                               
+00018db0  str r1,[r6,#0x3c]                       
+00018db4  cpy r0,r6                               
+00018db8  bl 0x00018c2c                              -> 00018c2c
+00018dbc  cmp r0,#0x0                             
+00018dc0  bne 0x00018d5c                             -> 00018d5c
+00018dc4  cpy r0,r6                               
+00018dc8  bl 0x00018c6c                              -> 00018c6c
+00018dcc  cmp r0,#0x0                             
+00018dd0  bne 0x00018d5c                             -> 00018d5c
+00018dd4  ldr r3,[0x18f10]                           -> 00018f10
+00018dd8  str r0,[r6,#0x3c]                       
+00018ddc  ldr r3,[r4,r3]                             -> 00021eec  *(0002200c)=0xb022020000000000000400003235352e3235352e3235352e3235350000000000
+00018de0  ldr r0,[r3,#0x0]                           -> 0002200c  *(000222b0)=0x<unmapped>   -> 000222b0
+00018de4  b 0x00018d60                               -> 00018d60
+00018de8  ldr r8,[0x18f14]                           -> 00018f14
+00018dec  add r9,sp,#0x10                         
+00018df0  str r2,[sp,#0x0]                           -> Stack[-0x58]
+00018df4  mov r3,#0x2                             
+00018df8  add r8,pc,r8                            
+00018dfc  ldr r2,[0x18f18]                           -> 00018f18
+00018e00  mov r0,#0x4                             
+00018e04  add r2,pc,r2                               -> 0001dc0c "cmdExec:type=%d, str=%s"
+00018e08  cpy r1,r8                                  -> 0001dba0 "/Users/maizi/Public/ndk-worspace/embed-gw/sdk_smartphone/Test.Gr"
+00018e0c  bl 0x000133f4                              -> 000133f4
+00018e10  cpy r1,r9                               
+00018e14  cpy r0,r7                               
+00018e18  mov r3,#0x0                             
+00018e1c  str r3,[sp,#0x10]                          -> Stack[-0x48]
+00018e20  str r3,[sp,#0x14]                          -> Stack[-0x44]
+00018e24  str r3,[sp,#0x18]                          -> Stack[-0x40]
+00018e28  str r3,[sp,#0x1c]                          -> Stack[-0x3c]
+00018e2c  bl 0x000198e0                              -> 000198e0
+00018e30  ldr r2,[0x18f1c]                           -> 00018f1c
+00018e34  cpy r1,r8                                  -> 0001dba0 "/Users/maizi/Public/ndk-worspace/embed-gw/sdk_smartphone/Test.Gr"
+00018e38  add r2,pc,r2                               -> 0001dc24 "Scan:error=%d"
+00018e3c  cpy r10,r0                              
+00018e40  mov r0,#0x4                             
+00018e44  cpy r3,r10                              
+00018e48  bl 0x000133f4                              -> 000133f4
+00018e4c  cmp r10,#0x0                            
+00018e50  bne 0x00018d5c                             -> 00018d5c
+00018e54  mov r1,#0x2                             
+00018e58  str r9,[r6,#0x40]                       
+00018e5c  cpy r2,r7                               
+00018e60  str r1,[r6,#0x3c]                       
+00018e64  cpy r0,r6                               
+00018e68  bl 0x00018c2c                              -> 00018c2c
+00018e6c  cmp r0,#0x0                             
+00018e70  bne 0x00018d5c                             -> 00018d5c
+00018e74  cpy r0,r6                               
+00018e78  bl 0x00018c6c                              -> 00018c6c
+00018e7c  cmp r0,#0x0                             
+00018e80  bne 0x00018d5c                             -> 00018d5c
+00018e84  ldr r3,[0x18f20]                           -> 00018f20
+00018e88  ldr r12,[0x18f10]                          -> 00018f10
+00018e8c  add r3,pc,r3                            
+00018e90  str r0,[r6,#0x3c]                       
+00018e94  ldmia r3!,{r0,r1,r2}                       -> 0001dc34 "{"result":0}"   -> 0001dc38 "sult":0}"   -> 0001dc3c "":0}"
+00018e98  ldr r12,[r4,r12]                           -> 00021eec  *(0002200c)=0xb022020000000000000400003235352e3235352e3235352e3235350000000000
+00018e9c  ldrb lr,[r3,#0x0]                          -> 0001dc40
+00018ea0  ldr r3,[r12,#0x0]                          -> 0002200c  *(000222b0)=0x<unmapped>
+00018ea4  str r0,[r3,#0x0]                           -> 000222b0
+00018ea8  str r1,[r3,#0x4]                           -> 000222b4
+00018eac  ldr r0,[r12,#0x0]                          -> 0002200c  *(000222b0)=0x<unmapped>   -> 000222b0
+00018eb0  str r2,[r3,#0x8]                           -> 000222b8
+00018eb4  strb lr,[r3,#0xc]                          -> 000222bc
+00018eb8  b 0x00018d60                               -> 00018d60
+00018ebc  add r8,sp,#0x10                         
+00018ec0  cpy r0,r2                               
+00018ec4  mov r3,#0x0                             
+00018ec8  str r3,[sp,#0x10]                          -> Stack[-0x48]
+00018ecc  cpy r1,r8                               
+00018ed0  str r3,[sp,#0x14]                          -> Stack[-0x44]
+00018ed4  str r3,[sp,#0x18]                          -> Stack[-0x40]
+00018ed8  str r3,[sp,#0x1c]                          -> Stack[-0x3c]
+00018edc  str r3,[sp,#0x20]                          -> Stack[-0x38]
+00018ee0  str r3,[sp,#0x24]                          -> Stack[-0x34]
+00018ee4  str r3,[sp,#0x28]                          -> Stack[-0x30]
+00018ee8  str r3,[sp,#0x2c]                          -> Stack[-0x2c]
+00018eec  strh r3,[sp,#0x30]                         -> Stack[-0x28]
+00018ef0  bl 0x00019990                              -> 00019990
+00018ef4  cmp r0,#0x0                             
+00018ef8  bne 0x00018d5c                             -> 00018d5c
+00018efc  mov r1,#0x3                             
+00018f00  b 0x00018da8                               -> 00018da8
+00018f04  bl 0x000131f0                              -> 000131f0
+
+======== sendpacket @ 00019b80 ========
+00019b80  stmdb sp!,{r4,r5,r6,r7,lr}              
+00019b84  cpy r6,r0                               
+00019b88  ldr r5,[0x19c3c]                           -> 00019c3c
+00019b8c  cpy r0,r1                               
+00019b90  sub sp,sp,#0x24                         
+00019b94  mov r4,#0x0                             
+00019b98  mov r12,#0x2                            
+00019b9c  movw r3,#0x9c4                          
+00019ba0  ldr r5,[pc,r5]                             -> 00021ee8  *(00023010)=0x<unmapped>
+00019ba4  cpy r7,r2                               
+00019ba8  str r4,[sp,#0x10]                          -> Stack[-0x28]
+00019bac  str r4,[sp,#0x14]                          -> Stack[-0x24]
+00019bb0  ldr r1,[r5,#0x0]                           -> 00023010
+00019bb4  str r4,[sp,#0x18]                          -> Stack[-0x20]
+00019bb8  strh r12,[sp,#0xc]                         -> Stack[-0x2c]
+00019bbc  str r1,[sp,#0x1c]                          -> Stack[-0x1c]
+00019bc0  strh r3,[sp,#0xe]                          -> Stack[-0x2a]
+00019bc4  bl 0x00013220                              -> 00013220
+00019bc8  cmp r6,r4                               
+00019bcc  str r0,[sp,#0x10]                          -> Stack[-0x28]
+00019bd0  blt 0x00019c20                             -> 00019c20
+00019bd4  mov r1,#0x10                            
+00019bd8  str r1,[sp,#0x4]                           -> Stack[-0x34]
+00019bdc  ldr r1,[0x19c40]                           -> 00019c40
+00019be0  add r3,sp,#0xc                          
+00019be4  cpy r0,r6                               
+00019be8  str r3,[sp,#0x0]                           -> Stack[-0x38]
+00019bec  cpy r2,r7                               
+00019bf0  cpy r3,r4                               
+00019bf4  add r1,pc,r1                               -> 000220ac
+00019bf8  bl 0x00013268                              -> 00013268
+00019bfc  cmp r0,r4                               
+00019c00  cpyge r0,r4                             
+00019c04  blt 0x00019c28                             -> 00019c28
+00019c08  ldr r2,[sp,#0x1c]                          -> Stack[-0x1c]
+00019c0c  ldr r3,[r5,#0x0]                           -> 00023010
+00019c10  cmp r2,r3                               
+00019c14  bne 0x00019c38                             -> 00019c38
+00019c18  add sp,sp,#0x24                         
+00019c1c  ldmia sp!,{r4,r5,r6,r7,pc}              
+00019c20  mvn r0,#0x0                             
+00019c24  b 0x00019c08                               -> 00019c08
+00019c28  bl 0x00013394                              -> 00013394
+00019c2c  ldr r3,[r0,#0x0]                        
+00019c30  mvn r0,#0x0                             
+00019c34  b 0x00019c08                               -> 00019c08
+00019c38  bl 0x000131f0                              -> 000131f0
+
+======== wait_packet @ 00014850 ========
+00014850  stmdb sp!,{r4,r5,r6,r7,r8,r9,r10,r11,lr}
+00014854  sub sp,sp,#0xac                         
+00014858  movw r6,#0x4dd3                         
+0001485c  cpy r8,r2                               
+00014860  ldr r4,[sp,#0xd0]                          -> Stack[0x0]
+00014864  movt r6,#0x1062                         
+00014868  ldr r5,[0x14a04]                           -> 00014a04
+0001486c  cpy r10,r1                              
+00014870  add r12,sp,#0x20                        
+00014874  add lr,sp,#0xa0                         
+00014878  smull r6,r7,r4,r6                       
+0001487c  mov r11,r4, asr #0x1f                   
+00014880  ldr r5,[pc,r5]                             -> 00021ee8  *(00023010)=0x<unmapped>
+00014884  cpy r9,r3                               
+00014888  cpy r6,r0                               
+0001488c  mov r3,#0x0                             
+00014890  ldr r1,[r5,#0x0]                           -> 00023010
+00014894  rsb r11,r11,r7, asr #0x6                
+00014898  str r11,[sp,#0xc]                          -> Stack[-0xc4]
+0001489c  rsb r2,r11,r11, lsl #0x5                
+000148a0  str r1,[sp,#0xa4]                          -> Stack[-0x2c]
+000148a4  add r11,r11,r2, lsl #0x2                
+000148a8  sub r4,r4,r11, lsl #0x3                 
+000148ac  rsb r2,r4,r4, lsl #0x5                  
+000148b0  add r4,r4,r2, lsl #0x2                  
+000148b4  mov r4,r4, lsl #0x3                     
+000148b8  str r4,[sp,#0x10]                          -> Stack[-0xc0]
+000148bc  str r3,[r12,#0x4]!                         -> Stack[-0xac]
+000148c0  cmp r12,lr                              
+000148c4  bne 0x000148bc                             -> 000148bc
+000148c8  ldr r0,[r6,#0x0]                        
+000148cc  add r7,sp,#0xa8                         
+000148d0  ldr r12,[r10,#0x4]                      
+000148d4  mov r4,#0x1                             
+000148d8  and r11,r0,#0x1f                        
+000148dc  mov r2,#0x0                             
+000148e0  mov r1,r0, lsr #0x5                     
+000148e4  cmp r12,r0                              
+000148e8  mov lr,r12, lsr #0x5                    
+000148ec  cpy r3,r2                               
+000148f0  add r1,r7,r1, lsl #0x2                  
+000148f4  cpyge r0,r12                            
+000148f8  add lr,r7,lr, lsl #0x2                  
+000148fc  and r12,r12,#0x1f                       
+00014900  ldr r7,[r1,#-0x84]                      
+00014904  add r0,r0,r4                            
+00014908  orr r7,r7,r4, lsl r11                   
+0001490c  str r7,[r1,#-0x84]                      
+00014910  ldr r7,[lr,#-0x84]                      
+00014914  add r1,sp,#0xc                          
+00014918  str r1,[sp,#0x0]                           -> Stack[-0xd0]
+0001491c  add r1,sp,#0x24                         
+00014920  orr r12,r7,r4, lsl r12                  
+00014924  str r12,[lr,#-0x84]                     
+00014928  bl 0x00013280                              -> 00013280
+0001492c  cmp r0,#0x0                             
+00014930  blt 0x000149f8                             -> 000149f8
+00014934  ldr r0,[r6,#0x0]                        
+00014938  add r3,sp,#0xa8                         
+0001493c  and r1,r0,#0x1f                         
+00014940  mov r2,r0, lsr #0x5                     
+00014944  add r2,r3,r2, lsl #0x2                  
+00014948  ldr r3,[r2,#-0x84]                      
+0001494c  mov r3,r3, lsr r1                       
+00014950  ands r3,r3,r4                           
+00014954  bne 0x000149b0                             -> 000149b0
+00014958  ldr r0,[r10,#0x4]                       
+0001495c  add r12,sp,#0xa8                        
+00014960  and r1,r0,#0x1f                         
+00014964  mov r2,r0, lsr #0x5                     
+00014968  add r2,r12,r2, lsl #0x2                 
+0001496c  ldr r2,[r2,#-0x84]                      
+00014970  mov r2,r2, lsr r1                       
+00014974  ands r4,r2,#0x1                         
+00014978  bne 0x00014998                             -> 00014998
+0001497c  ldr r2,[sp,#0xa4]                          -> Stack[-0x2c]
+00014980  cpy r0,r4                               
+00014984  ldr r3,[r5,#0x0]                           -> 00023010
+00014988  cmp r2,r3                               
+0001498c  bne 0x00014a00                             -> 00014a00
+00014990  add sp,sp,#0xac                         
+00014994  ldmia sp!,{r4,r5,r6,r7,r8,r9,r10,r11,pc}
+00014998  ldr r1,[r8,#0x0]                        
+0001499c  mov r4,#0x2                             
+000149a0  ldr r2,[r8,#0x8]                        
+000149a4  bl 0x0001328c                              -> 0001328c
+000149a8  str r0,[r8,#0x4]                        
+000149ac  b 0x0001497c                               -> 0001497c
+000149b0  ldr r1,[r8,#0x0]                        
+000149b4  add r3,sp,#0x14                         
+000149b8  ldr r2,[r8,#0x8]                        
+000149bc  mov r12,#0x10                           
+000149c0  str r3,[sp,#0x0]                           -> Stack[-0xd0]
+000149c4  add r3,sp,#0x8                          
+000149c8  str r3,[sp,#0x4]                           -> Stack[-0xcc]
+000149cc  mov r3,#0x0                             
+000149d0  str r12,[sp,#0x8]                          -> Stack[-0xc8]
+000149d4  bl 0x00013298                              -> 00013298
+000149d8  cpy r6,r0                               
+000149dc  ldr r0,[sp,#0x18]                          -> Stack[-0xb8]
+000149e0  bl 0x000132a4                              -> 000132a4
+000149e4  str r6,[r8,#0x4]                        
+000149e8  cpy r1,r0                               
+000149ec  cpy r0,r9                               
+000149f0  bl 0x000132b0                              -> 000132b0
+000149f4  b 0x0001497c                               -> 0001497c
+000149f8  mvn r4,#0x0                             
+000149fc  b 0x0001497c                               -> 0001497c
+00014a00  bl 0x000131f0                              -> 000131f0
+
+======== easylinkLoop @ 00019c80 ========
+00019c80  stmdb sp!,{r4,r5,r6,r7,r8,r9,lr}        
+00019c84  sub sp,sp,#0x44                         
+00019c88  ldr r4,[0x19fd8]                           -> 00019fd8
+00019c8c  cpy r5,r0                               
+00019c90  ldr r3,[r0,#0x0]                        
+00019c94  ldr r4,[pc,r4]                             -> 00021ee8  *(00023010)=0x<unmapped>
+00019c98  cmp r3,#0x2                             
+00019c9c  movne r0,#0x1                           
+00019ca0  ldr r3,[r4,#0x0]                           -> 00023010
+00019ca4  str r3,[sp,#0x3c]                          -> Stack[-0x24]
+00019ca8  beq 0x00019cc4                             -> 00019cc4
+00019cac  ldr r2,[sp,#0x3c]                          -> Stack[-0x24]
+00019cb0  ldr r3,[r4,#0x0]                           -> 00023010
+00019cb4  cmp r2,r3                               
+00019cb8  bne 0x00019fd0                             -> 00019fd0
+00019cbc  add sp,sp,#0x44                         
+00019cc0  ldmia sp!,{r4,r5,r6,r7,r8,r9,pc}        
+00019cc4  ldr r6,[r5,#0x8]                        
+00019cc8  and r6,r6,#0xf                          
+00019ccc  cmp r6,#0x1                             
+00019cd0  beq 0x00019cec                             -> 00019cec
+00019cd4  cmp r6,#0x2                             
+00019cd8  beq 0x00019dac                             -> 00019dac
+00019cdc  cmp r6,#0x3                             
+00019ce0  beq 0x00019e34                             -> 00019e34
+00019ce4  mov r0,#0xa                             
+00019ce8  b 0x00019cac                               -> 00019cac
+00019cec  ldr r9,[r5,#0x38]                       
+00019cf0  add r8,sp,#0x8                          
+00019cf4  ldr r2,[0x19fdc]                           -> 00019fdc "\A"
+00019cf8  mov r1,#0x14                            
+00019cfc  cpy r0,r8                               
+00019d00  add r7,r9,#0x1                          
+00019d04  add r12,r9,r9, lsl #0x1                 
+00019d08  add r2,pc,r2                               -> 0001de6c "239.%d.%d.%d"
+00019d0c  add r12,r5,r12                          
+00019d10  ldrb lr,[r12,#0x3d]                     
+00019d14  ldrb r3,[r12,#0x3c]                     
+00019d18  str lr,[sp,#0x0]                           -> Stack[-0x60]
+00019d1c  ldrb r12,[r12,#0x3e]                    
+00019d20  str r12,[sp,#0x4]                          -> Stack[-0x5c]
+00019d24  bl 0x0001343c                              -> 0001343c
+00019d28  ldr r2,[0x19fe0]                           -> 00019fe0 "@A"
+00019d2c  cpy r3,r9                               
+00019d30  mov r1,#0x1e                            
+00019d34  add r2,pc,r2                               -> 0001de7c "%d(%s)"
+00019d38  str r8,[sp,#0x0]                           -> Stack[-0x60]
+00019d3c  add r0,sp,#0x1c                         
+00019d40  bl 0x0001343c                              -> 0001343c
+00019d44  cpy r2,r6                               
+00019d48  cpy r1,r8                               
+00019d4c  ldr r0,[r5,#0x4]                        
+00019d50  bl 0x00019b80                              -> 00019b80
+00019d54  ldr r6,[r5,#0x34]                       
+00019d58  cpy r0,r7                               
+00019d5c  cpy r1,r6                               
+00019d60  bl 0x0001bd54                              -> 0001bd54
+00019d64  vmov s15,r7                             
+00019d68  vldr.32 s14,[pc,#0x264]                    -> 00019fd4
+00019d6c  ldr r0,[r5,#0x14]                       
+00019d70  vcvt.f32.s32 s15,s15                    
+00019d74  vmul.f32 s15,s15,s14                    
+00019d78  vmov s14,r6                             
+00019d7c  vcvt.f32.s32 s14,s14                    
+00019d80  vdiv.f32 s14,s15,s14                    
+00019d84  str r1,[r5,#0x38]                       
+00019d88  vmov.f64 d6,0x3fe0000000000000          
+00019d8c  vcvt.f64.f32 d7,s14                     
+00019d90  vadd.f64 d7,d7,d6                       
+00019d94  vcvt.s32.f64 s14,d7                     
+00019d98  vmov r3,s14                             
+00019d9c  cmp r3,#0x64                            
+00019da0  moveq r3,#0x0                           
+00019da4  streq r3,[r5,#0x0]                      
+00019da8  b 0x00019cac                               -> 00019cac
+00019dac  add r0,r5,#0x28                         
+00019db0  ldr r6,[r5,#0xd0]                       
+00019db4  bl 0x00019b10                              -> 00019b10
+00019db8  ldr r0,[r5,#0x28]                       
+00019dbc  bl 0x00019a9c                              -> 00019a9c
+00019dc0  ldr r3,[r5,#0x2c]                       
+00019dc4  cmp r0,r3                               
+00019dc8  cmpge r6,#0x4                           
+00019dcc  str r0,[r5,#0x30]                       
+00019dd0  beq 0x00019ce4                             -> 00019ce4
+00019dd4  add r7,r5,r6, lsl #0x1                  
+00019dd8  ldr r2,[0x19fe4]                           -> 00019fe4
+00019ddc  cpy r3,r6                               
+00019de0  mov r1,#0x14                            
+00019de4  ldrh r12,[r7,#0xd4]                     
+00019de8  add r2,pc,r2                               -> 0001de84 "%d(%03x)"
+00019dec  add r0,sp,#0x1c                         
+00019df0  add r6,r6,#0x1                          
+00019df4  str r12,[sp,#0x0]                          -> Stack[-0x60]
+00019df8  bl 0x0001343c                              -> 0001343c
+00019dfc  ldr r1,[0x19fe8]                           -> 00019fe8
+00019e00  ldrh r2,[r7,#0xd4]                      
+00019e04  ldr r0,[r5,#0x4]                        
+00019e08  add r1,pc,r1                               -> 0001deb8 "255.255.255.255"
+00019e0c  bl 0x00019b80                              -> 00019b80
+00019e10  cmp r6,#0x4                             
+00019e14  beq 0x00019f64                             -> 00019f64
+00019e18  ldr r3,[r5,#0xcc]                       
+00019e1c  cmp r3,r6                               
+00019e20  ldreq r0,[r5,#0x14]                     
+00019e24  moveq r6,#0x4                           
+00019e28  movne r0,#0xa                           
+00019e2c  str r6,[r5,#0xd0]                       
+00019e30  b 0x00019cac                               -> 00019cac
+00019e34  ldr r0,[r5,#0x28]                       
+00019e38  ldr r6,[r5,#0xd0]                       
+00019e3c  bl 0x00019a9c                              -> 00019a9c
+00019e40  ldr r3,[r5,#0x1c]                       
+00019e44  cmp r0,r3                               
+00019e48  cmpge r6,#0x0                           
+00019e4c  str r0,[r5,#0x30]                       
+00019e50  beq 0x00019ce4                             -> 00019ce4
+00019e54  ldr lr,[0x19fec]                           -> 00019fec
+00019e58  add lr,pc,lr                            
+00019e5c  ldr r3,[lr,#0x200]                         -> 000222ac
+00019e60  cmp r3,#0x0                             
+00019e64  beq 0x00019ef0                             -> 00019ef0
+00019e68  ldr r8,[r5,#0x38]                       
+00019e6c  mov r3,#0x0                             
+00019e70  str r3,[lr,#0x200]                         -> 000222ac
+00019e74  add r7,sp,#0x8                          
+00019e78  ldr r2,[0x19ff0]                           -> 00019ff0
+00019e7c  mov r1,#0x14                            
+00019e80  add r12,r8,r8, lsl #0x1                 
+00019e84  cpy r0,r7                               
+00019e88  add r12,r5,r12                          
+00019e8c  add r2,pc,r2                               -> 0001de6c "239.%d.%d.%d"
+00019e90  mov r6,#0xa                             
+00019e94  ldrb lr,[r12,#0x3d]                     
+00019e98  ldrb r3,[r12,#0x3c]                     
+00019e9c  str lr,[sp,#0x0]                           -> Stack[-0x60]
+00019ea0  ldrb r12,[r12,#0x3e]                    
+00019ea4  str r12,[sp,#0x4]                          -> Stack[-0x5c]
+00019ea8  bl 0x0001343c                              -> 0001343c
+00019eac  ldr r2,[0x19ff4]                           -> 00019ff4
+00019eb0  cpy r3,r8                               
+00019eb4  mov r1,#0x1e                            
+00019eb8  add r2,pc,r2                               -> 0001de7c "%d(%s)"
+00019ebc  str r7,[sp,#0x0]                           -> Stack[-0x60]
+00019ec0  add r0,sp,#0x1c                         
+00019ec4  bl 0x0001343c                              -> 0001343c
+00019ec8  cpy r1,r7                               
+00019ecc  mov r2,#0x1                             
+00019ed0  ldr r0,[r5,#0x4]                        
+00019ed4  bl 0x00019b80                              -> 00019b80
+00019ed8  add r0,r8,#0x1                          
+00019edc  ldr r1,[r5,#0x34]                       
+00019ee0  bl 0x0001bd54                              -> 0001bd54
+00019ee4  str r1,[r5,#0x38]                       
+00019ee8  cpy r0,r6                               
+00019eec  b 0x00019cac                               -> 00019cac
+00019ef0  add r8,r5,r6, lsl #0x1                  
+00019ef4  ldr r2,[0x19ff8]                           -> 00019ff8 "x?"
+00019ef8  mov r1,#0x14                            
+00019efc  cpy r3,r6                               
+00019f00  ldrh r12,[r8,#0xd4]                     
+00019f04  add r2,pc,r2                               -> 0001de84 "%d(%03x)"
+00019f08  add r0,sp,#0x1c                         
+00019f0c  add r7,r6,#0x1                          
+00019f10  str r12,[sp,#0x0]                          -> Stack[-0x60]
+00019f14  bl 0x0001343c                              -> 0001343c
+00019f18  ldr r1,[0x19ffc]                           -> 00019ffc
+00019f1c  ldrh r2,[r8,#0xd4]                      
+00019f20  ldr r0,[r5,#0x4]                        
+00019f24  add r1,pc,r1                               -> 00022018 "255.255.255.255"
+00019f28  bl 0x00019b80                              -> 00019b80
+00019f2c  cmp r7,#0x4                             
+00019f30  beq 0x00019f7c                             -> 00019f7c
+00019f34  ldr r3,[r5,#0xcc]                       
+00019f38  cmp r3,r7                               
+00019f3c  beq 0x00019fa4                             -> 00019fa4
+00019f40  tst r7,#0x7                             
+00019f44  mov r6,#0xa                             
+00019f48  moveq r3,#0x1                           
+00019f4c  movne r3,#0x0                           
+00019f50  ldr r2,[0x1a000]                           -> 0001a000
+00019f54  str r7,[r5,#0xd0]                       
+00019f58  add r2,pc,r2                            
+00019f5c  str r3,[r2,#0x200]                         -> 000222ac
+00019f60  b 0x00019ee8                               -> 00019ee8
+00019f64  ldr r3,[r5,#0x10]                       
+00019f68  ldr r2,[r5,#0x30]                       
+00019f6c  ldr r0,[r5,#0xc]                        
+00019f70  cmp r2,r3                               
+00019f74  movlt r6,#0x0                           
+00019f78  b 0x00019e2c                               -> 00019e2c
+00019f7c  ldr r0,[r5,#0x30]                       
+00019f80  ldr r1,[r5,#0x2c]                       
+00019f84  bl 0x0001bd54                              -> 0001bd54
+00019f88  ldr r3,[r5,#0x10]                       
+00019f8c  ldr r6,[r5,#0xc]                        
+00019f90  cmp r1,r3                               
+00019f94  movlt r7,#0x0                           
+00019f98  movlt r3,#0x1                           
+00019f9c  movge r3,#0x0                           
+00019fa0  b 0x00019f50                               -> 00019f50
+00019fa4  ldr r0,[r5,#0x30]                       
+00019fa8  ldr r1,[r5,#0x2c]                       
+00019fac  bl 0x0001bd54                              -> 0001bd54
+00019fb0  ldr r3,[r5,#0x10]                       
+00019fb4  ldr r6,[r5,#0x14]                       
+00019fb8  cmp r1,r3                               
+00019fbc  movlt r7,#0x0                           
+00019fc0  movge r7,#0x4                           
+00019fc4  movlt r3,#0x1                           
+00019fc8  movge r3,#0x0                           
+00019fcc  b 0x00019f50                               -> 00019f50
+00019fd0  bl 0x000131f0                              -> 000131f0
+
+======== device_aes_encrypt @ 0001afd0 ========
+0001afd0  ldr r12,[0x1b66c]                          -> 0001b66c
+0001afd4  stmdb sp!,{r4,r5,r6,r7,r8,r9,r10,r11,lr}
+0001afd8  sub sp,sp,#0x154                        
+0001afdc  cpy r4,r12                              
+0001afe0  cpy r6,r2                               
+0001afe4  cpy r5,r3                               
+0001afe8  ldr r2,[pc,r4]                             -> 00021ee8  *(00023010)=0x<unmapped>
+0001afec  ldr r3,[sp,#0x17c]                         -> Stack[0x4]
+0001aff0  bic lr,r1,#0x8                          
+0001aff4  cmp r1,#0x20                            
+0001aff8  cmpne lr,#0x10                          
+0001affc  cpy r12,r1                              
+0001b000  str r2,[sp,#0x34]                          -> 00023010   -> Stack[-0x144]
+0001b004  str r3,[sp,#0x14]                          -> Stack[-0x164]
+0001b008  movne lr,#0x1                           
+0001b00c  ldr r3,[r2,#0x0]                           -> 00023010
+0001b010  moveq lr,#0x0                           
+0001b014  ldr r10,[sp,#0x178]                        -> Stack[0x0]
+0001b018  ldr r4,[sp,#0x180]                         -> Stack[0x8]
+0001b01c  str r3,[sp,#0x14c]                         -> Stack[-0x2c]
+0001b020  bne 0x0001b03c                             -> 0001b03c
+0001b024  cpy r1,r0                               
+0001b028  str lr,[sp,#0x0]                           -> Stack[-0x178]
+0001b02c  cpy r2,r12                              
+0001b030  cpy r3,r6                               
+0001b034  add r0,sp,#0x38                         
+0001b038  bl 0x0001a900                              -> 0001a900
+0001b03c  cmp r10,#0x0                            
+0001b040  add r7,r10,#0xf                         
+0001b044  cpyge r7,r10                            
+0001b048  bic r7,r7,#0xf                          
+0001b04c  cmp r10,r7                              
+0001b050  beq 0x0001b600                             -> 0001b600
+0001b054  add r3,r7,#0x10                         
+0001b058  str r3,[sp,#0x30]                          -> Stack[-0x148]
+0001b05c  cmp r3,r4                               
+0001b060  cpy r6,r3                               
+0001b064  bgt 0x0001b660                             -> 0001b660
+0001b068  ldr r4,[sp,#0x14]                          -> Stack[-0x164]
+0001b06c  cpy r2,r10                              
+0001b070  cpy r1,r5                               
+0001b074  cpy r0,r4                               
+0001b078  bl 0x000131fc                              -> 000131fc
+0001b07c  rsb r2,r10,r6                           
+0001b080  cmp r2,#0x0                             
+0001b084  ble 0x0001b650                             -> 0001b650
+0001b088  cmp r10,r6                              
+0001b08c  bge 0x0001b0a8                             -> 0001b0a8
+0001b090  uxtb r2,r2                              
+0001b094  add r3,r4,r10                           
+0001b098  add r1,r4,r6                            
+0001b09c  strb r2,[r3],#0x1                       
+0001b0a0  cmp r3,r1                               
+0001b0a4  bne 0x0001b09c                             -> 0001b09c
+0001b0a8  ldr r3,[sp,#0x30]                          -> Stack[-0x148]
+0001b0ac  movs r3,r3, lsr #0x4                    
+0001b0b0  beq 0x0001b5e0                             -> 0001b5e0
+0001b0b4  ldr r7,[0x1b670]                           -> 0001b670 " ."
+0001b0b8  add r2,sp,#0x38                         
+0001b0bc  str r3,[sp,#0x18]                          -> Stack[-0x160]
+0001b0c0  str r2,[sp,#0x2c]                          -> Stack[-0x14c]
+0001b0c4  add r7,pc,r7                            
+0001b0c8  add r2,sp,#0x12c                        
+0001b0cc  str r2,[sp,#0x1c]                          -> Stack[-0x15c]
+0001b0d0  b 0x0001b108                               -> 0001b108
+0001b0d4  ldr r12,[sp,#0x1c]                         -> Stack[-0x15c]
+0001b0d8  ldr r3,[sp,#0x18]                          -> Stack[-0x160]
+0001b0dc  subs r3,r3,#0x1                         
+0001b0e0  str r3,[sp,#0x18]                          -> Stack[-0x160]
+0001b0e4  ldmia r12!,{r0,r1,r2,r3}                   -> Stack[-0x4c]
+0001b0e8  ldr r12,[sp,#0x14]                         -> Stack[-0x164]
+0001b0ec  str r3,[r12,#0xc]                       
+0001b0f0  add r3,r12,#0x10                        
+0001b0f4  str r0,[r12,#0x0]                       
+0001b0f8  str r1,[r12,#0x4]                       
+0001b0fc  str r2,[r12,#0x8]                       
+0001b100  str r3,[sp,#0x14]                          -> Stack[-0x164]
+0001b104  beq 0x0001b5e0                             -> 0001b5e0
+0001b108  ldr r0,[sp,#0x1c]                          -> Stack[-0x15c]
+0001b10c  mov r2,#0x10                            
+0001b110  ldr r1,[sp,#0x14]                          -> Stack[-0x164]
+0001b114  bl 0x0001af7c                              -> 0001af7c
+0001b118  ldr r3,[sp,#0x128]                         -> Stack[-0x50]
+0001b11c  mov r3,r3, lsr #0x1                     
+0001b120  str r3,[sp,#0x20]                          -> Stack[-0x158]
+0001b124  sub r3,r3,#0x1                          
+0001b128  cmp r3,#0x6                             
+0001b12c  bhi 0x0001b0d4                             -> 0001b0d4
+0001b130  add r0,sp,#0x12c                        
+0001b134  ldr r6,[sp,#0x138]                         -> Stack[-0x40]
+0001b138  ldmia r0,{r0,r5,r8}                        -> Stack[-0x4c]
+0001b13c  bl 0x0001a8b0                              -> 0001a8b0
+0001b140  cpy r4,r0                               
+0001b144  cpy r0,r5                               
+0001b148  bl 0x0001a8b0                              -> 0001a8b0
+0001b14c  cpy r5,r0                               
+0001b150  cpy r0,r8                               
+0001b154  bl 0x0001a8b0                              -> 0001a8b0
+0001b158  cpy r9,r0                               
+0001b15c  cpy r0,r6                               
+0001b160  bl 0x0001a8b0                              -> 0001a8b0
+0001b164  ldr r2,[sp,#0x40]                          -> Stack[-0x138]
+0001b168  ldr r6,[sp,#0x38]                          -> Stack[-0x140]
+0001b16c  ldr r1,[sp,#0x3c]                          -> Stack[-0x13c]
+0001b170  eor r12,r9,r2                           
+0001b174  ldr r2,[sp,#0x20]                          -> Stack[-0x158]
+0001b178  eor r4,r4,r6                            
+0001b17c  ldr r3,[sp,#0x44]                          -> Stack[-0x134]
+0001b180  eor r5,r5,r1                            
+0001b184  ldr r8,[sp,#0x2c]                          -> Stack[-0x14c]
+0001b188  str r2,[sp,#0xc]                           -> Stack[-0x16c]
+0001b18c  cpy r6,r5                               
+0001b190  cpy r2,r4                               
+0001b194  eor r0,r0,r3                            
+0001b198  b 0x0001b2b8                               -> 0001b2b8
+0001b19c  mov r9,r5, lsr #0x18                    
+0001b1a0  uxtb r4,r6                              
+0001b1a4  mov r0,r2, lsr #0x18                    
+0001b1a8  uxtb r10,r5                             
+0001b1ac  mov r12,r3, lsr #0x18                   
+0001b1b0  uxtb r1,r3                              
+0001b1b4  add r9,r7,r9, lsl #0x2                  
+0001b1b8  add r4,r7,r4, lsl #0x2                  
+0001b1bc  add r0,r7,r0, lsl #0x2                  
+0001b1c0  add r10,r7,r10, lsl #0x2                
+0001b1c4  add r12,r7,r12, lsl #0x2                
+0001b1c8  add r1,r7,r1, lsl #0x2                  
+0001b1cc  uxtb r11,r2                             
+0001b1d0  ldr r4,[r4,#0xc28]                         -> 0001eb14
+0001b1d4  ldr r0,[r0,#0x28]                          -> 0001df14
+0001b1d8  mov lr,r6, lsr #0x18                    
+0001b1dc  ldr r10,[r10,#0xc28]                       -> 0001eb14
+0001b1e0  add r11,r7,r11, lsl #0x2                
+0001b1e4  ldr r9,[r9,#0x28]                          -> 0001df14
+0001b1e8  add lr,r7,lr, lsl #0x2                  
+0001b1ec  add r8,r8,#0x20                         
+0001b1f0  eor r9,r9,r4                            
+0001b1f4  ldr r4,[r12,#0x28]                         -> 0001df14
+0001b1f8  ldr r12,[r1,#0xc28]                        -> 0001eb14
+0001b1fc  eor r1,r0,r10                           
+0001b200  str r1,[sp,#0x10]                          -> Stack[-0x168]
+0001b204  ubfx r1,r2,#0x10,#0x8                   
+0001b208  ldr r0,[r11,#0xc28]                        -> 0001eb14
+0001b20c  ubfx r11,r2,#0x8,#0x8                   
+0001b210  add r2,r7,r1, lsl #0x2                  
+0001b214  ldr lr,[lr,#0x28]                          -> 0001df14
+0001b218  eor r10,r4,r0                           
+0001b21c  ubfx r0,r6,#0x8,#0x8                    
+0001b220  ldr r1,[r2,#0x428]                         -> 0001e314
+0001b224  ubfx r2,r3,#0x8,#0x8                    
+0001b228  eor lr,lr,r12                           
+0001b22c  ubfx r12,r3,#0x10,#0x8                  
+0001b230  add r2,r7,r2, lsl #0x2                  
+0001b234  ldr r3,[r8,#0x0]                           -> Stack[-0x120]
+0001b238  add r12,r7,r12, lsl #0x2                
+0001b23c  ubfx r4,r5,#0x8,#0x8                    
+0001b240  eor r9,r9,r3                            
+0001b244  ldr r2,[r2,#0x828]                         -> 0001e714
+0001b248  ubfx r3,r6,#0x10,#0x8                   
+0001b24c  add r6,r7,r0, lsl #0x2                  
+0001b250  eor r1,r1,r9                            
+0001b254  ubfx r0,r5,#0x10,#0x8                   
+0001b258  ldr r9,[r6,#0x828]                         -> 0001e714
+0001b25c  eor r2,r2,r1                            
+0001b260  ldr r6,[r8,#0x4]                           -> Stack[-0x11c]
+0001b264  add r0,r7,r0, lsl #0x2                  
+0001b268  ldr r1,[sp,#0x10]                          -> Stack[-0x168]
+0001b26c  add r3,r7,r3, lsl #0x2                  
+0001b270  ldr r12,[r12,#0x428]                       -> 0001e314
+0001b274  add r11,r7,r11, lsl #0x2                
+0001b278  eor r6,r6,r1                            
+0001b27c  ldr r5,[r0,#0x428]                         -> 0001e314
+0001b280  eor r6,r6,r12                           
+0001b284  ldr r0,[r8,#0xc]                           -> Stack[-0x114]
+0001b288  ldr r12,[r8,#0x8]                          -> Stack[-0x118]
+0001b28c  add r4,r7,r4, lsl #0x2                  
+0001b290  ldr r3,[r3,#0x428]                         -> 0001e314
+0001b294  eor r0,r0,lr                            
+0001b298  ldr r11,[r11,#0x828]                       -> 0001e714
+0001b29c  eor r12,r12,r10                         
+0001b2a0  ldr r4,[r4,#0x828]                         -> 0001e714
+0001b2a4  eor r12,r12,r3                          
+0001b2a8  eor r0,r0,r5                            
+0001b2ac  eor r6,r6,r9                            
+0001b2b0  eor r12,r12,r4                          
+0001b2b4  eor r0,r0,r11                           
+0001b2b8  uxtb r9,r0                              
+0001b2bc  mov lr,r2, lsr #0x18                    
+0001b2c0  mov r3,r0, lsr #0x18                    
+0001b2c4  str r3,[sp,#0x10]                          -> Stack[-0x168]
+0001b2c8  ldr r3,[sp,#0xc]                           -> Stack[-0x16c]
+0001b2cc  uxtb r1,r2                              
+0001b2d0  mov r11,r6, lsr #0x18                   
+0001b2d4  uxtb r4,r6                              
+0001b2d8  mov r10,r12, lsr #0x18                  
+0001b2dc  add r9,r7,r9, lsl #0x2                  
+0001b2e0  add lr,r7,lr, lsl #0x2                  
+0001b2e4  uxtb r5,r12                             
+0001b2e8  subs r3,r3,#0x1                         
+0001b2ec  str r3,[sp,#0xc]                           -> Stack[-0x16c]
+0001b2f0  ldr r3,[sp,#0x10]                          -> Stack[-0x168]
+0001b2f4  add r10,r7,r10, lsl #0x2                
+0001b2f8  ldr r9,[r9,#0xc28]                         -> 0001eb14
+0001b2fc  add r1,r7,r1, lsl #0x2                  
+0001b300  add r11,r7,r11, lsl #0x2                
+0001b304  add r4,r7,r4, lsl #0x2                  
+0001b308  ldr lr,[lr,#0x28]                          -> 0001df14
+0001b30c  add r5,r7,r5, lsl #0x2                  
+0001b310  add r3,r7,r3, lsl #0x2                  
+0001b314  ldr r1,[r1,#0xc28]                         -> 0001eb14
+0001b318  eor lr,lr,r9                            
+0001b31c  ldr r4,[r4,#0xc28]                         -> 0001eb14
+0001b320  ldr r9,[r10,#0x28]                         -> 0001df14
+0001b324  ldr r11,[r11,#0x28]                        -> 0001df14
+0001b328  ldr r10,[r5,#0xc28]                        -> 0001eb14
+0001b32c  ubfx r5,r6,#0x10,#0x8                   
+0001b330  eor r11,r11,r1                          
+0001b334  ubfx r6,r6,#0x8,#0x8                    
+0001b338  ldr r1,[r3,#0x28]                          -> 0001df14
+0001b33c  eor r9,r9,r4                            
+0001b340  ubfx r4,r12,#0x8,#0x8                   
+0001b344  add r5,r7,r5, lsl #0x2                  
+0001b348  add r3,r7,r6, lsl #0x2                  
+0001b34c  eor r6,r10,r1                           
+0001b350  add r4,r7,r4, lsl #0x2                  
+0001b354  ldr r1,[r8,#0x10]                          -> Stack[-0x130]
+0001b358  ubfx r10,r12,#0x10,#0x8                 
+0001b35c  ldr r5,[r5,#0x428]                         -> 0001e314
+0001b360  eor lr,lr,r1                            
+0001b364  ldr r4,[r4,#0x828]                         -> 0001e714
+0001b368  ubfx r1,r0,#0x8,#0x8                    
+0001b36c  eor r5,r5,lr                            
+0001b370  add r10,r7,r10, lsl #0x2                
+0001b374  ubfx r12,r0,#0x10,#0x8                  
+0001b378  add r1,r7,r1, lsl #0x2                  
+0001b37c  ubfx r0,r2,#0x10,#0x8                   
+0001b380  eor r5,r5,r4                            
+0001b384  ubfx r2,r2,#0x8,#0x8                    
+0001b388  ldr r4,[r8,#0x14]                          -> Stack[-0x12c]
+0001b38c  add r12,r7,r12, lsl #0x2                
+0001b390  ldr r10,[r10,#0x428]                       -> 0001e314
+0001b394  add r2,r7,r2, lsl #0x2                  
+0001b398  ldr r1,[r1,#0x828]                         -> 0001e714
+0001b39c  eor r4,r4,r11                           
+0001b3a0  eor r10,r10,r4                          
+0001b3a4  add r0,r7,r0, lsl #0x2                  
+0001b3a8  ldr lr,[r3,#0x828]                         -> 0001e714
+0001b3ac  ldr r3,[r2,#0x828]                         -> 0001e714
+0001b3b0  eor r2,r10,r1                           
+0001b3b4  ldr r10,[r8,#0x1c]                         -> Stack[-0x124]
+0001b3b8  ldr r1,[r8,#0x18]                          -> Stack[-0x128]
+0001b3bc  ldr r12,[r12,#0x428]                       -> 0001e314
+0001b3c0  eor r6,r6,r10                           
+0001b3c4  ldr r0,[r0,#0x428]                         -> 0001e314
+0001b3c8  eor r9,r9,r1                            
+0001b3cc  eor r9,r9,r12                           
+0001b3d0  eor r6,r6,r0                            
+0001b3d4  eor r3,r3,r9                            
+0001b3d8  eor r6,r6,lr                            
+0001b3dc  bne 0x0001b19c                             -> 0001b19c
+0001b3e0  cpy lr,r3                               
+0001b3e4  cpy r3,r6                               
+0001b3e8  uxtb r11,r3                             
+0001b3ec  mov r0,lr, lsr #0x18                    
+0001b3f0  add r11,r11,#0x400                      
+0001b3f4  add r0,r0,#0x400                        
+0001b3f8  mov r6,r2, lsr #0x18                    
+0001b3fc  cpy r4,r2                               
+0001b400  add r11,r7,r11, lsl #0x2                
+0001b404  ldr r2,[sp,#0x20]                          -> Stack[-0x158]
+0001b408  add r0,r7,r0, lsl #0x2                  
+0001b40c  add r6,r6,#0x400                        
+0001b410  sub r8,r2,#0xf8000001                   
+0001b414  ldrb r2,[r11,#0x28]                        -> 0001df14
+0001b418  add r6,r7,r6, lsl #0x2                  
+0001b41c  ldr r11,[r0,#0x28]                         -> 0001df14
+0001b420  ubfx r0,r4,#0x10,#0x8                   
+0001b424  mov r1,r5, lsr #0x18                    
+0001b428  add r0,r0,#0x400                        
+0001b42c  ldr r10,[r6,#0x28]                         -> 0001df14
+0001b430  ubfx r6,lr,#0x10,#0x8                   
+0001b434  uxtb r12,r5                             
+0001b438  add r1,r1,#0x400                        
+0001b43c  add r6,r6,#0x400                        
+0001b440  add r0,r7,r0, lsl #0x2                  
+0001b444  add r12,r12,#0x400                      
+0001b448  add r1,r7,r1, lsl #0x2                  
+0001b44c  add r6,r7,r6, lsl #0x2                  
+0001b450  ldr r0,[r0,#0x28]                          -> 0001df14
+0001b454  add r12,r7,r12, lsl #0x2                
+0001b458  ldr r6,[r6,#0x28]                          -> 0001df14
+0001b45c  and r10,r10,#0xff000000                 
+0001b460  ldr r1,[r1,#0x28]                          -> 0001df14
+0001b464  mov r9,r3, lsr #0x18                    
+0001b468  ldrb r12,[r12,#0x28]                       -> 0001df14
+0001b46c  add r9,r9,#0x400                        
+0001b470  str r0,[sp,#0x24]                          -> Stack[-0x154]
+0001b474  uxtb r0,lr                              
+0001b478  add r0,r0,#0x400                        
+0001b47c  and r1,r1,#0xff000000                   
+0001b480  str r6,[sp,#0xc]                           -> Stack[-0x16c]
+0001b484  eor r1,r1,r2                            
+0001b488  eor r6,r10,r12                          
+0001b48c  ubfx r2,lr,#0x8,#0x8                    
+0001b490  add r12,sp,#0x58                        
+0001b494  add lr,r7,r0, lsl #0x2                  
+0001b498  add r2,r2,#0x400                        
+0001b49c  add r10,r12,r8, lsl #0x5                
+0001b4a0  ldr r12,[r12,r8,lsl #0x5]               
+0001b4a4  uxtb r8,r4                              
+0001b4a8  ldrb lr,[lr,#0x28]                         -> 0001df14
+0001b4ac  add r9,r7,r9, lsl #0x2                  
+0001b4b0  add r2,r7,r2, lsl #0x2                  
+0001b4b4  add r8,r8,#0x400                        
+0001b4b8  ldr r9,[r9,#0x28]                          -> 0001df14
+0001b4bc  and r11,r11,#0xff000000                 
+0001b4c0  ldr r2,[r2,#0x28]                          -> 0001df14
+0001b4c4  add r8,r7,r8, lsl #0x2                  
+0001b4c8  str lr,[sp,#0x20]                          -> Stack[-0x158]
+0001b4cc  and r9,r9,#0xff000000                   
+0001b4d0  ldr lr,[r10,#0x4]                       
+0001b4d4  ubfx r4,r4,#0x8,#0x8                    
+0001b4d8  str r9,[sp,#0x10]                          -> Stack[-0x168]
+0001b4dc  ubfx r9,r3,#0x8,#0x8                    
+0001b4e0  ldrb r8,[r8,#0x28]                         -> 0001df14
+0001b4e4  add r9,r9,#0x400                        
+0001b4e8  str r2,[sp,#0x28]                          -> Stack[-0x150]
+0001b4ec  eor r2,r6,lr                            
+0001b4f0  ldr r6,[sp,#0xc]                           -> Stack[-0x16c]
+0001b4f4  eor r8,r8,r11                           
+0001b4f8  ubfx r11,r5,#0x10,#0x8                  
+0001b4fc  ldr r0,[sp,#0x24]                          -> Stack[-0x154]
+0001b500  and lr,r6,#0xff0000                     
+0001b504  add r9,r7,r9, lsl #0x2                  
+0001b508  eor r6,r1,r12                           
+0001b50c  add r11,r11,#0x400                      
+0001b510  ubfx r1,r3,#0x10,#0x8                   
+0001b514  add r4,r4,#0x400                        
+0001b518  ubfx r12,r5,#0x8,#0x8                   
+0001b51c  add r1,r1,#0x400                        
+0001b520  ldr r5,[r9,#0x28]                          -> 0001df14
+0001b524  add r4,r7,r4, lsl #0x2                  
+0001b528  and r3,r0,#0xff0000                     
+0001b52c  add r12,r12,#0x400                      
+0001b530  add r0,r7,r11, lsl #0x2                 
+0001b534  add r1,r7,r1, lsl #0x2                  
+0001b538  eor lr,lr,r2                            
+0001b53c  add r9,r7,r12, lsl #0x2                 
+0001b540  ldr r11,[r0,#0x28]                         -> 0001df14
+0001b544  and r5,r5,#0xff00                       
+0001b548  ldr r12,[r4,#0x28]                         -> 0001df14
+0001b54c  eor r5,r5,lr                            
+0001b550  ldr r0,[sp,#0x20]                          -> Stack[-0x158]
+0001b554  eor r3,r3,r6                            
+0001b558  ldr r4,[sp,#0x10]                          -> Stack[-0x168]
+0001b55c  and r11,r11,#0xff0000                   
+0001b560  ldr r2,[sp,#0x28]                          -> Stack[-0x150]
+0001b564  and r12,r12,#0xff00                     
+0001b568  ldr lr,[r10,#0x8]                       
+0001b56c  eor r4,r4,r0                            
+0001b570  ldr r1,[r1,#0x28]                          -> 0001df14
+0001b574  and r0,r2,#0xff00                       
+0001b578  ldr r10,[r10,#0xc]                      
+0001b57c  eor lr,lr,r8                            
+0001b580  ldr r9,[r9,#0x28]                          -> 0001df14
+0001b584  and r1,r1,#0xff0000                     
+0001b588  eor r4,r4,r10                           
+0001b58c  eor r1,r1,lr                            
+0001b590  eor r0,r0,r3                            
+0001b594  eor r11,r11,r4                          
+0001b598  and r9,r9,#0xff00                       
+0001b59c  eor r11,r11,r12                         
+0001b5a0  eor r9,r9,r1                            
+0001b5a4  bl 0x0001a8b0                              -> 0001a8b0
+0001b5a8  cpy r6,r0                               
+0001b5ac  cpy r0,r5                               
+0001b5b0  bl 0x0001a8b0                              -> 0001a8b0
+0001b5b4  cpy r5,r0                               
+0001b5b8  cpy r0,r9                               
+0001b5bc  bl 0x0001a8b0                              -> 0001a8b0
+0001b5c0  cpy r4,r0                               
+0001b5c4  cpy r0,r11                              
+0001b5c8  bl 0x0001a8b0                              -> 0001a8b0
+0001b5cc  str r6,[sp,#0x12c]                         -> Stack[-0x4c]
+0001b5d0  str r5,[sp,#0x130]                         -> Stack[-0x48]
+0001b5d4  str r4,[sp,#0x134]                         -> Stack[-0x44]
+0001b5d8  str r0,[sp,#0x138]                         -> Stack[-0x40]
+0001b5dc  b 0x0001b0d4                               -> 0001b0d4
+0001b5e0  ldr r0,[sp,#0x30]                          -> Stack[-0x148]
+0001b5e4  ldr r3,[sp,#0x34]                          -> Stack[-0x144]
+0001b5e8  ldr r2,[sp,#0x14c]                         -> Stack[-0x2c]
+0001b5ec  ldr r3,[r3,#0x0]                           -> 00023010
+0001b5f0  cmp r2,r3                               
+0001b5f4  bne 0x0001b668                             -> 0001b668
+0001b5f8  add sp,sp,#0x154                        
+0001b5fc  ldmia sp!,{r4,r5,r6,r7,r8,r9,r10,r11,pc}
+0001b600  cmp r10,r4                              
+0001b604  bgt 0x0001b660                             -> 0001b660
+0001b608  cpy r1,r5                               
+0001b60c  ldr r0,[sp,#0x14]                          -> Stack[-0x164]
+0001b610  cpy r2,r10                              
+0001b614  str r10,[sp,#0x30]                         -> Stack[-0x148]
+0001b618  bl 0x000131fc                              -> 000131fc
+0001b61c  ldr r3,[sp,#0x30]                          -> Stack[-0x148]
+0001b620  mov r9,#0x10                            
+0001b624  ldr r1,[sp,#0x14]                          -> Stack[-0x164]
+0001b628  sub r2,r3,#0x1                          
+0001b62c  add r10,r3,#0x1f                        
+0001b630  add r2,r1,r2                            
+0001b634  add r10,r1,r10                          
+0001b638  add r3,r3,#0x10                         
+0001b63c  strb r9,[r2,#0x1]!                      
+0001b640  cmp r2,r10                              
+0001b644  bne 0x0001b63c                             -> 0001b63c
+0001b648  str r3,[sp,#0x30]                          -> Stack[-0x148]
+0001b64c  b 0x0001b0a8                               -> 0001b0a8
+0001b650  ldr r3,[sp,#0x30]                          -> Stack[-0x148]
+0001b654  cmp r10,r3                              
+0001b658  bne 0x0001b0a8                             -> 0001b0a8
+0001b65c  b 0x0001b61c                               -> 0001b61c
+0001b660  mvn r0,#0x0                             
+0001b664  b 0x0001b5e4                               -> 0001b5e4
+0001b668  bl 0x000131f0                              -> 000131f0
+
+======== generate_getlocalkey @ 00014d4c ========
+00014d4c  stmdb sp!,{r4,r5,lr}                    
+00014d50  cpy r4,r0                               
+00014d54  sub sp,sp,#0xc                          
+00014d58  ldr r5,[0x14df8]                           -> 00014df8
+00014d5c  bl 0x00013f58                              -> 00013f58
+00014d60  cpy r0,r4                               
+00014d64  mov r1,#0x1                             
+00014d68  add r5,pc,r5                            
+00014d6c  bl 0x00013d68                              -> 00013d68
+00014d70  cpy r0,r4                               
+00014d74  mov r1,#0x0                             
+00014d78  bl 0x00013db4                              -> 00013db4
+00014d7c  cpy r0,r4                               
+00014d80  mov r1,#0x1                             
+00014d84  bl 0x00013e00                              -> 00013e00
+00014d88  mov r1,#0x1                             
+00014d8c  cpy r0,r4                               
+00014d90  bl 0x00013e44                              -> 00013e44
+00014d94  bl 0x000132ec                              -> 000132ec
+00014d98  mov r3,#0x2                             
+00014d9c  str r3,[sp,#0x0]                           -> Stack[-0x18]
+00014da0  cpy r2,r0                               
+00014da4  mov r3,r0, asr #0x1f                    
+00014da8  cpy r0,r4                               
+00014dac  bl 0x00013e94                              -> 00013e94
+00014db0  cpy r2,r5                                  -> 0001da20 "Getkey"
+00014db4  cpy r0,r4                               
+00014db8  mov r1,#0xb                             
+00014dbc  mov r3,#0x6                             
+00014dc0  bl 0x000143c0                              -> 000143c0
+00014dc4  cpy r2,r5                                  -> 0001da20 "Getkey"
+00014dc8  mov r3,#0x6                             
+00014dcc  cpy r0,r4                               
+00014dd0  mov r1,#0xf                             
+00014dd4  bl 0x000143c0                              -> 000143c0
+00014dd8  ldr r1,[0x14dfc]                           -> 00014dfc
+00014ddc  cpy r0,r4                               
+00014de0  mov r2,#0xe                             
+00014de4  add r1,pc,r1                               -> 0001da28 "{"Query":"1"}"
+00014de8  bl 0x00013fe8                              -> 00013fe8
+00014dec  mov r0,#0x0                             
+00014df0  add sp,sp,#0xc                          
+00014df4  ldmia sp!,{r4,r5,pc}                    
+
+======== Java_com_xiaocong_smarthome_phone_xcsdk_DeviceSdk_cmdExec @ 000135c8 ========
+000135c8  stmdb sp!,{r4,r5,r6,r7,r8,lr}           
+000135cc  cpy r5,r3                               
+000135d0  ldr r3,[r0,#0x0]                        
+000135d4  cpy r7,r2                               
+000135d8  cpy r1,r5                               
+000135dc  mov r2,#0x0                             
+000135e0  cpy r4,r0                               
+000135e4  ldr r3,[r3,#0x2a4]                      
+000135e8  blx r3                                  
+000135ec  subs r6,r0,#0x0                         
+000135f0  ldmiaeq sp!,{r4,r5,r6,r7,r8,pc}         
+000135f4  ldr r0,[0x13640]                           -> 00013640
+000135f8  cpy r1,r7                               
+000135fc  cpy r2,r6                               
+00013600  add r0,pc,r0                            
+00013604  add r0,r0,#0x8                             -> 00022068
+00013608  bl 0x00018ccc                              -> 00018ccc
+0001360c  ldr r3,[r4,#0x0]                        
+00013610  cpy r1,r5                               
+00013614  cpy r2,r6                               
+00013618  ldr r3,[r3,#0x2a8]                      
+0001361c  cpy r7,r0                               
+00013620  cpy r0,r4                               
+00013624  blx r3                                  
+00013628  ldr r3,[r4,#0x0]                        
+0001362c  cpy r1,r7                               
+00013630  cpy r0,r4                               
+00013634  ldmia sp!,{r4,r5,r6,r7,r8,lr}              -> Stack[0x0]
+00013638  ldr r3,[r3,#0x29c]                      
+0001363c  bx r3                                   
+
+======== Java_com_xiaocong_smarthome_phone_xcsdk_DeviceSdk_polling @ 0001357c ========
+0001357c  ldr r3,[0x135bc]                           -> 000135bc
+00013580  add r3,pc,r3                            
+00013584  ldr r2,[r3,#0x8]                           -> 00022068
+00013588  str r0,[r3,#0x0]                           -> 00022060
+0001358c  cmp r2,#0x0                             
+00013590  str r1,[r3,#0x4]                           -> 00022064
+00013594  beq 0x000135a8                             -> 000135a8
+00013598  ldr r0,[0x135c0]                           -> 000135c0
+0001359c  add r0,pc,r0                            
+000135a0  add r0,r0,#0x8                             -> 00022068
+000135a4  b 0x00018ff0                               -> 00018ff0
+000135a8  ldr r2,[0x135c4]                           -> 000135c4
+000135ac  str r3,[r3,#0xc]                           -> 0002206c   -> 00022060
+000135b0  add r2,pc,r2                            
+000135b4  str r2,[r3,#0x8]                           -> 00022068   -> 000134c4
+000135b8  b 0x00013598                               -> 00013598
+

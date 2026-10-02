@@ -1,0 +1,47 @@
+ok
+
+  上传 main.go      10314 字节
+  上传 mqtt.go       5861 字节
+  上传 dns.go        3930 字节
+  上传 rules.go      6176 字节
+  上传 go.mod          26 字节
+  上传 build.sh      3247 字节
+total 40
+drwxr-xr-x  2 root root   160 Oct  2 03:01 .
+drwxrwxrwt 15 root root   520 Oct  2 03:01 ..
+-rwxr-xr-x  1 root root  3247 Oct  2 03:01 build.sh
+-rw-r--r--  1 root root  3930 Oct  2 03:01 dns.go
+-rw-r--r--  1 root root    26 Oct  2 03:01 go.mod
+-rw-r--r--  1 root root 10314 Oct  2 03:01 main.go
+-rw-r--r--  1 root root  5861 Oct  2 03:01 mqtt.go
+-rw-r--r--  1 root root  6176 Oct  2 03:01 rules.go
+
+
+================ build.sh 输出 ================
+[build] go   : go version go1.22.12 linux/amd64
+[build] upx  : upx 4.2.4
+[build] 目标 : linux/arm64  静态(CGO_ENABLED=0)
+[build] go vet …
+[build] 编译 …
+[build] 未压缩: 5177496 字节
+[build] UPX 压缩（--best --lzma）…
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2024
+UPX 4.2.4       Markus Oberhumer, Laszlo Molnar & John Reiser    May 9th 2024
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+   5177496 ->   1522340   29.40%   linux/arm64   ixc-go-arm64_upx
+
+Packed 1 file.
+[build] 压缩后: 1522340 字节  （压到 29%，省了 3655156 字节）
+[build] 自检：解压后能否还原（UPX 完整性）
+[build]   ✅ UPX 自检通过
+[build] 产物:
+-rwxr-xr-x 1 root root 5177496 Oct  2 03:01 ixc-go-arm64
+-rwxr-xr-x 1 root root 1522340 Oct  2 03:01 ixc-go-arm64_upx
+
+[build] 部署：
+  scp ixc-go-arm64_upx root@192.168.1.1:/f4610u/bin/ixc-go-arm64_upx
+  （回环规则与开机自启在 /f4610u/user_init.sh 里，用 deploy.py 装）
+

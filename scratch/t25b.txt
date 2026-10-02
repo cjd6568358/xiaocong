@@ -1,0 +1,147 @@
+========================================================================
+0) 清掉上一轮可能残留的挂起进程
+    ok
+1) 上传到光猫 /tmp
+    -rwxrwxrwx    1 root     root       1276192 Oct  2 02:48 /tmp/busybox-full
+d951d2aa53b4740976882750a1874325  /tmp/busybox-full
+
+2) 能不能跑起来
+    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+BusyBox is copyrighted by many authors between 1998-2015.
+Licensed under GPLv2. See source distribution for detailed
+    退出码: 0
+
+3) applet 数量对比
+    系统自带 busybox : 120 个
+    自编完整版       : 418 个
+    新增             : 300 个
+    丢失             : 2 个
+    ⚠️ 系统有但新版没有: ['lock', 'netmsg']
+       lock         系统里: Usage: lock [-suw] <filename>
+       netmsg       系统里: usage: netmsg <ip> "<message>"
+
+========================================================================
+4) 真机 applet 实测（全部经 `busybox <applet>` 调用，才是真在测新版）
+    ✅ uname -a           rc=0    Linux CU_UFW 4.1.25 #4 SMP Tue Jun 6 23:31:58 CST 2023 aarch64 GNU/Linux
+    ✅ id                 rc=0    uid=0(root) gid=0(root) groups=0(root)
+    ✅ ls -la /           rc=0    total 0 | drwxr-xr-x    1 root     root           736 Sep 23 22:35 . | drwxr-xr-x    1
+    ✅ stat               rc=0    File: /bin/busybox |   Size: 419628    	Blocks: 820        IO Block: 1024   regular fi
+    ✅ df -h              rc=0    Filesystem                Size      Used Available Use% Mounted on | /opt/cu/framework
+    ✅ free               rc=0    total        used        free      shared  buff/cache   available | Mem:         45237
+    ✅ ps                 rc=0    PID   USER     TIME  COMMAND |     1 root      0:00 /sbin/procd -S -d 4 |    36 root  
+    ✅ top -b -n1         rc=0    Mem: 352388K used, 171900K free, 109200K shrd, 5168K buff, 142172K cached | CPU:  0.0%
+    ✅ netstat -ltn       rc=0    Active Internet connections (only servers) | Proto Recv-Q Send-Q Local Address        
+    ✅ ifconfig br0       rc=0    br0       Link encap:Ethernet  HWaddr 30:1F:48:C3:F7:A3   |           inet addr:192.16
+    ✅ route -n           rc=0    Kernel IP routing table | Destination     Gateway         Genmask         Flags Metric
+    ✅ ip -4 addr         rc=0    10: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP  |     inet
+    ✅ ip -4 route        rc=0    10.0.0.0/24 dev et_2_pmog scope link  src 10.0.0.1  | 12.177.230.0/25 via 12.177.230.8
+    ✅ grep -E 正则         rc=0    abc123
+    ✅ sed                rc=0    heLLo
+    ✅ awk                rc=0    b
+    ✅ find               rc=0    /f4610u/tun-layers.sh | /f4610u/hostexec.sh | /f4610u/user_init.sh
+    ✅ sort|uniq          rc=0    1 a |       2 b
+    ✅ cut|tr             rc=0    B
+    ✅ md5sum             rc=0    401b30e3b8b5d629635a5c613cdb7919  -
+    ✅ sha1sum            rc=0    6fcf9dfbd479ed82697fee719b9f8c610a11ff2a  -
+    ✅ sha256sum          rc=0    73cb3858a687a8494ca3323053016282f3dad39d42cf62ca4e79dda2aac7d9ac  -
+    ✅ sha512sum          rc=0    45843648ecf9da8e513286f136e3f271e7d6dee4d29b947a50dde8c61f3e197694c13bcdc279ce45983975
+    ✅ base64             rc=0    aGkK
+    ✅ base64 -d          rc=0    hi
+    ✅ xxd                rc=0    00000000: 4142                                     AB
+    ✅ hexdump -C         rc=0    00000000  41 42                                             |AB| | 00000002
+    ✅ od -An -tx1        rc=0    41 42
+    ✅ strings            rc=0    /lib/ld-linux-armhf.so.3 | ?gd=
+    ✅ crc32              rc=0    ed6f7a7a
+    ✅ dos2unix           rc=0    61 0a
+    ✅ tar --help         rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ gzip|gunzip        rc=0    hello
+    ✅ xz                 rc=0    0
+    ✅ unzip -h           rc=0    unzip: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call b
+    ✅ bc                 rc=0    1024
+    ✅ expr               rc=0    5
+    ✅ diff               rc=0    rc=2
+    ✅ cmp                rc=0    same
+    ✅ realpath/readlink  rc=0    /f4610u | /bin/busybox
+    ✅ seq/printf         rc=0    1 2 3  | 42
+    ✅ yes|head           rc=0    y y
+    ✅ env                rc=0    USER=root | SSH_CLIENT=192.168.1.20 53824 10022 | SHLVL=1
+    ✅ date -u +%s        rc=0    1790880491
+    ✅ timeout            rc=0    rc=143
+    ✅ mountpoint         rc=0    rc=0
+    ✅ flock -h           rc=0    flock: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call b
+    ✅ lsmod              rc=0    tun 22288 2 - Live 0xffffffbffca56000 (OE) | xt_NFQUEUE 3224 0 - Live 0xffffffbffca520
+    ✅ modprobe -h        rc=0    modprobe: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-cal
+    ✅ insmod -h          rc=0    insmod: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call 
+    ✅ crontab -l         rc=0    crontab: can't change directory to '/var/spool/cron/crontabs': No such file or directo
+    ✅ crond -h           rc=0    crond: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call b
+    ✅ dmesg              rc=0    x1 : 0000007f41f8ed10 x0 : ffffffffffffff9c
+    ✅ mdev -h            rc=0    mdev: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call bi
+    ✅ syslogd -h         rc=0    syslogd: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ httpd -h           rc=0    httpd: option requires an argument: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) mult
+    ✅ ssl_client -h      rc=0    ssl_client: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-c
+    ✅ cryptpw -h         rc=0    cryptpw: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ watch -h           rc=0    watch: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call b
+    ✅ mount              rc=0    /opt/cu/framework/ufw/rootfs on / type overlay (rw,relatime,lowerdir=/opt/cu/framework
+    ✅ dumpleases -h      rc=0    dumpleases: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-c
+    ✅ udhcpc -h          rc=0    udhcpc: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call 
+    ✅ setpriv -h         rc=0    setpriv: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ nsenter -h         rc=0    nsenter: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ unshare -h         rc=0    unshare: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ taskset -h         rc=0    taskset: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ chrt -h            rc=0    chrt: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call bi
+    ✅ ionice -h          rc=0    ionice: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call 
+    ✅ setsid             rc=0    setsid: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call 
+    ✅ wget --help        rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ nc -h              rc=0    nc: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call bina
+    ✅ telnet -h          rc=0    telnet: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call 
+    ✅ telnetd -h         rc=0    telnetd: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ ftpd -h            rc=0    ftpd: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call bi
+    ✅ tftp -h            rc=0    tftp: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call bi
+    ✅ ntpd -h            rc=0    ntpd: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call bi
+    ✅ tunctl -h          rc=0    tunctl: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call 
+    ✅ pgrep              rc=0    pgrep: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call b
+    ✅ pkill -h           rc=0    pkill: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call b
+    ✅ hwclock -h         rc=0    hwclock: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ blkid              rc=0    /dev/ubi0_0: UUID="3d63f708-687d-4e95-9a80-5e540e14310f" TYPE="ubifs" | /dev/mtdblock1
+    ✅ sh -c 子shell       rc=0    sh-ok
+    ✅ ash -c 子shell      rc=0    ash-ok
+    ✅ lock（系统有）          rc=0    lock: applet not found
+    ✅ netmsg（系统有）        rc=0    netmsg: applet not found
+    ✅ bbconfig           rc=0    CONFIG_HAVE_DOT_CONFIG=y | CONFIG_DESKTOP=y | ... | 1078
+    ✅ ar                 rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ inotifyd           rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ rfkill             rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ netcat（nc 别名）      rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ readahead          rc=0    readahead: can't open '-h': No such file or directory
+    ✅ fbset              rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ tune2fs            rc=0    tune2fs: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call
+    ✅ mkfs.reiser        rc=0    mkfs.reiser: option requires an argument: h | BusyBox v1.36.1 (2026-10-02 02:46:18 CST
+    ✅ lzopcat            rc=0    lzopcat: short read
+    ✅ unlzop             rc=0    unlzop: short read
+    ✅ uncompress         rc=0    uncompress: invalid magic
+    ✅ nuke               rc=0    
+    ✅ minips             rc=0    PID   USER     TIME  COMMAND |     1 root      0:00 /sbin/procd -S -d 4
+    ✅ nanddump           rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ nandwrite          rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ flashcp            rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ flash_eraseall     rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ flash_lock         rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+    ✅ flash_unlock       rc=0    BusyBox v1.36.1 (2026-10-02 02:46:18 CST) multi-call binary.
+
+    合计: 105 成功 / 0 非零
+
+========================================================================
+5) --install -s 软链安装后，按裸命令名调用（真实使用姿势）
+    418
+    98ea6e4f216f2fb4b69fff9b3a44842c38686ca685f3f55dc48c5d3fb1107be4  -
+aGkK
+00000000: 4142                                     AB
+256
+
+6) 跑完确认光猫还活着
+    02:48:21 up  7:53,  load average: 2.63, 2.84, 2.90
+---
+2.63 2.84 2.91 1/248 11450
+
+7) 清理
+    ok

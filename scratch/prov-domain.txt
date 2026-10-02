@@ -1,0 +1,5 @@
+
+===== 方案 2 domain 实验 2026-10-02 03:23:15 =====
+插头热点=smart-381785-3a6e7c-b7  家庭网=PDCN_IOT  探针 domain=139.227.20.142
+当前可见 SSID（14 个）:  | MERCURY_3888 | CMCC-YduH-5G | 67-102-5G | jonhsonzhang | jonhsonzhang_Wi-Fi5 | CMCC-102 | CMCC-yfZe | Xiaomi_01E0 | CMCC-dE6w | Xiaomi_01E0_5G | CMCC-YduH | ChinaNet-iXvd-5G | PDCN_IOT
+❌ 没看到 smart-381785-3a6e7c-b7，插座可能已退出配网模式

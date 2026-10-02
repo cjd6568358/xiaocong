@@ -1,0 +1,82 @@
+package com.meizu.cloud.pushsdk.platform.message;
+
+import android.text.TextUtils;
+import com.meizu.cloud.pushinternal.DebugLogger;
+import java.io.Serializable;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public abstract class BasicPushStatus implements Serializable {
+    public static final String SUCCESS_CODE = "200";
+    public static final String TAG = "BasicPushStatus";
+    public String code;
+    public String message;
+
+    public abstract void parseValueData(JSONObject jSONObject) throws JSONException;
+
+    public BasicPushStatus() {
+    }
+
+    public BasicPushStatus(String str) {
+        JSONObject jSONObject = parse(str);
+        if (jSONObject != null && SUCCESS_CODE.equals(this.code) && !jSONObject.isNull("value")) {
+            try {
+                parseValueData(jSONObject.getJSONObject("value"));
+            } catch (JSONException e) {
+                DebugLogger.e(TAG, "parse value data error " + e.getMessage() + " json " + str);
+            }
+        }
+    }
+
+    public String getCode() {
+        return this.code;
+    }
+
+    public void setCode(String str) {
+        this.code = str;
+    }
+
+    public void setMessage(String str) {
+        this.message = str;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    protected JSONObject parse(String str) {
+        JSONObject jSONObject;
+        JSONException e;
+        if (TextUtils.isEmpty(str)) {
+            return null;
+        }
+        try {
+            jSONObject = new JSONObject(str);
+            if (jSONObject != null) {
+                try {
+                    if (!jSONObject.isNull("code")) {
+                        setCode(jSONObject.getString("code"));
+                    }
+                    if (!jSONObject.isNull("message")) {
+                        setMessage(jSONObject.getString("message"));
+                        return jSONObject;
+                    }
+                    return jSONObject;
+                } catch (JSONException e2) {
+                    e = e2;
+                    DebugLogger.e(TAG, "covert json error " + e.getMessage());
+                    return jSONObject;
+                }
+            }
+            return jSONObject;
+        } catch (JSONException e3) {
+            jSONObject = null;
+            e = e3;
+        }
+    }
+
+    public String toString() {
+        return "BasicPushStatus{code='" + this.code + "', message='" + this.message + "'}";
+    }
+}

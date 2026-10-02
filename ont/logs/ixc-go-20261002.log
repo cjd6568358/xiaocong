@@ -1,0 +1,72 @@
+[04:25:57] ✔  已挂别名 br0:0 = 203.0.113.9
+[04:25:57] ✔  已装规则: -i br0 -m mac --mac-source B4:E6:2D:3A:6E:7C -p udp --dport 53 -j REDIRECT --to-ports 5353
+[04:25:57]    Chain PREROUTING (policy ACCEPT)
+[04:25:57]    1    REDIRECT   udp  --  0.0.0.0/0            0.0.0.0/0            MAC B4:E6:2D:3A:6E:7C udp dpt:53 redir ports 5353
+[04:25:57]    2    REDIRECT   tcp  --  0.0.0.0/0           !192.168.1.0/24       tcp dpt:8188 redir ports 8188
+[04:25:57]    回环规则不由本程序管理（常驻在 /f4610u/user_init.sh，加 -hairpin 可改回来）
+[04:25:57] ixc-go 就绪  TLS=:8188  证书=/f4610u/etc/server.crt
+[04:25:57]    设备ID=6587529711423210  AppClientID=f9ee07acc3412b0f538d778ab05e5e80
+[04:25:57]    命令文件=/tmp/xc.cmd（追加一行 JSON 即下发）
+[04:25:57] DNS 应答器就绪  监听=[::]:5353  劫持域=[ixiaocong.com allin.dns.army]  →203.0.113.9  上游=223.5.5.5:53
+[04:25:57] 控制 HTTP 就绪  http://192.168.1.1:8080/on  /off  /status
+[13:34:01]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 192.168.1.19:56254)
+[13:34:54]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 192.168.1.19:57098)
+[13:34:54]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 192.168.1.19:57099)
+[13:34:54]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 192.168.1.19:57100)
+[13:34:54]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 192.168.1.19:57101)
+[14:06:49]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 139.227.106.115:57050)
+[14:06:49] ★ 有连接进来 192.168.1.11:43128
+[14:06:49]   ✅ TLS 握手成功  version=0x0302  cipher=TLS_RSA_WITH_AES_128_CBC_SHA
+[14:06:49]   ← CONNECT (134 字节)
+[14:06:49]   ← PUBLISH topic=baseInfo payload={"messageId":356097,"senderId":"6587529711423210","ssid":"PDCN_IOT","mac":"B4E62D3A6E7C","sn":"B4E62D3A6E7C","version":"2018041305","firmwareType":"B","mcuVersion":"2017101910","protocolVersion":"1.0.0","reboot_count":207,"connect_count":0,"select_errno":0}
+[14:06:49]   ← PUBLISH topic=snapshot payload={"messageId":356128,"senderId":"6587529711423210","receiveId":"","rssi":90,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:06:59] ★ 有连接进来 192.168.1.11:29999
+[14:06:59]   ✅ TLS 握手成功  version=0x0302  cipher=TLS_RSA_WITH_AES_128_CBC_SHA
+[14:06:59]   ← CONNECT (134 字节)
+[14:06:59]   ← PUBLISH topic=baseInfo payload={"messageId":6637,"senderId":"6587529711423210","ssid":"PDCN_IOT","mac":"B4E62D3A6E7C","sn":"B4E62D3A6E7C","version":"2018041305","firmwareType":"B","mcuVersion":"2017101910","protocolVersion":"1.0.0","reboot_count":208,"connect_count":0,"select_errno":0}
+[14:06:59]   ← PUBLISH topic=snapshot payload={"messageId":6668,"senderId":"6587529711423210","receiveId":"","rssi":95,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:07:04]    连接结束 (read tcp 192.168.1.1:8188->192.168.1.11:43128: read: connection reset by peer)
+[14:07:52]   ← PUBLISH topic=snapshot payload={"messageId":59175,"senderId":"6587529711423210","receiveId":"","rssi":97,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:08:46]    → PUBLISH control {"command":{"switch":1}}
+[14:08:46] ◆ HTTP 下发 {"command":{"switch":1}}（1 个会话）
+[14:08:46]   ← PUBLISH topic=snapshot payload={"messageId":113854,"senderId":"6587529711423210","receiveId":"","rssi":90,"snapshot":{"switch":1,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:08:52]   ← PUBLISH topic=snapshot payload={"messageId":119185,"senderId":"6587529711423210","receiveId":"","rssi":90,"snapshot":{"switch":1,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:08:58]    → PUBLISH control {"command":{"switch":0}}
+[14:08:58] ◆ HTTP 下发 {"command":{"switch":0}}（1 个会话）
+[14:08:58]   ← PUBLISH topic=snapshot payload={"messageId":125958,"senderId":"6587529711423210","receiveId":"","rssi":87,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:09:52]   ← PUBLISH topic=snapshot payload={"messageId":179195,"senderId":"6587529711423210","receiveId":"","rssi":87,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:10:02]   DNS 劫持  wpad.allin.dns.army A → 203.0.113.9   (来自 139.227.106.115:19996)
+[14:10:52]   ← PUBLISH topic=snapshot payload={"messageId":239205,"senderId":"6587529711423210","receiveId":"","rssi":85,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:11:52]   ← PUBLISH topic=snapshot payload={"messageId":299215,"senderId":"6587529711423210","receiveId":"","rssi":82,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:12:52]   ← PUBLISH topic=snapshot payload={"messageId":359225,"senderId":"6587529711423210","receiveId":"","rssi":82,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:13:08]   DNS 劫持  wpad.allin.dns.army A → 203.0.113.9   (来自 139.227.106.115:63368)
+[14:13:08]   DNS 劫持  wpad.allin.dns.army A → 203.0.113.9   (来自 139.227.106.115:14085)
+[14:13:52]   ← PUBLISH topic=snapshot payload={"messageId":419235,"senderId":"6587529711423210","receiveId":"","rssi":92,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:14:58]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 139.227.106.115:26437)
+[14:14:58]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 139.227.106.115:9672)
+[14:14:58] ★ 有连接进来 192.168.1.11:30841
+[14:14:58]   ✅ TLS 握手成功  version=0x0302  cipher=TLS_RSA_WITH_AES_128_CBC_SHA
+[14:14:58]   ← CONNECT (134 字节)
+[14:14:59]   ← PUBLISH topic=baseInfo payload={"messageId":6636,"senderId":"6587529711423210","ssid":"PDCN_IOT","mac":"B4E62D3A6E7C","sn":"B4E62D3A6E7C","version":"2018041305","firmwareType":"B","mcuVersion":"2017101910","protocolVersion":"1.0.0","reboot_count":209,"connect_count":0,"select_errno":0}
+[14:14:59]   ← PUBLISH topic=snapshot payload={"messageId":6666,"senderId":"6587529711423210","receiveId":"","rssi":95,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:15:07]    连接结束 (read tcp 192.168.1.1:8188->192.168.1.11:29999: read: connection reset by peer)
+[14:15:51]   ← PUBLISH topic=snapshot payload={"messageId":59178,"senderId":"6587529711423210","receiveId":"","rssi":75,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:16:51]   ← PUBLISH topic=snapshot payload={"messageId":119188,"senderId":"6587529711423210","receiveId":"","rssi":90,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:17:51]   ← PUBLISH topic=snapshot payload={"messageId":179198,"senderId":"6587529711423210","receiveId":"","rssi":90,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:18:51]   ← PUBLISH topic=snapshot payload={"messageId":239208,"senderId":"6587529711423210","receiveId":"","rssi":90,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:19:51]   ← PUBLISH topic=snapshot payload={"messageId":299218,"senderId":"6587529711423210","receiveId":"","rssi":95,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:20:02]   DNS 劫持  wpad.allin.dns.army A → 203.0.113.9   (来自 139.227.106.115:60983)
+[14:20:58]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 139.227.106.115:5906)
+[14:20:58]   DNS 劫持  iot.ixiaocong.com A → 203.0.113.9   (来自 139.227.106.115:2775)
+[14:20:58] ★ 有连接进来 192.168.1.11:27358
+[14:20:58]   ✅ TLS 握手成功  version=0x0302  cipher=TLS_RSA_WITH_AES_128_CBC_SHA
+[14:20:58]   ← CONNECT (134 字节)
+[14:20:58]   ← PUBLISH topic=baseInfo payload={"messageId":6648,"senderId":"6587529711423210","ssid":"PDCN_IOT","mac":"B4E62D3A6E7C","sn":"B4E62D3A6E7C","version":"2018041305","firmwareType":"B","mcuVersion":"2017101910","protocolVersion":"1.0.0","reboot_count":210,"connect_count":0,"select_errno":0}
+[14:20:58]   ← PUBLISH topic=snapshot payload={"messageId":6679,"senderId":"6587529711423210","receiveId":"","rssi":95,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:21:06]    连接结束 (read tcp 192.168.1.1:8188->192.168.1.11:30841: read: connection reset by peer)
+[14:21:50]   ← PUBLISH topic=snapshot payload={"messageId":59170,"senderId":"6587529711423210","receiveId":"","rssi":87,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:22:50]   ← PUBLISH topic=snapshot payload={"messageId":119180,"senderId":"6587529711423210","receiveId":"","rssi":92,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:23:08]   DNS 劫持  wpad.allin.dns.army A → 203.0.113.9   (来自 139.227.106.115:16552)
+[14:23:08]   DNS 劫持  wpad.allin.dns.army A → 203.0.113.9   (来自 139.227.106.115:20017)
+[14:23:50]   ← PUBLISH topic=snapshot payload={"messageId":179190,"senderId":"6587529711423210","receiveId":"","rssi":87,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}
+[14:24:50]   ← PUBLISH topic=snapshot payload={"messageId":239200,"senderId":"6587529711423210","receiveId":"","rssi":92,"snapshot":{"switch":0,"repower":"0"},"protocolVersion":"1.0.0"}

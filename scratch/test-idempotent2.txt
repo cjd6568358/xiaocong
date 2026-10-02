@@ -1,0 +1,27 @@
+============================================================
+第 1 次 deploy
+        写入完成，行数: 238 |    [user_init] ixc-go 回环规则 rc=0 | 214:    echo "[user_init] ixc-go 回环规则 rc=$?"
+    user_init.sh md5      : b713224065da2d0b433e50f0fc783cee
+    剥掉 ixc-go 段后 md5  : eafab9d154c0412d314ad315597cb8e5
+============================================================
+第 2 次 deploy
+        写入完成，行数: 238 |    [user_init] ixc-go 回环规则 rc=0 | 214:    echo "[user_init] ixc-go 回环规则 rc=$?"
+    user_init.sh md5      : b713224065da2d0b433e50f0fc783cee
+    剥掉 ixc-go 段后 md5  : eafab9d154c0412d314ad315597cb8e5
+    (a) 两次产出是否相同  : ✅ 相同
+    (b) 剥段后 == 原始文件: ✅ 一致（原有内容一字节未动）
+
+============================================================
+参考：原始文件 /f4610u/user_init.sh.bak-20261002-030321
+    md5 = eafab9d154c0412d314ad315597cb8e5
+    行数/字节 = ['149', '6813']
+    当前文件 行数/字节 = ['238', '12103']
+
+备份文件累积情况（每次 deploy 一份，可手工清理）:
+7
+-rwxrwxrwx    1 root     root         11350 Oct  2 03:03 /f4610u/user_init.sh.bak-20261002-030400
+-rwxrwxrwx    1 root     root         11946 Oct  2 03:04 /f4610u/user_init.sh.bak-20261002-030557
+-rwxrwxrwx    1 root     root         11946 Oct  2 03:05 /f4610u/user_init.sh.bak-20261002-030609
+-rwxrwxrwx    1 root     root         11946 Oct  2 03:06 /f4610u/user_init.sh.bak-20261002-030720
+-rwxrwxrwx    1 root     root         12103 Oct  2 03:07 /f4610u/user_init.sh.bak-20261002-030732
+

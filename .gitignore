@@ -1,0 +1,25 @@
+# ---- 第三方工具（体积大，可重新下载）----
+ghidra_12.1.4_PUBLIC/
+jadx-gui-1.5.6-with-jre-win/
+
+# ---- 构建产物（可由 tools/build_apk.sh 重新生成）----
+build/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+
+# ---- 可选的派生目录 ----
+# 下面三个都能从 dex/ 和 xiaocong.apk 重新生成（见 README「环境备忘」），
+# 合计约 113MB。想保持仓库精简就取消注释：
+# decompiled/          # jadx 从 dex/ 反编译
+# apk_extract/         # 7z 从 xiaocong.apk 解包
+# apk_decompiled/      # jadx 从 xiaocong.apk 反编译资源
+
+# ---- 但以下务必保留（无法重新生成）----
+# dex/                 脱壳产物，需要乐固脱壳工具才能复现
+# xiaocong.apk         原始 APK
+# docs/ server/ firmware/ tools/   分析成果

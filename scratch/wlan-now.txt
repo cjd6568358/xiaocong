@@ -1,0 +1,23 @@
+87	PDCN_IOT	PDCN_IOT	0x3
+86	67-102-5G	67-102-5G	0x2
+24	CMCC-102-5G		0x0
+38	CMCC-yfZe		0x0
+18	CU_ZUsa		0x0
+20	Xiaomi_01E0_5G		0x0
+86	67-102-5G		0x0
+32	CMCC-YduH-5G		0x0
+46	jonhsonzhang		0x0
+38	jonhsonzhang_Wi-Fi5		0x0
+26	ChinaNet-tXsu		0x0
+56	CMCC-YduH		0x0
+60	CMCC-102		0x0
+82	ChinaNet-iXvd		0x8
+88	MERCURY_3888		0x0
+14	CU_ZUsa_5G		0x0
+46	Tenda_1002		0x0
+80	Xiaomi_01E0		0x0
+80	ChinaNet-iXvd-5G		0x8
+34	ChinaNet-UDSE		0x0
+26	CMCC-dE6w		0x0
+24	TP-LINK_B105		0x0
+86	PDCN_IOT		0x0

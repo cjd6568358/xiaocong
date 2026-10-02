@@ -1,0 +1,16 @@
+## 工具链
+aarch64-linux-musl-gcc (GCC) 11.2.1 20211120
+--- strip ---
+GNU strip (GNU Binutils) 2.37
+--- 内核头 ---
+#define LINUX_VERSION_CODE 331522
+
+## 磁盘与网络
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           7.9G  136M  7.7G   2% /tmp
+/dev/vda1       118G  3.7G  108G   4% /
+---
+HTTP/1.1 200 OK
+Date: Thu, 01 Oct 2026 18:26:37 GMT
+Server: Apache
+Strict-Transport-Security: max-age=63072000

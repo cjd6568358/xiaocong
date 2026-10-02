@@ -1,0 +1,118 @@
+======================================================================
+1) 上传到光猫 /tmp
+    -rwxrwxrwx    1 root     root       1260416 Oct  2 02:35 /tmp/busybox-full
+
+2) 能不能跑起来（这才是关键）
+    BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call binary.
+BusyBox is copyrighted by many authors between 1998-2015.
+Licensed under GPLv2. See source distribution for detailed
+   退出码: 0
+
+3) applet 数量对比
+    系统自带 busybox : 120 个
+    自编完整版       : 417 个
+    新增             : 300 个
+    丢失             : 3 个
+
+4) 新增的 applet（按字母序，每行 8 个）
+    acpid             add-shell         addgroup          adduser           adjtimex          ar                arch              arp             
+    ascii             base32            base64            bbconfig          bc                beep              blkdiscard        blkid           
+    blockdev          bootchartd        bzip2             cal               chat              chattr            chpasswd          chpst           
+    chrt              chvt              cksum             comm              conspy            cpio              crc32             cryptpw         
+    cttyhack          dc                deallocvt         delgroup          deluser           depmod            devfsd            dhcprelay       
+    diff              dnsd              dnsdomainname     dos2unix          dpkg              dpkg-deb          dumpkmap          dumpleases      
+    ed                eject             envdir            envuidgid         ether-wake        expand            factor            fakeidentd      
+    fallocate         fatattr           fbset             fbsplash          fdflush           fdformat          fdisk             fgconsole       
+    findfs            flash_eraseall    flash_lock        flash_unlock      flashcp           fold              freeramdisk       fsck            
+    fsck.minix        fsfreeze          fstrim            ftpd              ftpget            ftpput            getty             groups          
+    halt              hd                hdparm            hexedit           hostname          httpd             hush              i2cdetect       
+    i2cdump           i2cget            i2cset            i2ctransfer       ifdown            ifenslave         ifplugd           ifup            
+    inetd             init              inotifyd          insmod            install           ionice            iostat            ip              
+    ipaddr            ipcalc            ipcrm             ipcs              iplink            ipneigh           iproute           iprule          
+    iptunnel          kbd_mode          killall5          klogd             last              link              linux32           linux64         
+    linuxrc           loadfont          loadkmap          login             logname           logread           losetup           lpd             
+    lpq               lpr               lsattr            lsmod             lsof              lspci             lsscsi            lsusb           
+    lzcat             lzma              lzop              lzopcat           makedevs          makemime          man               mdev            
+    mesg              microcom          mim               minips            mkdosfs           mke2fs            mkfs.ext2         mkfs.minix      
+    mkfs.reiser       mkfs.vfat         mkpasswd          modinfo           modprobe          more              mountpoint        mpstat          
+    mt                nameif            nanddump          nandwrite         nbd-client        netcat            nl                nmeter          
+    nologin           nproc             nsenter           nslookup          nuke              od                openvt            partprobe       
+    passwd            paste             patch             pipe_progress     pkill             pmap              popmaildir        poweroff        
+    powertop          printenv          pscan             pstree            pwdx              raidautorun       rdate             rdev            
+    readahead         readprofile       realpath          reboot            reformime         remove-shell      renice            resize          
+    resume            rev               rfkill            rmmod             rpm               rpm2cpio          rtcwake           run-init        
+    run-parts         runlevel          runsv             runsvdir          rx                script            scriptreplay      seedrng         
+    sendmail          setarch           setconsole        setfattr          setfont           setkeycodes       setlogcons        setpriv         
+    setserial         setsid            setuidgid         sha1sum           sha256sum         sha3sum           sha512sum         showkey         
+    shred             shuf              slattach          smemcap           softlimit         split             ssl_client        stat            
+    stty              su                sulogin           sum               sv                svc               svlogd            svok            
+    syslogd           tac               taskset           tcpsvd            tftpd             timeout           tree              truncate        
+    ts                tsort             tty               ttysize           tunctl            tune2fs           ubiattach         ubidetach       
+    ubimkvol          ubirename         ubirmvol          ubirsvol          ubiupdatevol      udhcpc6           udhcpd            udpsvd          
+    uevent            uncompress        unexpand          unit              unix2dos          unlink            unlzma            unlzop          
+    unxz              unzip             users             usleep            uudecode          uuencode          vlock             volname         
+    w                 wall              watch             watchdog          who               whoami            whois             xxd             
+    xz                xzcat             zcat              zcip            
+
+⚠️ 系统有但新版没有的: ['ash', 'lock', 'netmsg']
+
+======================================================================
+5) 真机命令实测（重点看老内核 4.1.25 上会不会崩）
+    ✅ uname -a             rc=0    Linux CU_UFW 4.1.25 #4 SMP Tue Jun 6 23:31:58 CST 2023 aarch64 aarch64 aarch64 GNU/Linux
+    ✅ id                   rc=0    uid=0(root) gid=0(root) groups=0(root)
+    ✅ ls -la /             rc=0    total 0 | drwxr-xr-x    1 root     root           736 Sep 23 22:35 . | drwxr-xr-x    1 r
+    ✅ stat /bin/busybox    rc=0    File: /bin/busybox |   Size: 419628    	Blocks: 820        IO Block: 1024   regular file
+    ✅ df -h                rc=0    Filesystem                Size      Used Available Use% Mounted on | /opt/cu/framework/u
+    ✅ free                 rc=0    total        used        free      shared  buff/cache   available | Mem:         452372 
+    ✅ ps (完整)              rc=0    PID   USER     TIME  COMMAND |     1 root      0:00 /sbin/procd -S -d 4 |    36 root    
+    ✅ top -b -n1           rc=0    Mem: 352388K used, 171900K free, 109172K shrd, 5160K buff, 144404K cached | CPU:  8.3% u
+    ✅ netstat -ltn         rc=0    Active Internet connections (only servers) | Proto Recv-Q Send-Q Local Address          
+    ✅ ifconfig br0         rc=0    br0       Link encap:Ethernet  HWaddr 30:1F:48:C3:F7:A3   |           inet addr:192.168.
+    ✅ route -n             rc=0    Kernel IP routing table | Destination     Gateway         Genmask         Flags Metric R
+    ✅ ip addr (若有)         rc=0    10: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP  |     inet 1
+    ✅ grep 正则              rc=0    abc123
+    ✅ sed                  rc=0    heLLo
+    ✅ awk                  rc=0    b
+    ✅ find                 rc=0    /f4610u/tun-layers.sh | /f4610u/hostexec.sh | /f4610u/user_init.sh
+    ✅ sort|uniq            rc=0    1 a |       2 b
+    ✅ cut/tr               rc=0    B
+    ✅ md5sum               rc=0    401b30e3b8b5d629635a5c613cdb7919  -
+    ⚠️ sha256sum            rc=127  ash: sha256sum: not found
+    ⚠️ base64               rc=127  ash: base64: not found
+    ⚠️ xxd                  rc=127  ash: xxd: not found
+    ✅ hexdump              rc=0    00000000  41 42                                             |AB| | 00000002
+    ⚠️ od                   rc=127  ash: od: not found
+    ✅ tar --help           rc=0    BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call binary.
+    ✅ gzip                 rc=0    hello
+    ✅ xz                   rc=0    19
+    ✅ unzip -h             rc=0    unzip: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call bin
+    ⚠️ bc                   rc=127  ash: bc: not found
+    ✅ diff                 rc=0    --- /dev/fd/64 | +++ /dev/fd/65
+    ✅ cmp                  rc=0    same
+    ✅ realpath/readlink    rc=0    /f4610u | /bin/busybox
+    ✅ seq/printf           rc=0    1 2 3  | 42
+    ✅ flock                rc=0    flock: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call bin
+    ✅ insmod/lsmod/rmmod   rc=0    tun 22288 2 - Live 0xffffffbffca56000 (OE) | xt_NFQUEUE 3224 0 - Live 0xffffffbffca52000
+    ✅ modprobe -h          rc=0    modprobe: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call 
+    ✅ crontab -l           rc=0    crontab: can't change directory to '/var/spool/cron/crontabs': No such file or directory
+    ✅ dmesg                rc=0    x1 : 0000007f41e96fb0 x0 : ffffffffffffff9c
+    ✅ mdev -h              rc=0    mdev: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call bina
+    ✅ syslogd -h           rc=0    syslogd: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call b
+    ✅ httpd -h             rc=0    httpd: option requires an argument: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-
+    ✅ ssl_client -h        rc=0    ssl_client: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-cal
+    ✅ chpasswd/cryptpw     rc=0    cryptpw: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call b
+    ✅ watch -h             rc=0    watch: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call bin
+    ✅ mount (列出)           rc=0    /opt/cu/framework/ufw/rootfs on / type overlay (rw,relatime,lowerdir=/opt/cu/framework/u
+    ✅ dumpleases -h        rc=0    dumpleases: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-cal
+    ✅ setpriv -h           rc=0    setpriv: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call b
+    ✅ nsenter -h           rc=0    nsenter: unrecognized option: h | BusyBox v1.36.1 (2026-10-02 02:34:37 CST) multi-call b
+
+    合计: 43 成功 / 5 非零
+
+6) 跑完确认光猫还活着
+    02:35:37 up  7:41,  load average: 3.15, 2.94, 2.95
+---
+3.15 2.94 2.95 4/247 10097
+
+7) 清理
+    ok

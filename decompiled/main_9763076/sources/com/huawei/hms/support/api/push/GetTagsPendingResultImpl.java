@@ -1,0 +1,35 @@
+package com.huawei.hms.support.api.push;
+
+import com.huawei.hms.core.aidl.IMessageEntity;
+import com.huawei.hms.support.api.client.ApiClient;
+import com.huawei.hms.support.api.client.Status;
+import com.huawei.hms.support.api.entity.push.GetTagsResp;
+import com.huawei.hms.support.api.push.a.a.a.c;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+public class GetTagsPendingResultImpl extends com.huawei.hms.support.api.a<GetTagResult, GetTagsResp> {
+    private ApiClient a;
+
+    public GetTagsPendingResultImpl(ApiClient apiClient, String str, IMessageEntity iMessageEntity) {
+        super(apiClient, str, iMessageEntity);
+        this.a = apiClient;
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override // com.huawei.hms.support.api.a
+    public GetTagResult onComplete(GetTagsResp getTagsResp) {
+        GetTagResult getTagResult = new GetTagResult();
+        try {
+            getTagsResp.setTags(new c(this.a.getContext(), "tags_info").a());
+            getTagResult.setTagsRes(getTagsResp);
+            getTagResult.setStatus(Status.SUCCESS);
+        } catch (Exception e) {
+            if (com.huawei.hms.support.log.a.d()) {
+                com.huawei.hms.support.log.a.d("GetTagsPendingResultImpl", "get tags failed, error:" + e.getMessage());
+            }
+            getTagResult.setTagsRes(getTagsResp);
+            getTagResult.setStatus(new Status(HmsPushConst.ErrorCode.REPORT_SYSTEM_ERROR));
+        }
+        return getTagResult;
+    }
+}

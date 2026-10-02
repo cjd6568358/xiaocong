@@ -1,0 +1,9 @@
+package org.apache.http.io;
+
+/* JADX INFO: loaded from: C:\workspace\xiaocong\dex\com.ixiaocong.smarthome.phone9763076.dex */
+@Deprecated
+public interface HttpTransportMetrics {
+    long getBytesTransferred();
+
+    void reset();
+}

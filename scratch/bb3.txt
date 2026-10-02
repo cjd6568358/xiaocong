@@ -1,0 +1,6 @@
+applet 条目数: 939
+make rc=2
+--- 错误行（去重） ---
+--- 失败的目录 ---
+make[1]: *** [scripts/Makefile.build:197: networking/inetd.o]
+

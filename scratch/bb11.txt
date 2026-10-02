@@ -1,0 +1,7 @@
+make rc=2
+--- 错误 ---
+253: 1578 |                                 bb_error_msg("read error: "STRERROR_FMT", reopening socket" STRERROR_ERRNO);
+293: 1630 |                                 bb_error_msg("read error: "STRERROR_FMT", reopening socket" STRERROR_ERRNO);
+323: 1038 |                                 log1("read error: "STRERROR_FMT", reopening socket" STRERROR_ERRNO);
+767:make: *** [Makefile:719: busybox_unstripped] Error 1
+

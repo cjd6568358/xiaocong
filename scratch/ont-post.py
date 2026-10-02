@@ -1,0 +1,28 @@
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import sshutil
+os.environ.setdefault("SSH_PW", "e3eb773F")
+import paramiko
+cli = paramiko.SSHClient()
+cli.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+cli.connect("192.168.1.1", 10022, username="root", password=os.environ["SSH_PW"],
+            timeout=15, look_for_keys=False, allow_agent=False)
+def sh(c, t=90): return sshutil.run(cli, c, timeout=t).strip()
+print("="*60)
+print("① 插座回网了吗")
+print("="*60)
+print("ARP:", sh("grep -i 'b4:e6:2d:3a:6e:7c' /proc/net/arp || echo 'ARP 里没有插座'"))
+print("ping:", sh("ping -c 2 -W 2 192.168.1.23 2>&1 | grep -E 'transmitted|bytes from'"))
+print("\n"+"="*60)
+print("② ixc-go 日志最近 40 行（看插座有没有连回来）")
+print("="*60)
+print(sh("tail -40 /tmp/ixc-go.log"))
+print("\n"+"="*60)
+print("③ conntrack 里插座的连接（判据）")
+print("="*60)
+print(sh("grep -E '192.168.1.23' /proc/net/nf_conntrack 2>/dev/null | head -10 || echo '(无条目)'"))
+print("\n"+"="*60)
+print("④ 回环 / DNS 规则命中计数")
+print("="*60)
+print(sh("LD_LIBRARY_PATH=/f4610u/lib /f4610u/bin/iptables_upx -t nat -L PREROUTING -n -v --line-numbers 2>/dev/null | head -4"))
+cli.close()

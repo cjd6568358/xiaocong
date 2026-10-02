@@ -1,0 +1,46 @@
+== 连通性 ==
+host-192-168-7-251.openstacklocal
+x86_64
+8
+
+== 上传 8325 字节 ==
+-rw-r--r-- 1 root root 8325 Oct  2 02:37 /tmp/build_busybox_static.sh
+21ab0daffd26e0f0be7839ba419b17c7  /tmp/build_busybox_static.sh
+
+   本地 md5: 21ab0daffd26e0f0be7839ba419b17c7
+== 跑起来（干净目录 /tmp/bbbuild）==
+[build] 编译器: aarch64-linux-musl-gcc (GCC) 11.2.1 20211120
+[build] 下载 busybox 1.36.1 源码...
+[build]   尝试 https://busybox.net/downloads/busybox-1.36.1.tar.bz2
+[build] make defconfig ...
+[build] make oldconfig（收敛依赖）...
+[build] 关键配置落地情况：
+  ✅ CONFIG_STATIC                STATIC=y
+  ⚠️  CONFIG_OPTIMIZE_FOR_SIZE     不存在（该版本没这个符号，忽略）
+  ✅ CONFIG_CROSS_COMPILER_PREFIX CROSS_COMPILER_PREFIX="aarch64-linux-musl-"
+  ✅ CONFIG_EXTRA_CFLAGS          EXTRA_CFLAGS="-Wno-error"
+  ✅ CONFIG_EXTRA_COMPAT          # CONFIG_EXTRA_COMPAT is not set
+  ✅ CONFIG_FEATURE_VI_REGEX_SEARCH # CONFIG_FEATURE_VI_REGEX_SEARCH is not set
+  ✅ CONFIG_FEATURE_INETD_RPC     # CONFIG_FEATURE_INETD_RPC is not set
+  ✅ CONFIG_DEBUG_SANITIZE        # CONFIG_DEBUG_SANITIZE is not set
+  ✅ CONFIG_FEATURE_USE_BSS_TAIL  # CONFIG_FEATURE_USE_BSS_TAIL is not set
+[build] 配置就绪（1 项在本版本中不存在，属正常）
+[build] 编译中（-j8）...
+[build]   编译日志: /tmp/bbbuild/busybox-build-logs/make.log
+[build] 校验 busybox (1.2M)
+    Class:                             ELF64
+    Type:                              DYN (Position-Independent Executable file)
+    Machine:                           AArch64
+[build]   ✅ 无 INTERP 段、无 NEEDED 依赖 → 静态链接
+[build]   applet 数: 本机(x86)跑不了这个二进制，到光猫上执行
+[build]             /tmp/busybox-full --list | wc -l 确认
+[build] 产物: /tmp/bbbuild/busybox-full-aarch64
+[build] 部署: scp /tmp/bbbuild/busybox-full-aarch64 root@<光猫>:/tmp/busybox-full && chmod +x /tmp/busybox-full
+
+== 产物 ==
+total 1212
+drwxr-xr-x  3 root root      80 Oct  2 02:38 .
+drwxrwxrwt 14 root root     500 Oct  2 02:38 ..
+drwxr-xr-x  2 root root      60 Oct  2 02:37 busybox-build-logs
+-rwxr-xr-x  1 root root 1239328 Oct  2 02:38 busybox-full-aarch64
+
